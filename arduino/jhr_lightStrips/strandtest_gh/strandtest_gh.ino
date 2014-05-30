@@ -51,10 +51,10 @@ void loop() {
 //     theaterChase(strip.Color(127,   0,   0), 50); // Red
 //     theaterChase(strip.Color(  0,   0, 127), 50); // Blue
 
-//   rainbow(10);
+   rainbow(10);
   
   //THIS IS THE ONE WE USE FOR THE CHASE PATTERN
-    rainbowCycle(15);
+//    rainbowCycle(15);
   //theaterChaseRainbow(50);
 }
 
@@ -167,22 +167,31 @@ uint32_t Wheel(byte WheelPos) {
     
     return strip.Color(mapR, mapG, mapB);
   } 
-  else if(WheelPos < 170) {
-    WheelPos -= 85;
+//  else if(WheelPos < 170) {
+//    WheelPos -= 85;
+//    
+//    r = 255 - WheelPos * 3;
+//    g = 255 - WheelPos * 3;
+//    b = 255 - WheelPos * 3;
+//    
+//    mapR = map(r, 0, 255, 0, 220);
+//    mapG = map(r, 0, 255, 0, 250);
+//    mapB = map(r, 0, 255, 0, 150);
+//    
+//    return strip.Color(mapR, mapG, mapB);
+//  } 
+  else {
+    WheelPos -= 150;
     
-    r = 255 - WheelPos * 3;
-    g = 255 - WheelPos * 3;
-    b = 255 - WheelPos * 3;
+    r = 5;
+    g = 5;
+    b = 5;
     
     mapR = map(r, 0, 255, 0, 220);
     mapG = map(r, 0, 255, 0, 250);
     mapB = map(r, 0, 255, 0, 150);
-    
+   
     return strip.Color(mapR, mapG, mapB);
-  } 
-  else {
-    WheelPos -= 150;
-    return strip.Color(5, 5, 5);
   }
 }
 
