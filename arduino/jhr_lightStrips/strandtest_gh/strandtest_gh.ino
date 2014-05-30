@@ -32,7 +32,7 @@ void loop() {
 //  colorWipe(strip.Color(255, 255,255), 10); // White
 //  colorWipe(strip.Color(0,0,0), 10); // Off
 
-  colorWipe(strip.Color(220, 250, 150), 10); // Calibrated White
+//  colorWipe(strip.Color(220, 250, 150), 10); // Calibrated White
   
  // colorWipeBackwards(strip.Color(0,0,0), 10); // Off
   
@@ -54,7 +54,7 @@ void loop() {
 //   rainbow(10);
   
   //THIS IS THE ONE WE USE FOR THE CHASE PATTERN
-//    rainbowCycle(15);
+    rainbowCycle(15);
   //theaterChaseRainbow(50);
 }
 
@@ -106,7 +106,7 @@ void rainbowCycle(uint8_t wait) {
 
   for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
     for(i=0; i< strip.numPixels(); i++) {
-      strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
+      strip.setPixelColor(i, Wheel( ( (i * 256 / strip.numPixels()) + j) & 255));
     }
     strip.show();
     delay(wait);
@@ -153,16 +153,36 @@ void theaterChaseRainbow(uint8_t wait) {
 // Input a value 0 to 255 to get a color value.
 // The colours are a transition r - g - b - back to r.
 uint32_t Wheel(byte WheelPos) {
+  uint32_t r, g, b;
+  uint32_t mapR, mapG, mapB;
+  
   if(WheelPos < 35) {
-    return strip.Color(WheelPos * 3,  WheelPos * 3, WheelPos * 3);
+    r = WheelPos * 3;
+    g = WheelPos * 3;
+    b = WheelPos * 3;
+    
+    mapR = map(r, 0, 255, 0, 220);
+    mapG = map(r, 0, 255, 0, 250);
+    mapB = map(r, 0, 255, 0, 150);
+    
+    return strip.Color(mapR, mapG, mapB);
   } 
   else if(WheelPos < 170) {
     WheelPos -= 85;
-    return strip.Color(255 - WheelPos * 3, 255 - WheelPos * 3, 255 - WheelPos * 3);
+    
+    r = 255 - WheelPos * 3;
+    g = 255 - WheelPos * 3;
+    b = 255 - WheelPos * 3;
+    
+    mapR = map(r, 0, 255, 0, 220);
+    mapG = map(r, 0, 255, 0, 250);
+    mapB = map(r, 0, 255, 0, 150);
+    
+    return strip.Color(mapR, mapG, mapB);
   } 
   else {
     WheelPos -= 150;
-    return strip.Color(5,5,5);
+    return strip.Color(5, 5, 5);
   }
 }
 
