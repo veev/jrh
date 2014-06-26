@@ -1,0 +1,14 @@
+
+<panel width=32 height=16 />
+
+<waves>
+	<wave id=1 type="PANELS" width=320 height=16 />
+	<wave id=2 type="PANELS" width=448 height=32 />
+	<wave id=3 type="STRIPS" width=302 />
+	<wave id=4 type="PANELS" width=512 height=48 />
+	<wave id=5 type="STRIPS" width=326/>
+	<wave id=6 type="PANELS" width=384 height=48 />
+	<wave id=7 type="STRIPS" width=285/>
+</waves>
+
+
