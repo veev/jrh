@@ -8,3 +8,16 @@
 
 #pragma once
 #include "ofMain.h"
+#include "ofxXmlSettings.h"
+
+class DataManager{
+    
+public:
+    DataManager();
+    static void init();
+    
+    static ofxXmlSettings settings;
+    static const string PANELS;
+    static const string STRIPS;
+    
+};

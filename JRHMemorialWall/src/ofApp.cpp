@@ -1,23 +1,22 @@
 #include "ofApp.h"
 
-const string ofApp::PANELS = "panels";
-const string ofApp::STRIPS = "strips";
-
 //--------------------------------------------------------------
 void ofApp::setup(){
-    //load settings
-    settings.loadFile("settings.xml");
+    
+    DataManager::init();
+    
     
     //create wave objects
-    settings.pushTag("waves");
-    for(int i=0; i < settings.getNumTags("wave"); i++){
-        string type = settings.getAttribute("wave", "type", "", i);
-        if(type == PANELS){
+    DataManager::settings.pushTag("waves");
+    for(int i=0; i < DataManager::settings.getNumTags("wave"); i++){
+        string type = DataManager::settings.getAttribute("wave", "type", "", i);
+        cout<<"making a wave of type: " << type << endl;
+        if(type == DataManager::PANELS){
             //create an instance of the wave object
-            int w = settings.getAttribute("wave", "width", 0, i);
+            int w = DataManager::settings.getAttribute("wave", "width", 0, i);
             //vs.addPanelsWave();
         }
-        else if (type == STRIPS){
+        else if (type == DataManager::STRIPS){
             //create an instance of the strip object
             
         }

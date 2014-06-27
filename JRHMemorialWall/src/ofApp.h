@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "visualSystem.h"
-#include "ofxXmlSettings.h"
+#include "DataManager.h"
 
 class ofApp : public ofBaseApp{
 
@@ -22,11 +22,6 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
         visualSystem vs;
-        ofxXmlSettings settings;
-    
-    
-    public:
-        static const string PANELS;
-        static const string STRIPS;
+
 		
 };
