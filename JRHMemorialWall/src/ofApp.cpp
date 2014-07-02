@@ -11,14 +11,19 @@ void ofApp::setup(){
     for(int i=0; i < DataManager::settings.getNumTags("wave"); i++){
         string type = DataManager::settings.getAttribute("wave", "type", "", i);
         cout<<"making a wave of type: " << type << endl;
+        int x = DataManager::settings.getAttribute("wave", "x", 0, i);
+        int y = DataManager::settings.getAttribute("wave", "y", 0, i);
+        int w = DataManager::settings.getAttribute("wave", "width", 0, i);
+        
+
         if(type == DataManager::PANELS){
             //create an instance of the wave object
-            int w = DataManager::settings.getAttribute("wave", "width", 0, i);
-            //vs.addPanelsWave();
+            int h = DataManager::settings.getAttribute("wave", "height", 0, i);
+            vs.addPanelsWave(x,y,w,h);
         }
         else if (type == DataManager::STRIPS){
             //create an instance of the strip object
-            
+            vs.addStripWave(x,y,w);
         }
     }
 }
@@ -31,6 +36,8 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofBackground(0);
+    //for debugging
+    vs.drawWaves();
 }
 
 //--------------------------------------------------------------

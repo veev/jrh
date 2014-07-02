@@ -8,8 +8,15 @@
 
 #pragma once
 #include "ofMain.h"
+#include "ledWave.h"
 
 class visualSystem{
     public:
-        visualSystem();
+    
+    visualSystem();
+    void addPanelsWave(int x, int y, int w, int h);
+    void addStripWave(int x, int y, int w);
+    void drawWaves();
+    
+    vector<ledWave> waves;  // create an empty vector of floats
 };

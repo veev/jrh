@@ -12,6 +12,19 @@
 class ledWave{
     
     public:
-        ledWave();
+        int _x, _y, _w, _h;
+    
+};
+
+class ledWavePanels: public ledWave{
+    
+    public:
+        ledWavePanels(int x, int y, int w, int h);
+};
+
+class ledWaveStrip: public ledWave{
+    
+    public:
+        ledWaveStrip(int x, int y, int w);
     
 };

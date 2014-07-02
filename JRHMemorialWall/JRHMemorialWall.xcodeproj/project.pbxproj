@@ -17,8 +17,6 @@
 		2398C919195B7BC500842F6A /* computerVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2398C917195B7BC500842F6A /* computerVision.cpp */; };
 		2398C91C195B7C8800842F6A /* gui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2398C91A195B7C8800842F6A /* gui.cpp */; };
 		2398C920195B7CCA00842F6A /* ledWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2398C91E195B7CCA00842F6A /* ledWave.cpp */; };
-		2398C92D195BA2E400842F6A /* ledWavePanels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2398C92B195BA2E400842F6A /* ledWavePanels.cpp */; };
-		2398C930195BA2F700842F6A /* ledWaveStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2398C92E195BA2F700842F6A /* ledWaveStrip.cpp */; };
 		2398C933195CC5E200842F6A /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2398C931195CC5E200842F6A /* DataManager.cpp */; };
 		250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7160245B19131DAE6128 /* ofxCvColorImage.cpp */; };
 		255A7B680DC81E543C875794 /* usb_libusb10.c in Sources */ = {isa = PBXBuildFile; fileRef = 28F9707464BA3FF98E05096C /* usb_libusb10.c */; };
@@ -140,10 +138,6 @@
 		2398C91B195B7C8800842F6A /* gui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gui.h; sourceTree = "<group>"; };
 		2398C91E195B7CCA00842F6A /* ledWave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ledWave.cpp; sourceTree = "<group>"; };
 		2398C91F195B7CCA00842F6A /* ledWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ledWave.h; sourceTree = "<group>"; };
-		2398C92B195BA2E400842F6A /* ledWavePanels.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ledWavePanels.cpp; sourceTree = "<group>"; };
-		2398C92C195BA2E400842F6A /* ledWavePanels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ledWavePanels.h; sourceTree = "<group>"; };
-		2398C92E195BA2F700842F6A /* ledWaveStrip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ledWaveStrip.cpp; sourceTree = "<group>"; };
-		2398C92F195BA2F700842F6A /* ledWaveStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ledWaveStrip.h; sourceTree = "<group>"; };
 		2398C931195CC5E200842F6A /* DataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataManager.cpp; sourceTree = "<group>"; };
 		2398C932195CC5E200842F6A /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		241AAF7769D555E4ECD57E17 /* cameras.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = cameras.h; path = ../../../addons/ofxKinect/libs/libfreenect/src/cameras.h; sourceTree = SOURCE_ROOT; };
@@ -479,10 +473,6 @@
 			children = (
 				2398C91E195B7CCA00842F6A /* ledWave.cpp */,
 				2398C91F195B7CCA00842F6A /* ledWave.h */,
-				2398C92B195BA2E400842F6A /* ledWavePanels.cpp */,
-				2398C92C195BA2E400842F6A /* ledWavePanels.h */,
-				2398C92E195BA2F700842F6A /* ledWaveStrip.cpp */,
-				2398C92F195BA2F700842F6A /* ledWaveStrip.h */,
 			);
 			name = ledWave;
 			sourceTree = "<group>";
@@ -1107,7 +1097,6 @@
 				7ADB04AF67C568EAFAEBA546 /* ofxKinectExtras.cpp in Sources */,
 				686B0DF6249B52E1A85B39EC /* ofxKinect.cpp in Sources */,
 				0F8F016776681D468C0D0949 /* audio.c in Sources */,
-				2398C930195BA2F700842F6A /* ledWaveStrip.cpp in Sources */,
 				ACE7DC9A3223ED5EE1B80074 /* cameras.c in Sources */,
 				F4135EEFC911E9ED211FB6F9 /* core.c in Sources */,
 				E55DEEF784A10419E444669E /* flags.c in Sources */,
@@ -1142,7 +1131,6 @@
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
-				2398C92D195BA2E400842F6A /* ledWavePanels.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 			);
