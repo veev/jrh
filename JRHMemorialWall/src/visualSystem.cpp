@@ -35,6 +35,7 @@ void visualSystem::drawWaves(){
     
     //draw outline for the waves
     ofSetColor(255, 0, 0);
+    ofNoFill();
     
     for (int i=0;i<waves.size();i++){
         //cout<<"draw wave " << i << endl;
