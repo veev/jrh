@@ -8,13 +8,19 @@
 
 #pragma once
 #include "ofMain.h"
-#include "DataManager.h";
+#include "DataManager.h"
 
 class ledWave{
     
     public:
+    ledWave(int x, int y, int w, int h);
+    void updateFbo(ofFbo * fbo);
+    
     int _x, _y, _w, _h;
     string type;
+    
+    ofFbo _fbo;
+    
     
 };
 

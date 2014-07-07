@@ -8,18 +8,25 @@
 
 #include "ledWave.h"
 
-ledWavePanels::ledWavePanels(int x, int y, int w, int h){
+ledWave::ledWave(int x, int y, int w, int h){
     _x = x;
     _y = y;
     _w = w;
     _h = h;
+}
+
+ledWavePanels::ledWavePanels(int x, int y, int w, int h) : ledWave(x,y,w,h){
     type = DataManager::PANELS;
 }
 
-ledWaveStrip::ledWaveStrip(int x, int y, int w, int h){
-    _x = x;
-    _y = y;
-    _w = w;
-    _h = h;
+ledWaveStrip::ledWaveStrip(int x, int y, int w, int h) : ledWave(x,y,w,h){
     type = DataManager::STRIPS;
+}
+
+void ledWave::updateFbo(ofFbo * fbo){
+    
+    //get the right portion of the fbo and place it into the wave object
+    
+    
+    
 }

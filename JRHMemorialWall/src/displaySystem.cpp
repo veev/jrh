@@ -18,6 +18,13 @@ displaySystem::displaySystem(){
 //update the display with a new image
 void displaySystem::updateDisplay(ofFbo * frame){
     _frame = frame;
+    
+    //update the fbo on the wave
+    for (int i=0;i<waves.size();i++){
+        ledWave w = waves[i];
+        w.updateFbo(frame);
+    }
+    
 }
 
 //create an instance of the PanelsWave object
