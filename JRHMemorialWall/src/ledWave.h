@@ -8,11 +8,13 @@
 
 #pragma once
 #include "ofMain.h"
+#include "DataManager.h";
 
 class ledWave{
     
     public:
-        int _x, _y, _w, _h;
+    int _x, _y, _w, _h;
+    string type;
     
 };
 

@@ -22,7 +22,7 @@ void visualSystem::loadTestMovie(string path){
     
 }
 
-ofFbo visualSystem::getFrame(){
+ofFbo * visualSystem::getFrame(){
     testMovie.update();
     
     display.begin();
@@ -30,5 +30,5 @@ ofFbo visualSystem::getFrame(){
     testMovie.draw(0,0,800,600);
     display.end();
     
-    return display;
+    return &display;
 }

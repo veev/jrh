@@ -51,7 +51,15 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+    switch(key){
+        case 't':
+            ds.enterTestMode();
+            break;
+        case 'l':
+            ds.enterLiveMode();
+            break;
+    }
+    
 }
 
 //--------------------------------------------------------------

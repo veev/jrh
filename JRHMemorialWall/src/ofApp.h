@@ -25,6 +25,6 @@ class ofApp : public ofBaseApp{
         displaySystem ds;
     visualSystem  vs;
     
-    ofFbo frame;
+    ofFbo * frame;
 		
 };

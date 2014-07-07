@@ -8,12 +8,15 @@
 
 #include "displaySystem.h"
 
+const string displaySystem::TEST_MODE = "test_mode";
+const string displaySystem::LIVE_MODE = "live_mode";
+
 displaySystem::displaySystem(){
-    
+    mode = TEST_MODE;
 }
 
 //update the display with a new image
-void displaySystem::updateDisplay(ofFbo frame){
+void displaySystem::updateDisplay(ofFbo * frame){
     _frame = frame;
 }
 
@@ -32,23 +35,44 @@ void displaySystem::addStripWave(int x, int y, int w, int h){
 }
 
 void displaySystem::draw(){
-    ofSetColor(255);
-    _frame.draw(0,0);
-    drawWaves();
+    if(mode == TEST_MODE){
+        //render test mode
+        ofSetColor(255);
+        _frame->draw(0,0);
+        drawWaves();
+    }
+    else if (mode == LIVE_MODE){
+        //render live mode]
+        
+    }
 }
 
 void displaySystem::drawWaves(){
     
-   // cout<<"drawWaves"<<endl;
+    //cout<<"drawWaves"<<endl;
     //cout<<"waves.size(): "<<waves.size()<<endl;
     
     //draw outline for the waves
-    ofSetColor(255, 0, 0);
-    ofNoFill();
+       ofNoFill();
     
     for (int i=0;i<waves.size();i++){
+        ledWave w = waves[i];
         //cout<<"draw wave " << i << endl;
-        ofRect(waves[i]._x, waves[i]._y, waves[i]._w, waves[i]._h);
+        if(w.type == DataManager::PANELS)
+            ofSetColor(255, 100, 100);
+        else
+            ofSetColor(100, 100, 255);
+        
+        ofRect(w._x, w._y, w._w, w._h);
+
     }
     
+}
+
+void displaySystem::enterLiveMode(){
+    mode = LIVE_MODE;
+}
+
+void displaySystem::enterTestMode(){
+    mode = TEST_MODE;
 }

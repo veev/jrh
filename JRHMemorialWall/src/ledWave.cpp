@@ -13,6 +13,7 @@ ledWavePanels::ledWavePanels(int x, int y, int w, int h){
     _y = y;
     _w = w;
     _h = h;
+    type = DataManager::PANELS;
 }
 
 ledWaveStrip::ledWaveStrip(int x, int y, int w, int h){
@@ -20,4 +21,5 @@ ledWaveStrip::ledWaveStrip(int x, int y, int w, int h){
     _y = y;
     _w = w;
     _h = h;
+    type = DataManager::STRIPS;
 }

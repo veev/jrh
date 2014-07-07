@@ -13,7 +13,7 @@ class visualSystem{
     
     public:
     visualSystem();
-    ofFbo getFrame();
+    ofFbo * getFrame();
     void loadTestMovie(string path);
     
     ofVideoPlayer 		testMovie;

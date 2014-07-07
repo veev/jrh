@@ -18,10 +18,17 @@ class displaySystem{
     void addStripWave(int x, int y, int w, int h);
     void draw();
     void drawWaves();
-    void updateDisplay(ofFbo frame);
+    void updateDisplay(ofFbo * frame);
+    void enterLiveMode();
+    void enterTestMode();
     
     vector<ledWave> waves;  // create an empty vector of floats
     
+    
 private:
-    ofFbo _frame;
+    ofFbo * _frame;
+    static const string TEST_MODE;
+    static const string LIVE_MODE;
+    string mode;
+
 };
