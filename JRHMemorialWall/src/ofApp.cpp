@@ -5,7 +5,6 @@ void ofApp::setup(){
     
     DataManager::init();
     
-    
     //create wave objects
     DataManager::settings.pushTag("waves");
     for(int i=0; i < DataManager::settings.getNumTags("wave"); i++){
@@ -14,30 +13,35 @@ void ofApp::setup(){
         int x = DataManager::settings.getAttribute("wave", "x", 0, i);
         int y = DataManager::settings.getAttribute("wave", "y", 0, i);
         int w = DataManager::settings.getAttribute("wave", "width", 0, i);
-        
+        int h = DataManager::settings.getAttribute("wave", "height", 0, i);
 
         if(type == DataManager::PANELS){
             //create an instance of the wave object
-            int h = DataManager::settings.getAttribute("wave", "height", 0, i);
-            vs.addPanelsWave(x,y,w,h);
+            ds.addPanelsWave(x,y,w,h);
         }
         else if (type == DataManager::STRIPS){
             //create an instance of the strip object
-            vs.addStripWave(x,y,w);
+            ds.addStripWave(x,y,w,h);
         }
     }
+    
+    //load the test movie
+    vs.loadTestMovie("movies/test.mov");
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    //pull new frame from visual system
+    frame = vs.getFrame();
+    ds.updateDisplay(frame);
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofBackground(0);
     //for debugging
-    vs.drawWaves();
+    ds.draw();
+   // ds.drawWaves();
 }
 
 //--------------------------------------------------------------

@@ -15,9 +15,9 @@ ledWavePanels::ledWavePanels(int x, int y, int w, int h){
     _h = h;
 }
 
-ledWaveStrip::ledWaveStrip(int x, int y, int w){
+ledWaveStrip::ledWaveStrip(int x, int y, int w, int h){
     _x = x;
     _y = y;
     _w = w;
-    _h = 1;
+    _h = h;
 }

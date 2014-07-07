@@ -2,44 +2,33 @@
 //  visualSystem.cpp
 //  JRHMemorialWall
 //
-//  Created by Jack Kalish on 6/25/14.
+//  Created by Jack Kalish on 7/7/14.
 //
 //
 
 #include "visualSystem.h"
 
 visualSystem::visualSystem(){
+    display.allocate(800,600);
+    display.begin();
+    ofClear(255,255,255, 0);
+    display.end();
+}
+
+void visualSystem::loadTestMovie(string path){
+    testMovie.loadMovie(path);
+	testMovie.play();
+    
     
 }
 
-//create an instance of the PanelsWave object
-void visualSystem::addPanelsWave(int x, int y, int w, int h){
+ofFbo visualSystem::getFrame(){
+    testMovie.update();
     
-    ledWave wave = ledWavePanels(x, y, w, h);
-    waves.push_back(wave);
+    display.begin();
+    ofSetColor(255);
+    testMovie.draw(0,0,800,600);
+    display.end();
     
-}
-
-//create an instance of the StripWave object
-void visualSystem::addStripWave(int x, int y, int w){
-    
-    ledWave wave = ledWaveStrip(x, y, w);
-    waves.push_back(wave);
-    
-}
-
-void visualSystem::drawWaves(){
-    
-   // cout<<"drawWaves"<<endl;
-    //cout<<"waves.size(): "<<waves.size()<<endl;
-    
-    //draw outline for the waves
-    ofSetColor(255, 0, 0);
-    ofNoFill();
-    
-    for (int i=0;i<waves.size();i++){
-        //cout<<"draw wave " << i << endl;
-        ofRect(waves[i]._x, waves[i]._y, waves[i]._w, waves[i]._h);
-    }
-    
+    return display;
 }

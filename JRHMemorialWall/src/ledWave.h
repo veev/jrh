@@ -25,6 +25,6 @@ class ledWavePanels: public ledWave{
 class ledWaveStrip: public ledWave{
     
     public:
-        ledWaveStrip(int x, int y, int w);
+        ledWaveStrip(int x, int y, int w, int h);
     
 };

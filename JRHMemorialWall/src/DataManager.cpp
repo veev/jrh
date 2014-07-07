@@ -22,5 +22,4 @@ DataManager::DataManager(){
 void DataManager::init(){
     //load settings
     settings.loadFile("settings.xml");
-
 }
