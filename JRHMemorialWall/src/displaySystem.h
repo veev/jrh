@@ -21,14 +21,17 @@ class displaySystem{
     void updateDisplay(ofFbo * frame);
     void enterLiveMode();
     void enterTestMode();
+    void mousePressed(int x, int y, int button);
+    void mouseDragged(int x, int y, int button);
     
     vector<ledWave> waves;  // create an empty vector of floats
     
     
-private:
+    private:
     ofFbo * _frame;
     static const string TEST_MODE;
     static const string LIVE_MODE;
     string mode;
+    ledWave * draggableWave;
 
 };

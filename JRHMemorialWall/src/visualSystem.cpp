@@ -26,8 +26,10 @@ ofFbo * visualSystem::getFrame(){
     testMovie.update();
     
     display.begin();
+    
     ofSetColor(255);
     testMovie.draw(0,0,800,600);
+    
     display.end();
     
     return &display;

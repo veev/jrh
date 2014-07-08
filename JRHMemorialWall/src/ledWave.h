@@ -15,12 +15,14 @@ class ledWave{
     public:
     ledWave(int x, int y, int w, int h);
     void updateFbo(ofFbo * fbo);
+    void draw(int y);
+    bool hitTest(int x, int y);
     
     int _x, _y, _w, _h;
     string type;
     
     ofFbo _fbo;
-    
+    ofImage image;
     
 };
 

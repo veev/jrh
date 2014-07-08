@@ -46,12 +46,14 @@ void displaySystem::draw(){
         //render test mode
         ofSetColor(255);
         _frame->draw(0,0);
-        drawWaves();
+       
     }
     else if (mode == LIVE_MODE){
         //render live mode]
         
     }
+    
+     drawWaves();
 }
 
 void displaySystem::drawWaves(){
@@ -62,19 +64,49 @@ void displaySystem::drawWaves(){
     //draw outline for the waves
        ofNoFill();
     
+    int y=0;
+    
     for (int i=0;i<waves.size();i++){
         ledWave w = waves[i];
         //cout<<"draw wave " << i << endl;
-        if(w.type == DataManager::PANELS)
-            ofSetColor(255, 100, 100);
-        else
-            ofSetColor(100, 100, 255);
         
-        ofRect(w._x, w._y, w._w, w._h);
+        if(mode == TEST_MODE){
+            //draw boxes for all the waves
+            if(w.type == DataManager::PANELS)
+                ofSetColor(255, 100, 100);
+            else
+                ofSetColor(100, 100, 255);
+        
+            ofRect(w._x, w._y, w._w, w._h);
+        }
+        else{
+            //draw just the panels to the screen
+            if(w.type == DataManager::PANELS){
+                w.draw(y);
+                y+=w._h;
+            }
+        }
 
     }
     
 }
+
+void displaySystem::mousePressed(int x, int y, int button){
+     for (int i=0;i<waves.size();i++){
+         ledWave * w = & waves[i];
+
+         if(w->hitTest(x,y)){
+             draggableWave = w;
+         }
+     }
+}
+
+void displaySystem::mouseDragged(int x, int y, int button){
+    draggableWave->_x = x;
+    draggableWave->_y = y;
+}
+
+
 
 void displaySystem::enterLiveMode(){
     mode = LIVE_MODE;

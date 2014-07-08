@@ -461,6 +461,15 @@
 			name = ofxXmlSettings;
 			sourceTree = "<group>";
 		};
+		235ED478196B7A20006D6AD5 /* visualSystem */ = {
+			isa = PBXGroup;
+			children = (
+				235ED475196B3185006D6AD5 /* visualSystem.cpp */,
+				235ED476196B3185006D6AD5 /* visualSystem.h */,
+			);
+			name = visualSystem;
+			sourceTree = "<group>";
+		};
 		2398C91D195B7C9700842F6A /* displaySystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,6 +908,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				235ED478196B7A20006D6AD5 /* visualSystem */,
 				2398C91D195B7C9700842F6A /* displaySystem */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
@@ -909,8 +919,6 @@
 				2398C91B195B7C8800842F6A /* gui.h */,
 				2398C931195CC5E200842F6A /* DataManager.cpp */,
 				2398C932195CC5E200842F6A /* DataManager.h */,
-				235ED475196B3185006D6AD5 /* visualSystem.cpp */,
-				235ED476196B3185006D6AD5 /* visualSystem.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
