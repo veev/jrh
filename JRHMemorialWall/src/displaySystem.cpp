@@ -92,18 +92,27 @@ void displaySystem::drawWaves(){
 }
 
 void displaySystem::mousePressed(int x, int y, int button){
+   
+    
      for (int i=0;i<waves.size();i++){
          ledWave * w = & waves[i];
-
          if(w->hitTest(x,y)){
              draggableWave = w;
+             mousePressedX = x-w->_x;
+             mousePressedY = y-w->_y;
          }
      }
 }
 
 void displaySystem::mouseDragged(int x, int y, int button){
-    draggableWave->_x = x;
-    draggableWave->_y = y;
+    if(draggableWave){
+        draggableWave->_x = x - mousePressedX;
+        draggableWave->_y = y - mousePressedY;
+    }
+}
+
+void displaySystem::mouseReleased(int x, int y, int button){
+    draggableWave = NULL;
 }
 
 

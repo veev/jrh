@@ -23,6 +23,7 @@ class displaySystem{
     void enterTestMode();
     void mousePressed(int x, int y, int button);
     void mouseDragged(int x, int y, int button);
+    void mouseReleased(int x, int y, int button);
     
     vector<ledWave> waves;  // create an empty vector of floats
     
@@ -33,5 +34,6 @@ class displaySystem{
     static const string LIVE_MODE;
     string mode;
     ledWave * draggableWave;
+    int mousePressedX, mousePressedY;
 
 };
