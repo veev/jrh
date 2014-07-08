@@ -24,9 +24,12 @@ void ofApp::setup(){
             ds.addStripWave(x,y,w,h);
         }
     }
+    //make sure we pop back to the root after pushing...
+    DataManager::settings.popTag();
+    
     
     //load the test movie
-    vs.loadTestMovie("movies/test.mov");
+    vs.loadTestMovie(DataManager::getTestVideoPath());
 }
 
 //--------------------------------------------------------------
@@ -39,9 +42,7 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofBackground(0);
-    //for debugging
     ds.draw();
-   // ds.drawWaves();
 }
 
 //--------------------------------------------------------------

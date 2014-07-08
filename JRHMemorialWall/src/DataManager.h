@@ -15,6 +15,7 @@ class DataManager{
 public:
     DataManager();
     static void init();
+    static string getTestVideoPath();
     
     static ofxXmlSettings settings;
     static const string PANELS;

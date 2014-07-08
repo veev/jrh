@@ -23,3 +23,8 @@ void DataManager::init(){
     //load settings
     settings.loadFile("settings.xml");
 }
+
+string DataManager::getTestVideoPath(){
+    return settings.getValue("testVideoPath", "movies/test.mov");
+    
+}

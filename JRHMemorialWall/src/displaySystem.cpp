@@ -91,8 +91,8 @@ void displaySystem::drawWaves(){
     
 }
 
+//Find the wave that is clicked on and make that the draggable one
 void displaySystem::mousePressed(int x, int y, int button){
-   
     
      for (int i=0;i<waves.size();i++){
          ledWave * w = & waves[i];
@@ -102,8 +102,10 @@ void displaySystem::mousePressed(int x, int y, int button){
              mousePressedY = y-w->_y;
          }
      }
+    
 }
 
+//drag the wave that has been clicked on
 void displaySystem::mouseDragged(int x, int y, int button){
     if(draggableWave){
         draggableWave->_x = x - mousePressedX;
@@ -111,10 +113,10 @@ void displaySystem::mouseDragged(int x, int y, int button){
     }
 }
 
+//stop dragging the wave
 void displaySystem::mouseReleased(int x, int y, int button){
     draggableWave = NULL;
 }
-
 
 
 void displaySystem::enterLiveMode(){
