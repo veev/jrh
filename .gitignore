@@ -1,3 +1,4 @@
 *.app
 *xcuserstate
 JRHMemorialWall/build/
+*.DS_STORE
