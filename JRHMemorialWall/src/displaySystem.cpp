@@ -21,7 +21,7 @@ void displaySystem::updateDisplay(ofFbo * frame){
     
     //update the fbo on the wave
     for (int i=0;i<waves.size();i++){
-        ledWave w = waves[i];
+        ledWave w = waves.at(i);
         w.updateFbo(frame);
     }
     
@@ -67,7 +67,7 @@ void displaySystem::drawWaves(){
     int y=0;
     
     for (int i=0;i<waves.size();i++){
-        ledWave w = waves[i];
+        ledWave w = waves.at(i);
         //cout<<"draw wave " << i << endl;
         
         if(mode == TEST_MODE){
@@ -95,7 +95,7 @@ void displaySystem::drawWaves(){
 void displaySystem::mousePressed(int x, int y, int button){
     
      for (int i=0;i<waves.size();i++){
-         ledWave * w = & waves[i];
+         ledWave * w = & waves.at(i);
          if(w->hitTest(x,y)){
              draggableWave = w;
              mousePressedX = x-w->_x;
@@ -125,4 +125,20 @@ void displaySystem::enterLiveMode(){
 
 void displaySystem::enterTestMode(){
     mode = TEST_MODE;
+}
+
+void displaySystem::saveWaveSetup(){
+    DataManager::settings.pushTag("waves");
+    
+    for(int i=0; i < DataManager::settings.getNumTags("wave"); i++){
+        ledWave * w = &waves.at(i);
+        DataManager::settings.setAttribute("wave", "x", w->_x, i);
+        DataManager::settings.setAttribute("wave", "y", w->_y, i);
+    }
+    
+    //make sure we pop back to the root after pushing...
+    DataManager::settings.popTag();
+    
+    //save the file
+    DataManager::settings.saveFile();
 }

@@ -9,12 +9,16 @@
 #pragma once
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
+//#include "displaySystem.h"
+#include "ledWave.h"
 
 class DataManager{
     
 public:
     DataManager();
     static void init();
+    //static void saveWaveSetup(vector<ledWave> & waves);
+    
     static string getTestVideoPath();
     
     static ofxXmlSettings settings;

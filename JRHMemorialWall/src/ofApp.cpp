@@ -5,6 +5,10 @@ void ofApp::setup(){
     
     DataManager::init();
     
+    //setup event listeners
+    gui.saveSetupButton.addListener(this, &ofApp::saveWaveSetup);
+    gui.setup();
+    
     //create wave objects
     DataManager::settings.pushTag("waves");
     for(int i=0; i < DataManager::settings.getNumTags("wave"); i++){
@@ -32,6 +36,10 @@ void ofApp::setup(){
     vs.loadTestMovie(DataManager::getTestVideoPath());
 }
 
+void ofApp::saveWaveSetup(){
+    ds.saveWaveSetup();
+}
+
 //--------------------------------------------------------------
 void ofApp::update(){
     //pull new frame from visual system
@@ -43,6 +51,7 @@ void ofApp::update(){
 void ofApp::draw(){
     ofBackground(0);
     ds.draw();
+    gui.draw();
 }
 
 //--------------------------------------------------------------

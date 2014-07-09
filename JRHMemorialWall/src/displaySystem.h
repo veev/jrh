@@ -24,8 +24,9 @@ class displaySystem{
     void mousePressed(int x, int y, int button);
     void mouseDragged(int x, int y, int button);
     void mouseReleased(int x, int y, int button);
+    void saveWaveSetup();
     
-    vector<ledWave> waves;  // create an empty vector of floats
+    vector<ledWave> waves;
     
     
     private:

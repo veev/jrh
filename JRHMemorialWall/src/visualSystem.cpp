@@ -18,8 +18,6 @@ visualSystem::visualSystem(){
 void visualSystem::loadTestMovie(string path){
     testMovie.loadMovie(path);
 	testMovie.play();
-    
-    
 }
 
 ofFbo * visualSystem::getFrame(){
