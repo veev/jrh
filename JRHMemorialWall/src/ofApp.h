@@ -1,8 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
-#include "visualSystem.h"
+#include "displaySystem.h"
 #include "DataManager.h"
+#include "visualSystem.h"
+#include "gui.h"
 
 class ofApp : public ofBaseApp{
 
@@ -21,7 +23,13 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        visualSystem vs;
-
+    void saveWaveSetup();
+    
+        displaySystem ds;
+    visualSystem  vs;
+    
+    ofFbo * frame;
+    
+    gui gui;
 		
 };

@@ -8,3 +8,17 @@
 
 #pragma once
 #include "ofMain.h"
+#include "ofxGui.h"
+#include "DataManager.h"
+
+class gui{
+    
+public:
+    gui();
+    void setup();
+    void draw();
+    
+    ofxPanel guiPanel;
+    ofxButton saveSetupButton;
+    
+};

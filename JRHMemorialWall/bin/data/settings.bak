@@ -1,0 +1,11 @@
+<panel width="32" height="16" />
+<testVideoPath>../../../media/jh_projection_640x480.mov</testVideoPath>
+<waves>
+    <wave id="1" type="panels" width="320" height="16" x="0" y="50" />
+    <wave id="2" type="panels" width="448" height="32" x="71" y="98" />
+    <wave id="3" type="strips" width="302" height="38" x="0" y="150" />
+    <wave id="4" type="panels" width="512" height="48" x="125" y="233" />
+    <wave id="5" type="strips" width="326" height="51" x="155" y="312" />
+    <wave id="6" type="panels" width="384" height="48" x="59" y="397" />
+    <wave id="7" type="strips" width="285" height="46" x="49" y="492" />
+</waves>
