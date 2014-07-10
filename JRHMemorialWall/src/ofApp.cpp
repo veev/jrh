@@ -19,14 +19,15 @@ void ofApp::setup(){
         int y = DataManager::settings.getAttribute("wave", "y", 0, i);
         int w = DataManager::settings.getAttribute("wave", "width", 0, i);
         int h = DataManager::settings.getAttribute("wave", "height", 0, i);
+        int id = DataManager::settings.getAttribute("wave", "id", i+1, i);
 
         if(type == DataManager::PANELS){
             //create an instance of the wave object
-            ds.addPanelsWave(x,y,w,h);
+            ds.addPanelsWave(x,y,w,h, id);
         }
         else if (type == DataManager::STRIPS){
             //create an instance of the strip object
-            ds.addStripWave(x,y,w,h);
+            ds.addStripWave(x,y,w,h, id);
         }
     }
     //make sure we pop back to the root after pushing...

@@ -20,6 +20,8 @@ public:
     //static void saveWaveSetup(vector<ledWave> & waves);
     
     static string getTestVideoPath();
+    static string getLEDStripHost();
+    static int getLEDStripPort();
     
     static ofxXmlSettings settings;
     static const string PANELS;
