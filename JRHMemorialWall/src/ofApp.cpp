@@ -7,6 +7,7 @@ void ofApp::setup(){
     
     //setup event listeners
     gui.saveSetupButton.addListener(this, &ofApp::saveWaveSetup);
+    gui.modeToggle.addListener(this, &ofApp::onModeToggle);
     gui.setup();
     
     //create wave objects
@@ -40,6 +41,13 @@ void ofApp::saveWaveSetup(){
     ds.saveWaveSetup();
 }
 
+void ofApp::onModeToggle(bool & control){
+    if(gui.modeToggle)
+        ds.enterLiveMode();
+    else
+        ds.enterTestMode();
+}
+
 //--------------------------------------------------------------
 void ofApp::update(){
     //pull new frame from visual system
@@ -51,7 +59,8 @@ void ofApp::update(){
 void ofApp::draw(){
     ofBackground(0);
     ds.draw();
-    gui.draw();
+    if(!gui.isHidden)
+        gui.draw();
 }
 
 //--------------------------------------------------------------
@@ -68,6 +77,8 @@ void ofApp::keyReleased(int key){
         case 'l':
             ds.enterLiveMode();
             break;
+        case ' ':
+            gui.isHidden = !gui.isHidden;
     }
     
 }
