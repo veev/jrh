@@ -1,1 +1,5 @@
-<guiSettings/>
+<guiSettings>
+	<GUI>
+		<TOGGLE_LIVE_MODE>1</TOGGLE_LIVE_MODE>
+	</GUI>
+</guiSettings>

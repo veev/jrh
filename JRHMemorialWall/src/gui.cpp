@@ -10,18 +10,33 @@
 
 gui::gui(){
     //setup listeners
-   // saveSetupButton.addListener(this, &DataManager::saveSettings);
-   
+   hideGuiButton.addListener(this, &gui::onHideGuiButton);
+   // modeToggle.addListener(this, &gui::onModeToggle);
     
 }
 
 void gui::setup(){
+    
     //create the gui
     guiPanel.setup("GUI","gui_settings.xml",810,10);
     guiPanel.add(saveSetupButton.setup("SAVE SETUP"));
-   // guiPanel.setPosition(810,10);
+    guiPanel.add(modeToggle.setup("TOGGLE LIVE MODE", true));
+    guiPanel.add(hideGuiButton.setup("HIDE GUI"));
+    
 }
 
 void gui::draw(){
     guiPanel.draw();
+}
+
+void gui::hide(bool control){
+    isHidden = control;
+}
+
+void gui::onHideGuiButton(){
+    isHidden = true;
+}
+
+void gui::onModeToggle(){
+    
 }

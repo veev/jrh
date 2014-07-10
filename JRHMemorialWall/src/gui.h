@@ -17,8 +17,15 @@ public:
     gui();
     void setup();
     void draw();
+    void hide(bool control = true);
+    void toggleIsHidden();
+    void onHideGuiButton();
+    void onModeToggle();
     
     ofxPanel guiPanel;
-    ofxButton saveSetupButton;
+    ofxButton saveSetupButton, hideGuiButton;
+    ofxToggle modeToggle;
+    
+    bool isHidden;
     
 };
