@@ -18,19 +18,19 @@
     <wave id="4" type="panels" width="512" height="48" x="125" y="233" />
     <wave id="5" type="strips" width="326" height="51" x="155" y="312" numLeds="350">
         <topStrip>
-            <address>/lumigeek/ethser/frameblob/1</address>
+            <address>/lumigeek/ethser/frameblob/3</address>
         </topStrip>
         <bottomStrip>
-            <address>/lumigeek/ethser/frameblob/2</address>
+            <address>/lumigeek/ethser/frameblob/4</address>
         </bottomStrip>
     </wave>
     <wave id="6" type="panels" width="384" height="48" x="59" y="397" />
     <wave id="7" type="strips" width="285" height="46" x="35" y="469" numLeds="350">
         <topStrip>
-            <address>/lumigeek/ethser/frameblob/1</address>
+            <address>/lumigeek/ethser/frameblob/5</address>
         </topStrip>
         <bottomStrip>
-            <address>/lumigeek/ethser/frameblob/2</address>
+            <address>/lumigeek/ethser/frameblob/6</address>
         </bottomStrip>
     </wave>
 </waves>

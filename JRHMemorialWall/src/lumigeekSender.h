@@ -15,7 +15,7 @@ class lumigeekSender{
 public:
     lumigeekSender();
     void setup(string host, int port);
-    void send(unsigned char * pixels, string address);
+    void send(unsigned char * pixels, string address, int numPixels);
     
 private:
     ofxOscSender sender;

@@ -9,10 +9,13 @@
 #include "visualSystem.h"
 
 visualSystem::visualSystem(){
-    display.allocate(800,600);
-    display.begin();
+    displayPointer = &display;
+    displayPointer->allocate(800,600,GL_RGB);
+     image.allocate(800, 600, OF_IMAGE_COLOR);
+    
+    /*displayPointer->begin();
     ofClear(255,255,255, 0);
-    display.end();
+    displayPointer->end();*/
 }
 
 void visualSystem::loadTestMovie(string path){
@@ -23,12 +26,25 @@ void visualSystem::loadTestMovie(string path){
 ofFbo * visualSystem::getFrame(){
     testMovie.update();
     
-    display.begin();
+    displayPointer->begin();
     
     ofSetColor(255);
     testMovie.draw(0,0,800,600);
     
-    display.end();
+    displayPointer->end();
     
-    return &display;
+    return displayPointer;
 }
+
+ofImage visualSystem::getFrameAsImage(){
+    
+   
+    displayPointer->readToPixels(image.getPixelsRef());
+    image.update();
+    return image;
+    
+}
+
+
+
+

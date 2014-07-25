@@ -29,14 +29,16 @@ void displaySystem::addPanelsWave(int x, int y, int w, int h, int idNum){
 }
 
 //create an instance of the StripWave object
-void displaySystem::addStripWave(int x, int y, int w, int h, int idNum){
-    ledWaveStrips wave = ledWaveStrips(x, y, w, h, idNum);
+void displaySystem::addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress){
+    ledWaveStrips wave = ledWaveStrips(x, y, w, h, idNum, topAddress, bottomAddress);
     wavesStrips.push_back(wave);
 }
 
 //update the display with a new image
 void displaySystem::updateDisplay(ofFbo * frame){
     _frame = frame;
+    
+   // _frame->draw(0, 0);
     
     //update the fbo on the wave
     for (int i=0;i<wavesPanels.size();i++){
@@ -45,24 +47,43 @@ void displaySystem::updateDisplay(ofFbo * frame){
     }
     for (int i=0;i<wavesStrips.size();i++){
         ledWaveStrips w = wavesStrips.at(i);
+        //frame->draw(50,50);
         w.updateFbo(frame);
     }
+}
+
+void displaySystem::updateDisplayAsImage(ofImage image){
+   /*
+    cout<<"displaySystem::updateDisplayAsImage"<<endl;
     
+    frameImage = image;
+    frameImage.update();
+    
+    for (int i=0;i<wavesStrips.size();i++){
+        ledWaveStrips w = wavesStrips.at(i);
+        //frame->draw(50,50);
+        w.updateImage(frameImage);
+    }
+    */
 }
 
 void displaySystem::draw(){
+    //_frame->draw(0,0);
+    ofSetColor(255);
+    
+   // frameImage.draw(50, 50);
+    
+    
     if(mode == TEST_MODE){
         //render test mode
         ofSetColor(255);
         _frame->draw(0,0);
        
     }
-    
      drawWaves();
 }
 
 void displaySystem::drawWaves(){
-    
     //cout<<"drawWaves"<<endl;
     //cout<<"waves.size(): "<<waves.size()<<endl;
     
@@ -71,7 +92,8 @@ void displaySystem::drawWaves(){
     
     int y=0;
     
-    for (int i=0;i<wavesPanels.size();i++){
+    for (int i=0;i<wavesPanels.size();i++)
+    {
         ledWavePanels w = wavesPanels.at(i);
         //cout<<"draw wave " << i << endl;
         
@@ -82,12 +104,15 @@ void displaySystem::drawWaves(){
         }
         else{
             //draw just the panels to the screen
+          //  w.image.draw(0, y);
+            w.image.draw(200, y);
             w.draw(y);
             y+=w._h;
         }
     }
     
-    for (int i=0;i<wavesStrips.size();i++){
+    //STRIPS
+    for (int i=0;i<1;i++){
         ledWaveStrips w = wavesStrips.at(i);
         //cout<<"draw wave " << i << endl;
         
@@ -95,12 +120,26 @@ void displaySystem::drawWaves(){
             //draw boxes for all the waves
             ofSetColor(100, 100, 255);
             ofRect(w._x, w._y, w._w, w._h);
+            
+            ofSetColor(255);
+            //w.imageToCrop.draw(i*20, i*20);
+            //w.topStripImage.draw(10, 620+(i*10));
+                     // w.bottomStripImage.draw(10, 620+(i*10)+5);
+            
+          //  w.imageToCrop.draw(i*10, i*10);
+            
+            
         }
-        else{
+        
+        w.draw(10, 620+(i*10));
+        
+      
+            int numPixels = w._w*3;
             //for the led strips, send the pixel data to the lumigeekSender
-                
-
-        }
+            lgs.send(w.getTopStripPixels(), w.getTopStripAddress(), numPixels);
+            lgs.send(w.getBottomStripPixels(), w.getBottomStripAddress(), numPixels);
+        
+       // }
     }
     
 }

@@ -13,6 +13,7 @@
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */; };
 		21A059755481CC0BF969FD2D /* keep_alive.c in Sources */ = {isa = PBXBuildFile; fileRef = A3528DDFF05B00283552455D /* keep_alive.c */; };
+		2344B6F1196F40C100D737F0 /* strip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2344B6EF196F40C100D737F0 /* strip.cpp */; };
 		235ED477196B3185006D6AD5 /* visualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235ED475196B3185006D6AD5 /* visualSystem.cpp */; };
 		23714909196E244500A5B58B /* lumigeekSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23714907196E244500A5B58B /* lumigeekSender.cpp */; };
 		2398C916195B7B4B00842F6A /* displaySystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2398C914195B7B4B00842F6A /* displaySystem.cpp */; };
@@ -131,6 +132,8 @@
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		1E95EFD35ED9C5D97F2F015E /* timer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = timer.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/timer.h; sourceTree = SOURCE_ROOT; };
 		20F35AFADAF0068B067E713F /* OscReceivedElements.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscReceivedElements.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.h; sourceTree = SOURCE_ROOT; };
+		2344B6EF196F40C100D737F0 /* strip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strip.cpp; sourceTree = "<group>"; };
+		2344B6F0196F40C100D737F0 /* strip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strip.h; sourceTree = "<group>"; };
 		235ED475196B3185006D6AD5 /* visualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = visualSystem.cpp; sourceTree = "<group>"; };
 		235ED476196B3185006D6AD5 /* visualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visualSystem.h; sourceTree = "<group>"; };
 		23640F57DF6C4BB6BFC5DA4C /* PacketListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PacketListener.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/PacketListener.h; sourceTree = SOURCE_ROOT; };
@@ -490,6 +493,8 @@
 			children = (
 				2398C91E195B7CCA00842F6A /* ledWave.cpp */,
 				2398C91F195B7CCA00842F6A /* ledWave.h */,
+				2344B6EF196F40C100D737F0 /* strip.cpp */,
+				2344B6F0196F40C100D737F0 /* strip.h */,
 			);
 			name = ledWave;
 			sourceTree = "<group>";
@@ -1146,6 +1151,7 @@
 				2398C920195B7CCA00842F6A /* ledWave.cpp in Sources */,
 				28090DEB5109115003E8F1C5 /* UdpSocketWin.cpp in Sources */,
 				62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */,
+				2344B6F1196F40C100D737F0 /* strip.cpp in Sources */,
 				C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */,
 				0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */,
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,

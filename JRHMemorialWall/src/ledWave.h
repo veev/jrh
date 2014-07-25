@@ -37,13 +37,22 @@ class ledWavePanels: public ledWave{
 class ledWaveStrips: public ledWave{
     
     public:
-    //void draw();
-    ledWaveStrips(int x, int y, int w, int h, int idNum);
+    void draw(int x, int y);
+    ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress);
     void updateFbo(ofFbo * fbo);
+    void updateImage(ofImage image);
     
-    ofImage topStrip, bottomStrip;
+    ofPixels topStripPixels, bottomStripPixels;
+    ofImage topStripImage, bottomStripImage, imageToCrop;
     
     unsigned char * getTopStripPixels();
     unsigned char * getBottomStripPixels();
+    string getTopStripAddress();
+    string getBottomStripAddress();
+    ofFbo topStripFBO, bottomStripFBO;
+    
+    private:
+    string _topStripAddress, _bottomStripAddress;
+    
     
 };

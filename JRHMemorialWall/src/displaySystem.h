@@ -18,10 +18,11 @@ class displaySystem{
     displaySystem();
     void init();
     void addPanelsWave(int x, int y, int w, int h, int idNum);
-    void addStripWave(int x, int y, int w, int h, int idNum);
+    void addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress);
     void draw();
     void drawWaves();
     void updateDisplay(ofFbo * frame);
+    void updateDisplayAsImage(ofImage image);
     void enterLiveMode();
     void enterTestMode();
     void mousePressed(int x, int y, int button);
@@ -40,5 +41,7 @@ class displaySystem{
     ledWave * draggableWave;
     int mousePressedX, mousePressedY;
     lumigeekSender lgs;
+    
+    ofImage frameImage;
 
 };
