@@ -1,7 +1,10 @@
 *.app
 *xcuserstate
 JRHMemorialWall/build/
+Lumigeek_LEDTest/build/
 *.DS_STORE
+*.DS_Store
+
 JRHMemorialWall/JRHMemorialWall.xcodeproj/xcuserdata/genevieve.xcuserdatad/xcschemes/xcschememanagement.plist
 
 JRHMemorialWall/.DS_Store
@@ -24,7 +27,7 @@ Lumigeek_LEDTest/.DS_Store
 
 JRHMemorialWall/.DS_Store
 
-*.DS_Store
+
 
 JRHMemorialWall/.DS_Store
 
