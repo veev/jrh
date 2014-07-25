@@ -100,11 +100,10 @@ void displaySystem::drawWaves(){
             //draw boxes for all the waves
             ofSetColor(255, 100, 100);
             ofRect(w->_x, w->_y, w->_w, w->_h);
+            ofDrawBitmapString(ofToString(w->_idNum), w->_x+2, w->_y+12);
         }
         else{
-            //draw just the panels to the screen
-          //  w.image.draw(0, y);
-            //w->image.draw(200, y);
+            //draw the panels to the screen
             w->draw(y);
             y+=w->_h;
         }
@@ -119,10 +118,12 @@ void displaySystem::drawWaves(){
             //draw boxes for all the waves
             ofSetColor(100, 100, 255);
             ofRect(w->_x, w->_y, w->_w, w->_h);
+            ofDrawBitmapString(ofToString(w->_idNum), w->_x+2, w->_y+12);
             
             ofSetColor(255);
             
-            w->draw(10, 620+(i*10));
+            ofDrawBitmapString(ofToString(w->_idNum), 10, 620+(i*20)+7);
+            w->draw(30, 620+(i*20));
         }
         
         

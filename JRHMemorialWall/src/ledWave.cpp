@@ -32,11 +32,8 @@ ledWaveStrips::ledWaveStrips(int x, int y, int w, int h, int idNum, string topAd
     _bottomStripAddress = bottomAddress;
     _numLeds = numLeds;
     
-   // topStripFBO.allocate(w, 1, GL_RGB);
     
     topStripImage.allocate(numLeds, 1, OF_IMAGE_COLOR);
-
-    
     bottomStripImage.allocate(numLeds, 1, OF_IMAGE_COLOR);
     
 
@@ -76,13 +73,21 @@ void ledWavePanels::updateFbo(ofFbo * fbo){
 void ledWaveStrips::updateFbo(ofFbo * fbo){
     
     // cout<<"ledWaveStrips::updateFbo"<<endl;
+    
+    //TOP STRIP
     fbo->readToPixels(topStripImage);
     topStripImage.crop(_x, _y, _w, 1);
-    topStripImage.resize(_numLeds, 1);
-    
     //resize the image to the correct ledstrip size
+    topStripImage.resize(_numLeds, 1);
     topStripImage.update();
     
+    //BOTTOM STRIP
+    fbo->readToPixels(bottomStripImage);
+    bottomStripImage.crop(_x, _y+_h-1, _w, 1);
+    //resize the image to the correct ledstrip size
+    bottomStripImage.resize(_numLeds, 1);
+    bottomStripImage.update();
+
 }
 
 
@@ -94,6 +99,7 @@ void ledWavePanels::draw(int y){
 
 void ledWaveStrips::draw(int x, int y){
     topStripImage.draw(x, y);
+    bottomStripImage.draw(x, y+5);
 }
 
 //STRIPS
