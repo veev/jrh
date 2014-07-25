@@ -18,7 +18,7 @@ class displaySystem{
     displaySystem();
     void init();
     void addPanelsWave(int x, int y, int w, int h, int idNum);
-    void addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress);
+    void addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds);
     void draw();
     void drawWaves();
     void updateDisplay(ofFbo * frame);

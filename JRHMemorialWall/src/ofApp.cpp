@@ -26,11 +26,13 @@ void ofApp::setup(){
             ds.addPanelsWave(x,y,w,h, id);
         }
         else if (type == DataManager::STRIPS){
+            int nleds = DataManager::settings.getAttribute("wave", "numLeds", 407, i);
             DataManager::settings.pushTag("wave",i);
             string ta = DataManager::settings.getValue("topStrip:address", "");
             string ba = DataManager::settings.getValue("topStrip:address", "");
+            
             //create an instance of the strip object
-            ds.addStripWave(x,y,w,h,id,ta,ba);
+            ds.addStripWave(x,y,w,h,id,ta,ba,nleds);
             DataManager::settings.popTag();
         }
     }
@@ -43,6 +45,7 @@ void ofApp::setup(){
 }
 
 void ofApp::saveWaveSetup(){
+    cout<<"ofApp::saveWaveSetup"<<endl;
     ds.saveWaveSetup();
 }
 
@@ -68,7 +71,7 @@ void ofApp::draw(){
    // frame = vs.getFrame();
    // ds.updateDisplay(frame);
 
-    ofBackground(100);
+    ofBackground(20);
     ds.draw();
     
    // vs.getFrameAsImage().draw(50,50);

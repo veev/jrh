@@ -38,7 +38,7 @@ class ledWaveStrips: public ledWave{
     
     public:
     void draw(int x, int y);
-    ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress);
+    ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds);
     void updateFbo(ofFbo * fbo);
     void updateImage(ofImage image);
     
@@ -53,6 +53,7 @@ class ledWaveStrips: public ledWave{
     ofFbo topStripFBO, bottomStripFBO;
     // Hold the Captured Colors
     vector <ofColor> colors;
+    int _numLeds;
     
     private:
     string _topStripAddress, _bottomStripAddress;

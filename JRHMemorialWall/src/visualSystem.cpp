@@ -20,6 +20,7 @@ visualSystem::visualSystem(){
 
 void visualSystem::loadTestMovie(string path){
     testMovie.loadMovie(path);
+    testMovie.setVolume(0);
 	testMovie.play();
 }
 
