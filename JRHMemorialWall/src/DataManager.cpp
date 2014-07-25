@@ -26,7 +26,14 @@ void DataManager::init(){
 
 string DataManager::getTestVideoPath(){
     return settings.getValue("testVideoPath", "movies/test.mov");
-    
+}
+
+string DataManager::getLEDStripHost(){
+    return settings.getValue("ledStrips:host", "");
+}
+
+int DataManager::getLEDStripPort(){
+    return settings.getValue("ledStrips:port", 4445);
 }
 
 /*

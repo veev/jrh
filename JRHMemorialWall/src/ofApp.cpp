@@ -19,22 +19,27 @@ void ofApp::setup(){
         int y = DataManager::settings.getAttribute("wave", "y", 0, i);
         int w = DataManager::settings.getAttribute("wave", "width", 0, i);
         int h = DataManager::settings.getAttribute("wave", "height", 0, i);
+        int id = DataManager::settings.getAttribute("wave", "id", i+1, i);
 
         if(type == DataManager::PANELS){
             //create an instance of the wave object
-            ds.addPanelsWave(x,y,w,h);
+            ds.addPanelsWave(x,y,w,h, id);
         }
         else if (type == DataManager::STRIPS){
+            DataManager::settings.pushTag("wave",i);
+            string ta = DataManager::settings.getValue("topStrip:address", "");
+            string ba = DataManager::settings.getValue("topStrip:address", "");
             //create an instance of the strip object
-            ds.addStripWave(x,y,w,h);
+            ds.addStripWave(x,y,w,h,id,ta,ba);
+            DataManager::settings.popTag();
         }
     }
     //make sure we pop back to the root after pushing...
     DataManager::settings.popTag();
     
-    
     //load the test movie
     vs.loadTestMovie(DataManager::getTestVideoPath());
+    ds.init();
 }
 
 void ofApp::saveWaveSetup(){
@@ -52,13 +57,22 @@ void ofApp::onModeToggle(bool & control){
 void ofApp::update(){
     //pull new frame from visual system
     frame = vs.getFrame();
+    
+    ds.updateDisplayAsImage(vs.getFrameAsImage());
     ds.updateDisplay(frame);
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(0);
+    
+   // frame = vs.getFrame();
+   // ds.updateDisplay(frame);
+
+    ofBackground(100);
     ds.draw();
+    
+   // vs.getFrameAsImage().draw(50,50);
+    
     if(!gui.isHidden)
         gui.draw();
 }

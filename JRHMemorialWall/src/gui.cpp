@@ -36,7 +36,3 @@ void gui::hide(bool control){
 void gui::onHideGuiButton(){
     isHidden = true;
 }
-
-void gui::onModeToggle(){
-    
-}

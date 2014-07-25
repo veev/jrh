@@ -22,12 +22,36 @@ void ofApp::update(){
     int width =  350; // LEDs want 350 pixels for now  //jrhMovie.getWidth();
     int height =  1; //LEDs are only 1 pixel high //jrhMovie.getHeight();
     
-    unsigned char * pixels = jrhMovie.getPixels();
+    //unsigned char * pixels = jrhMovie.getPixels();
     int nChannels = jrhMovie.getPixelsRef().getNumChannels(); //RGB = 3 Channels
+    
+    ofFbo fboSrc;
+    
+    ofFbo * fbo;
+    
+    fbo = &fboSrc;
+    
+    
+    fbo->allocate(640, 360, GL_RGB);
+    
+    fbo->begin();
+    jrhMovie.draw(0, 0);
+    fbo->end();
+    
+   // ofPixels p;
+  //  ofImage image;
+    image.allocate(width, height, OF_IMAGE_COLOR);
+   // image.setNumChannels(3);
+    fbo->readToPixels(image);
+    image.update();
+    
+    
+    unsigned char * pixels = image.getPixels();
+    
     int totalPixels = width * height;
     int totalChannels = totalPixels * nChannels;
     
-    for (int y = 0; y < height; y++) {
+   for (int y = 0; y < height; y++) {
         for( int x = 0; x < width; x++) {
             
             //pixelColor = jrhMovie.getPixelsRef().getColor(x, y);
@@ -36,6 +60,8 @@ void ofApp::update(){
             int r = pixels[ (y * width + x) * nChannels + 0 ];
             int g = pixels[ (y * width + x) * nChannels + 1 ];
             int b = pixels[ (y * width + x) * nChannels + 2 ];
+            
+            cout<<"R: "<<r<<" G: "<<g<<" B: "<<b<<endl;
 
         }
     }
@@ -55,6 +81,8 @@ void ofApp::update(){
 void ofApp::draw(){
     
     jrhMovie.draw(0,0);
+    
+    image.draw(0, 380);
 }
 
 //--------------------------------------------------------------

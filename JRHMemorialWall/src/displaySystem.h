@@ -9,16 +9,20 @@
 #pragma once
 #include "ofMain.h"
 #include "ledWave.h"
+#include "lumigeekSender.h"
+#include "DataManager.h"
 
 class displaySystem{
     public:
     
     displaySystem();
-    void addPanelsWave(int x, int y, int w, int h);
-    void addStripWave(int x, int y, int w, int h);
+    void init();
+    void addPanelsWave(int x, int y, int w, int h, int idNum);
+    void addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress);
     void draw();
     void drawWaves();
     void updateDisplay(ofFbo * frame);
+    void updateDisplayAsImage(ofImage image);
     void enterLiveMode();
     void enterTestMode();
     void mousePressed(int x, int y, int button);
@@ -26,8 +30,8 @@ class displaySystem{
     void mouseReleased(int x, int y, int button);
     void saveWaveSetup();
     
-    vector<ledWave> waves;
-    
+    vector<ledWavePanels> wavesPanels;
+    vector<ledWaveStrips> wavesStrips;
     
     private:
     ofFbo * _frame;
@@ -36,5 +40,8 @@ class displaySystem{
     string mode;
     ledWave * draggableWave;
     int mousePressedX, mousePressedY;
+    lumigeekSender lgs;
+    
+    ofImage frameImage;
 
 };

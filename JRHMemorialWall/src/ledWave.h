@@ -13,28 +13,46 @@
 class ledWave{
     
     public:
-    ledWave(int x, int y, int w, int h);
-    void updateFbo(ofFbo * fbo);
-    void draw(int y);
+    ledWave(int x, int y, int w, int h, int idNum);
+    //void draw(int y);
+    
+    
     bool hitTest(int x, int y);
     
-    int _x, _y, _w, _h;
+    int _x, _y, _w, _h, _idNum;
     string type;
-    
-    ofFbo _fbo;
-    ofImage image;
     
 };
 
 class ledWavePanels: public ledWave{
     
     public:
-        ledWavePanels(int x, int y, int w, int h);
+        ledWavePanels(int x, int y, int w, int h, int idNum);
+        void draw(int y);
+        void updateFbo(ofFbo * fbo);
+        ofFbo _fbo;
+        ofImage image;
 };
 
-class ledWaveStrip: public ledWave{
+class ledWaveStrips: public ledWave{
     
     public:
-        ledWaveStrip(int x, int y, int w, int h);
+    void draw(int x, int y);
+    ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress);
+    void updateFbo(ofFbo * fbo);
+    void updateImage(ofImage image);
+    
+    ofPixels topStripPixels, bottomStripPixels;
+    ofImage topStripImage, bottomStripImage, imageToCrop;
+    
+    unsigned char * getTopStripPixels();
+    unsigned char * getBottomStripPixels();
+    string getTopStripAddress();
+    string getBottomStripAddress();
+    ofFbo topStripFBO, bottomStripFBO;
+    
+    private:
+    string _topStripAddress, _bottomStripAddress;
+    
     
 };
