@@ -31,7 +31,7 @@ class displaySystem{
     void saveWaveSetup();
     
     vector<ledWavePanels> wavesPanels;
-    vector<ledWaveStrips> wavesStrips;
+    vector <ledWaveStrips> wavesStrips;
     
     private:
     ofFbo * _frame;

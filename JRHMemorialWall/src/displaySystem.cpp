@@ -42,13 +42,12 @@ void displaySystem::updateDisplay(ofFbo * frame){
     
     //update the fbo on the wave
     for (int i=0;i<wavesPanels.size();i++){
-        ledWavePanels w = wavesPanels.at(i);
-        w.updateFbo(frame);
+        ledWavePanels * w = &wavesPanels.at(i);
+        w->updateFbo(frame);
     }
     for (int i=0;i<wavesStrips.size();i++){
-        ledWaveStrips w = wavesStrips.at(i);
-        //frame->draw(50,50);
-        w.updateFbo(frame);
+        ledWaveStrips * w = &wavesStrips.at(i);
+        w->updateFbo(frame);
     }
 }
 
@@ -112,34 +111,30 @@ void displaySystem::drawWaves(){
     }
     
     //STRIPS
-    for (int i=0;i<1;i++){
-        ledWaveStrips w = wavesStrips.at(i);
+    for (int i=0;i<wavesStrips.size();i++){
+        ledWaveStrips * w = &wavesStrips.at(i);
         //cout<<"draw wave " << i << endl;
         
         if(mode == TEST_MODE){
             //draw boxes for all the waves
             ofSetColor(100, 100, 255);
-            ofRect(w._x, w._y, w._w, w._h);
+            ofRect(w->_x, w->_y, w->_w, w->_h);
             
             ofSetColor(255);
-            //w.imageToCrop.draw(i*20, i*20);
-            //w.topStripImage.draw(10, 620+(i*10));
-                     // w.bottomStripImage.draw(10, 620+(i*10)+5);
             
-          //  w.imageToCrop.draw(i*10, i*10);
-            
-            
+            w->draw(10, 620+(i*10));
         }
         
-        w.draw(10, 620+(i*10));
         
-      
-            int numPixels = w._w*3;
+        
+        //just send the first strip for now as a test...
+        if(i==0){
+        int numPixels = w->_w*3;
+        
             //for the led strips, send the pixel data to the lumigeekSender
-            lgs.send(w.getTopStripPixels(), w.getTopStripAddress(), numPixels);
-            lgs.send(w.getBottomStripPixels(), w.getBottomStripAddress(), numPixels);
-        
-       // }
+            lgs.send(w->getTopStripPixels(), w->getTopStripAddress(), numPixels);
+           // lgs.send(w.getBottomStripPixels(), w.getBottomStripAddress(), numPixels);
+        }
     }
     
 }

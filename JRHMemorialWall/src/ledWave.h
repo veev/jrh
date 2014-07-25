@@ -47,12 +47,16 @@ class ledWaveStrips: public ledWave{
     
     unsigned char * getTopStripPixels();
     unsigned char * getBottomStripPixels();
+    unsigned char topStripPixelsChar;
     string getTopStripAddress();
     string getBottomStripAddress();
     ofFbo topStripFBO, bottomStripFBO;
+    // Hold the Captured Colors
+    vector <ofColor> colors;
     
     private:
     string _topStripAddress, _bottomStripAddress;
+
     
     
 };
