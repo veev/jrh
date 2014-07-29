@@ -25,6 +25,6 @@ class ofApp : public ofBaseApp{
     
     ofVideoPlayer jrhMovie;
     ofxOscSender sender;
-    ofImage image;
+  //  ofImage image;
 		
 };

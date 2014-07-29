@@ -111,7 +111,10 @@ void ledWaveStrips::updateFbo(ofFbo * fbo){
     
     
  //   newFbo.readToPixels(topStripPixels);
-    newFbo.readToPixels(topStripImage.getPixelsRef());
+    ofPixels pixels;
+    newFbo.readToPixels(pixels);
+    topStripImage.setFromPixels(pixels);
+
     topStripImage.update();
     
    // topStripPixels.crop(_x, _y, _w, 1);

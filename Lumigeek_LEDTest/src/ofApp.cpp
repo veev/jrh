@@ -39,7 +39,7 @@ void ofApp::update(){
     fbo->end();
     
    // ofPixels p;
-  //  ofImage image;
+    ofImage image;
     image.allocate(width, height, OF_IMAGE_COLOR);
    // image.setNumChannels(3);
     fbo->readToPixels(image);
