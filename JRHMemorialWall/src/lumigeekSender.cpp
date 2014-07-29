@@ -16,13 +16,21 @@ void lumigeekSender::setup(string host, int port){
     cout<<"lumigeek sender setup host: "<<host<<" port: "<<port<< endl;
     
     //Open Connection to HOST:PORT - what is port for LEDs?
-    sender.setup(host, port);
+    sender = new ofxOscSender();
+    sender->setup(host, port);
+    
+    _host = host;
+    _port = port;
 }
 
 
 void lumigeekSender::send(unsigned char * pixels, string address, int numPixels){
     
-   // cout<<"lumigeekSender::send address: "<<address<<endl;
+    cout<<"lumigeekSender::send address: "<<address<<endl;
+    cout<<"host: "<<_host<<endl;
+    cout<<"port: "<<_port<<endl;
+    
+    
     
     ofBuffer buffer;
     buffer.set(reinterpret_cast<const char*>(pixels), numPixels); //casting the unsigned char to const char for buffer
@@ -30,7 +38,7 @@ void lumigeekSender::send(unsigned char * pixels, string address, int numPixels)
     ofxOscMessage m;
     m.setAddress(address); //address to send to Lumigeek driver
     m.addBlobArg(buffer); //I think the oscBlob wants a buffer (const char*) not pixels (unsigned char*)
-    sender.sendMessage(m);
+    sender->sendMessage(m);
     
 }
 

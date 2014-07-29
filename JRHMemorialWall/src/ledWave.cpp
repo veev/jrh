@@ -25,7 +25,10 @@ ledWavePanels::ledWavePanels(int x, int y, int w, int h, int idNum) : ledWave(x,
     
 }
 
-ledWaveStrips::ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds) : ledWave(x,y,w,h,idNum){
+ledWaveStrips::ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds, string host, int port) : ledWave(x,y,w,h,idNum){
+    
+   // cout<<"ledWaveStrips::ledWaveStrips("<<endl;
+    
     type = DataManager::STRIPS;
     
     _topStripAddress = topAddress;
@@ -36,6 +39,14 @@ ledWaveStrips::ledWaveStrips(int x, int y, int w, int h, int idNum, string topAd
     topStripImage.allocate(numLeds, 1, OF_IMAGE_COLOR);
     bottomStripImage.allocate(numLeds, 1, OF_IMAGE_COLOR);
     
+  //  cout<<"DataManager::getLEDStripHost(): "<<DataManager::getLEDStripHost()<<endl;
+    
+  //  cout<<"host: "<<host<<endl;
+  //  cout<<"port: "<<port<<endl;
+    
+    lgs = new lumigeekSender();
+    
+    lgs->setup(host, port);
 
 }
 
@@ -100,6 +111,14 @@ void ledWavePanels::draw(int y){
 void ledWaveStrips::draw(int x, int y){
     topStripImage.draw(x, y);
     bottomStripImage.draw(x, y+5);
+}
+
+void ledWaveStrips::drawToStrips(){
+    cout<<"ledWaveStrips::drawToStrips"<<endl;
+    
+    lgs->send(getTopStripPixels(), getTopStripAddress(), _numLeds*3);
+    //  lgs.send(w->getBottomStripPixels(), w->getBottomStripAddress(), w->_numLeds);
+
 }
 
 //STRIPS

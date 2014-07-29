@@ -9,6 +9,7 @@
 #pragma once
 #include "ofMain.h"
 #include "DataManager.h"
+#include "lumigeekSender.h"
 
 class ledWave{
     
@@ -38,7 +39,8 @@ class ledWaveStrips: public ledWave{
     
     public:
     void draw(int x, int y);
-    ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds);
+    void drawToStrips();
+    ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds, string host, int port);
     void updateFbo(ofFbo * fbo);
     void updateImage(ofImage image);
     
@@ -51,9 +53,11 @@ class ledWaveStrips: public ledWave{
     string getTopStripAddress();
     string getBottomStripAddress();
     ofFbo topStripFBO, bottomStripFBO;
+    
     // Hold the Captured Colors
     vector <ofColor> colors;
     int _numLeds;
+    lumigeekSender * lgs;
     
     private:
     string _topStripAddress, _bottomStripAddress;

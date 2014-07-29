@@ -27,12 +27,14 @@ void ofApp::setup(){
         }
         else if (type == DataManager::STRIPS){
             int nleds = DataManager::settings.getAttribute("wave", "numLeds", 407, i);
+            string host = DataManager::settings.getAttribute("wave", "host", "", i);
+            int port = DataManager::settings.getAttribute("wave", "port", 4445, i);
             DataManager::settings.pushTag("wave",i);
             string ta = DataManager::settings.getValue("topStrip:address", "");
             string ba = DataManager::settings.getValue("topStrip:address", "");
             
             //create an instance of the strip object
-            ds.addStripWave(x,y,w,h,id,ta,ba,nleds);
+            ds.addStripWave(x,y,w,h,id,ta,ba,nleds,host,port);
             DataManager::settings.popTag();
         }
     }

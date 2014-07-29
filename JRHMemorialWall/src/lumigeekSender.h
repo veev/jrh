@@ -18,6 +18,8 @@ public:
     void send(unsigned char * pixels, string address, int numPixels);
     
 private:
-    ofxOscSender sender;
+    ofxOscSender * sender;
+    string _host;
+    int _port;
     
 };

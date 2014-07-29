@@ -7,7 +7,7 @@
 <waves>
     <wave id="1" type="panels" width="320" height="16" x="254" y="34" />
     <wave id="2" type="panels" width="448" height="32" x="127" y="51" />
-    <wave id="3" type="strips" width="302" height="38" x="206" y="85" numLeds="407">
+    <wave id="3" type="strips" width="302" height="38" x="206" y="85" numLeds="407" host="192.168.3.215" port="4445">
         <topStrip>
             <address>/lumigeek/ethser/frameblob/1</address>
         </topStrip>
@@ -16,21 +16,21 @@
         </bottomStrip>
     </wave>
     <wave id="4" type="panels" width="512" height="48" x="125" y="233" />
-    <wave id="5" type="strips" width="326" height="51" x="155" y="312" numLeds="350">
+    <wave id="5" type="strips" width="326" height="51" x="155" y="312" numLeds="350" host="192.168.3.216" port="4445">
         <topStrip>
-            <address>/lumigeek/ethser/frameblob/3</address>
+            <address>/lumigeek/ethser/frameblob/1</address>
         </topStrip>
         <bottomStrip>
-            <address>/lumigeek/ethser/frameblob/4</address>
+            <address>/lumigeek/ethser/frameblob/2</address>
         </bottomStrip>
     </wave>
     <wave id="6" type="panels" width="384" height="48" x="59" y="397" />
-    <wave id="7" type="strips" width="285" height="46" x="35" y="469" numLeds="350">
+  <wave id="7" type="strips" width="285" height="46" x="35" y="469" numLeds="350" host="192.168.3.217" port="4445">
         <topStrip>
-            <address>/lumigeek/ethser/frameblob/5</address>
+            <address>/lumigeek/ethser/frameblob/1</address>
         </topStrip>
         <bottomStrip>
-            <address>/lumigeek/ethser/frameblob/6</address>
+            <address>/lumigeek/ethser/frameblob/2</address>
         </bottomStrip>
     </wave>
 </waves>

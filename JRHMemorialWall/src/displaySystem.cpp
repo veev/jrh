@@ -17,7 +17,7 @@ displaySystem::displaySystem(){
 
 void displaySystem::init(){
     //setup the lumigeek sender class
-    lgs.setup(DataManager::getLEDStripHost(), DataManager::getLEDStripPort());
+   // lgs.setup(DataManager::getLEDStripHost(), DataManager::getLEDStripPort());
 }
 
 //create an instance of the PanelsWave object
@@ -29,9 +29,12 @@ void displaySystem::addPanelsWave(int x, int y, int w, int h, int idNum){
 }
 
 //create an instance of the StripWave object
-void displaySystem::addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds){
-    ledWaveStrips wave = ledWaveStrips(x, y, w, h, idNum, topAddress, bottomAddress, numLeds);
+void displaySystem::addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds, string host, int port){
+    ledWaveStrips wave = ledWaveStrips(x, y, w, h, idNum, topAddress, bottomAddress, numLeds, host, port);
     wavesStrips.push_back(wave);
+    
+    
+    //ledSenders.push_back();
 }
 
 //update the display with a new image
@@ -45,6 +48,7 @@ void displaySystem::updateDisplay(ofFbo * frame){
         ledWavePanels * w = &wavesPanels.at(i);
         w->updateFbo(frame);
     }
+    
     for (int i=0;i<wavesStrips.size();i++){
         ledWaveStrips * w = &wavesStrips.at(i);
         w->updateFbo(frame);
@@ -124,16 +128,17 @@ void displaySystem::drawWaves(){
             
             ofDrawBitmapString(ofToString(w->_idNum), 10, 620+(i*20)+7);
             w->draw(30, 620+(i*20));
+          //
         }
         
-        
+       w->drawToStrips();
         
         //just send the first strip for now as a test...
         if(i==0){
           //  int numPixels = w->_w*3;
         
             //for the led strips, send the pixel data to the lumigeekSender
-            lgs.send(w->getTopStripPixels(), w->getTopStripAddress(), w->_numLeds*3);
+            //lgs.send(w->getTopStripPixels(), w->getTopStripAddress(), w->_numLeds*3);
           //  lgs.send(w->getBottomStripPixels(), w->getBottomStripAddress(), w->_numLeds);
         }
     }
