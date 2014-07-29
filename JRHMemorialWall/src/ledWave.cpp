@@ -131,14 +131,6 @@ unsigned char * ledWaveStrips::getBottomStripPixels(){
     return bottomStripImage.getPixels();
 }
 
-//string ledWaveStrips::getTopStripAddress(){
-//    return _topStripAddress;
-//}
-//
-//string ledWaveStrips::getBottomStripAddress(){
-//    return _bottomStripAddress;
-//}
-
 bool ledWave::hitTest(int x, int y){
     if(x > _x ){
         if (x < _x + _w){

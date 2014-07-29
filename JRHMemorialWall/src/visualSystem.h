@@ -14,11 +14,11 @@ class visualSystem{
     public:
     visualSystem();
     ofFbo * getFrame();
-    ofImage getFrameAsImage();
+   // ofImage getFrameAsImage();
     void loadTestMovie(string path);
     
     ofVideoPlayer 		testMovie;
-    ofFbo               display;
-    ofFbo *             displayPointer;
-    ofImage             image;
+   // ofFbo               display;
+    ofFbo *             display;
+   // ofImage             image;
 };
