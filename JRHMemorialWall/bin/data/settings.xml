@@ -6,7 +6,7 @@
 <waves>
     <wave id="1" type="panels" width="320" height="16" x="254" y="34" />
     <wave id="2" type="panels" width="448" height="32" x="127" y="51" />
-    <wave id="3" type="strips" width="302" height="38" x="37" y="133" numLeds="407" host="192.168.3.215" />
+    <wave id="3" type="strips" width="302" height="38" x="517" y="613" numLeds="407" host="192.168.3.215" />
     <wave id="4" type="panels" width="512" height="48" x="125" y="233" />
     <wave id="5" type="strips" width="326" height="51" x="155" y="312" numLeds="350" host="192.168.3.216" />
     <wave id="6" type="panels" width="384" height="48" x="59" y="397" />

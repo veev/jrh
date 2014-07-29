@@ -64,6 +64,7 @@ void ofApp::onModeToggle(bool & control){
 //--------------------------------------------------------------
 void ofApp::update(){
     //pull new frame from visual system
+    vs.update();
     frame = vs.getFrame();
     
    // ds.updateDisplayAsImage(vs.getFrameAsImage());
