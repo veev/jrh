@@ -8,6 +8,10 @@
 
 #include "lumigeekSender.h"
 
+const string lumigeekSender::ADDRESS_1 = "/lumigeek/ethser/frameblob/1";
+const string lumigeekSender::ADDRESS_2 = "/lumigeek/ethser/frameblob/2";
+
+
 lumigeekSender::lumigeekSender(){
 
 }

@@ -30,8 +30,8 @@ class displaySystem{
     void mouseReleased(int x, int y, int button);
     void saveWaveSetup();
     
-    vector<ledWavePanels> wavesPanels;
-    vector <ledWaveStrips> wavesStrips;
+    vector <ledWavePanels *> wavesPanels;
+    vector <ledWaveStrips *> wavesStrips;
     
     private:
     ofFbo * _frame;

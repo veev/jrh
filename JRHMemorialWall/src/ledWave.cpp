@@ -114,11 +114,9 @@ void ledWaveStrips::draw(int x, int y){
 }
 
 void ledWaveStrips::drawToStrips(){
-    cout<<"ledWaveStrips::drawToStrips"<<endl;
-    
-    lgs->send(getTopStripPixels(), getTopStripAddress(), _numLeds*3);
-    //  lgs.send(w->getBottomStripPixels(), w->getBottomStripAddress(), w->_numLeds);
-
+    //cout<<"ledWaveStrips::drawToStrips"<<endl;
+    lgs->send(getTopStripPixels(), _topStripAddress, _numLeds*3);
+    lgs->send(getBottomStripPixels(), _bottomStripAddress, _numLeds*3);
 }
 
 //STRIPS
@@ -133,13 +131,13 @@ unsigned char * ledWaveStrips::getBottomStripPixels(){
     return bottomStripImage.getPixels();
 }
 
-string ledWaveStrips::getTopStripAddress(){
-    return _topStripAddress;
-}
-
-string ledWaveStrips::getBottomStripAddress(){
-    return _bottomStripAddress;
-}
+//string ledWaveStrips::getTopStripAddress(){
+//    return _topStripAddress;
+//}
+//
+//string ledWaveStrips::getBottomStripAddress(){
+//    return _bottomStripAddress;
+//}
 
 bool ledWave::hitTest(int x, int y){
     if(x > _x ){
