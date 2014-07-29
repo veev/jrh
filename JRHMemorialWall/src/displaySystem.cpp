@@ -17,21 +17,24 @@ displaySystem::displaySystem(){
 
 void displaySystem::init(){
     //setup the lumigeek sender class
-    lgs.setup(DataManager::getLEDStripHost(), DataManager::getLEDStripPort());
+   // lgs.setup(DataManager::getLEDStripHost(), DataManager::getLEDStripPort());
 }
 
 //create an instance of the PanelsWave object
 void displaySystem::addPanelsWave(int x, int y, int w, int h, int idNum){
     
-    ledWavePanels wave = ledWavePanels(x, y, w, h, idNum);
+    ledWavePanels * wave = new ledWavePanels(x, y, w, h, idNum);
     wavesPanels.push_back(wave);
     
 }
 
 //create an instance of the StripWave object
-void displaySystem::addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress){
-    ledWaveStrips wave = ledWaveStrips(x, y, w, h, idNum, topAddress, bottomAddress);
+void displaySystem::addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds, string host, int port){
+    ledWaveStrips * wave = new ledWaveStrips(x, y, w, h, idNum, topAddress, bottomAddress, numLeds, host, port);
     wavesStrips.push_back(wave);
+    
+    
+    //ledSenders.push_back();
 }
 
 //update the display with a new image
@@ -42,13 +45,13 @@ void displaySystem::updateDisplay(ofFbo * frame){
     
     //update the fbo on the wave
     for (int i=0;i<wavesPanels.size();i++){
-        ledWavePanels w = wavesPanels.at(i);
-        w.updateFbo(frame);
+        ledWavePanels * w = wavesPanels.at(i);
+        w->updateFbo(frame);
     }
+    
     for (int i=0;i<wavesStrips.size();i++){
-        ledWaveStrips w = wavesStrips.at(i);
-        //frame->draw(50,50);
-        w.updateFbo(frame);
+        ledWaveStrips * w = wavesStrips.at(i);
+        w->updateFbo(frame);
     }
 }
 
@@ -94,52 +97,44 @@ void displaySystem::drawWaves(){
     
     for (int i=0;i<wavesPanels.size();i++)
     {
-        ledWavePanels w = wavesPanels.at(i);
+        ledWavePanels * w = wavesPanels.at(i);
         //cout<<"draw wave " << i << endl;
         
         if(mode == TEST_MODE){
             //draw boxes for all the waves
             ofSetColor(255, 100, 100);
-            ofRect(w._x, w._y, w._w, w._h);
+            ofRect(w->_x, w->_y, w->_w, w->_h);
+            ofDrawBitmapString(ofToString(w->_idNum), w->_x+2, w->_y+12);
         }
         else{
-            //draw just the panels to the screen
-          //  w.image.draw(0, y);
-            w.image.draw(200, y);
-            w.draw(y);
-            y+=w._h;
+            //draw the panels to the screen
+            w->draw(y);
+            y+=w->_h;
         }
+      //  delete w;
     }
     
     //STRIPS
-    for (int i=0;i<1;i++){
-        ledWaveStrips w = wavesStrips.at(i);
+    for (int i=0;i<wavesStrips.size();i++){
+        ledWaveStrips * w = wavesStrips.at(i);
         //cout<<"draw wave " << i << endl;
         
         if(mode == TEST_MODE){
             //draw boxes for all the waves
             ofSetColor(100, 100, 255);
-            ofRect(w._x, w._y, w._w, w._h);
+            ofRect(w->_x, w->_y, w->_w, w->_h);
+            ofDrawBitmapString(ofToString(w->_idNum), w->_x+2, w->_y+12);
             
             ofSetColor(255);
-            //w.imageToCrop.draw(i*20, i*20);
-            //w.topStripImage.draw(10, 620+(i*10));
-                     // w.bottomStripImage.draw(10, 620+(i*10)+5);
             
-          //  w.imageToCrop.draw(i*10, i*10);
-            
-            
+            ofDrawBitmapString(ofToString(w->_idNum), 10, 620+(i*20)+7);
+            w->draw(30, 620+(i*20));
+          //
         }
         
-        w.draw(10, 620+(i*10));
+       w->drawToStrips();
         
-      
-            int numPixels = w._w*3;
-            //for the led strips, send the pixel data to the lumigeekSender
-            lgs.send(w.getTopStripPixels(), w.getTopStripAddress(), numPixels);
-            lgs.send(w.getBottomStripPixels(), w.getBottomStripAddress(), numPixels);
-        
-       // }
+       // delete w;
     }
     
 }
@@ -148,7 +143,7 @@ void displaySystem::drawWaves(){
 void displaySystem::mousePressed(int x, int y, int button){
     
      for (int i=0;i<wavesPanels.size();i++){
-         ledWavePanels * w = & wavesPanels.at(i);
+         ledWavePanels * w = wavesPanels.at(i);
          if(w->hitTest(x,y)){
              draggableWave = w;
              mousePressedX = x-w->_x;
@@ -157,7 +152,7 @@ void displaySystem::mousePressed(int x, int y, int button){
          }
      }
     for (int i=0;i<wavesStrips.size();i++){
-        ledWaveStrips * w = & wavesStrips.at(i);
+        ledWaveStrips * w = wavesStrips.at(i);
         if(w->hitTest(x,y)){
             draggableWave = w;
             mousePressedX = x-w->_x;
@@ -191,24 +186,22 @@ void displaySystem::enterTestMode(){
 }
 
 void displaySystem::saveWaveSetup(){
+    cout<<"displaySystem::saveWaveSetup(){"<<endl;
+    
     DataManager::settings.pushTag("waves");
     
+    
+    
     for (int i=0;i<wavesPanels.size();i++){
-        ledWavePanels * w = & wavesPanels.at(i);
+        ledWavePanels * w = wavesPanels.at(i);
         DataManager::settings.setAttribute("wave", "x", w->_x, w->_idNum-1);
         DataManager::settings.setAttribute("wave", "y", w->_y, w->_idNum-1);
     }
     for (int i=0;i<wavesStrips.size();i++){
-        ledWaveStrips * w = & wavesStrips.at(i);
+        ledWaveStrips * w = wavesStrips.at(i);
         DataManager::settings.setAttribute("wave", "x", w->_x, w->_idNum-1);
         DataManager::settings.setAttribute("wave", "y", w->_y, w->_idNum-1);
     }
-    
-    /*for(int i=0; i < DataManager::settings.getNumTags("wave"); i++){
-        ledWave * w = &wavesPanels.at(i);
-        DataManager::settings.setAttribute("wave", "x", w->_x, w->_idNum-1);
-        DataManager::settings.setAttribute("wave", "y", w->_y, w->_idNum-1);
-    }*/
     
     
     //make sure we pop back to the root after pushing...

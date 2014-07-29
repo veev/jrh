@@ -10,6 +10,7 @@ void ofApp::setup(){
     gui.modeToggle.addListener(this, &ofApp::onModeToggle);
     gui.setup();
     
+    int port = DataManager::settings.getValue("ledStrips:port", 4445);
     //create wave objects
     DataManager::settings.pushTag("waves");
     for(int i=0; i < DataManager::settings.getNumTags("wave"); i++){
@@ -23,14 +24,18 @@ void ofApp::setup(){
 
         if(type == DataManager::PANELS){
             //create an instance of the wave object
-            ds.addPanelsWave(x,y,w,h, id);
+            ds.addPanelsWave(x,y,w,h,id);
         }
         else if (type == DataManager::STRIPS){
+            int nleds = DataManager::settings.getAttribute("wave", "numLeds", 407, i);
+            string host = DataManager::settings.getAttribute("wave", "host", "", i);
+            //int port = DataManager::settings.getAttribute("wave", "port", 4445, i);
             DataManager::settings.pushTag("wave",i);
-            string ta = DataManager::settings.getValue("topStrip:address", "");
-            string ba = DataManager::settings.getValue("topStrip:address", "");
+           // string ta = DataManager::settings.getValue("topStrip:address", "");
+          // string ba = DataManager::settings.getValue("topStrip:address", "");
+            
             //create an instance of the strip object
-            ds.addStripWave(x,y,w,h,id,ta,ba);
+            ds.addStripWave(x,y,w,h,id,lumigeekSender::ADDRESS_1,lumigeekSender::ADDRESS_2,nleds,host,port);
             DataManager::settings.popTag();
         }
     }
@@ -43,6 +48,7 @@ void ofApp::setup(){
 }
 
 void ofApp::saveWaveSetup(){
+    cout<<"ofApp::saveWaveSetup"<<endl;
     ds.saveWaveSetup();
 }
 
@@ -68,7 +74,7 @@ void ofApp::draw(){
    // frame = vs.getFrame();
    // ds.updateDisplay(frame);
 
-    ofBackground(100);
+    ofBackground(20);
     ds.draw();
     
    // vs.getFrameAsImage().draw(50,50);

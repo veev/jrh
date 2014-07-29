@@ -25,30 +25,28 @@ ledWavePanels::ledWavePanels(int x, int y, int w, int h, int idNum) : ledWave(x,
     
 }
 
-ledWaveStrips::ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress) : ledWave(x,y,w,h,idNum){
+ledWaveStrips::ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds, string host, int port) : ledWave(x,y,w,h,idNum){
+    
+   // cout<<"ledWaveStrips::ledWaveStrips("<<endl;
+    
     type = DataManager::STRIPS;
     
     _topStripAddress = topAddress;
     _bottomStripAddress = bottomAddress;
+    _numLeds = numLeds;
     
-    topStripFBO.allocate(w, 1, GL_RGB);
-    topStripImage.allocate(w, 1, OF_IMAGE_COLOR);
-    topStripPixels.allocate(w, 1, OF_IMAGE_COLOR);
-
     
-    bottomStripImage.allocate(w, 1, OF_IMAGE_COLOR);
+    topStripImage.allocate(numLeds, 1, OF_IMAGE_COLOR);
+    bottomStripImage.allocate(numLeds, 1, OF_IMAGE_COLOR);
     
-   // topStripPixels.clear();
-   // topStripImage.clear();
-    bottomStripPixels.allocate(w, 1, OF_IMAGE_COLOR);
+  //  cout<<"DataManager::getLEDStripHost(): "<<DataManager::getLEDStripHost()<<endl;
     
-    imageToCrop.allocate(800,600, OF_IMAGE_COLOR);
-
+  //  cout<<"host: "<<host<<endl;
+  //  cout<<"port: "<<port<<endl;
     
-  /*  topStrip.allocate(w, 1, OF_IMAGE_COLOR_ALPHA);
-    bottomStrip.allocate(w, 1, OF_IMAGE_COLOR_ALPHA);
-    topStripImage.allocate(w, 1, OF_IMAGE_COLOR_ALPHA);
-    bottomStripImage.allocate(w, 1, OF_IMAGE_COLOR_ALPHA);*/
+    lgs = new lumigeekSender();
+    
+    lgs->setup(host, port);
 
 }
 
@@ -67,7 +65,7 @@ void ledWavePanels::updateFbo(ofFbo * fbo){
     
 }
 
-void ledWaveStrips::updateImage(ofImage image){
+/*void ledWaveStrips::updateImage(ofImage image){
     ofImage newImage = image;
     newImage.update();
     newImage.crop(_x, _y, _w, 1);
@@ -75,126 +73,32 @@ void ledWaveStrips::updateImage(ofImage image){
     
     topStripImage = newImage;
     
-    //topStripImage.cropFrom(image, _x, _y, _w, 1);
     topStripImage.update();
-    /*topStripImage = image;
+    topStripImage = image;
     imageToCrop = image;
     
     topStripImage.update();
     imageToCrop.update();*/
-}
+//}
 
 void ledWaveStrips::updateFbo(ofFbo * fbo){
     
-    cout<<"ledWaveStrips::updateFbo"<<endl;
+    // cout<<"ledWaveStrips::updateFbo"<<endl;
     
-    ofFbo newFbo;
-    newFbo = *fbo;
-    
-   // topStripImage.cropFrom(fbo->readToPixels(<#ofPixels &pixels#>), <#int x#>, <#int y#>, <#int w#>, <#int h#>)
-    
-     //fbo->draw(50,50);
-    
-   // ofImage ts;
-  //  ofImage bs;
- //  topStripImage.allocate(800, 600, OF_IMAGE_COLOR);
-   // bottomStripImage.allocate(800, 600, OF_IMAGE_COLOR);
-    
-    //get the right portion of the fbo and place it into the wave object
-    //ofPixels pixelsToCrop;
-  //  pixelsToCrop.allocate(800, 600, OF_IMAGE_COLOR);
-    
-//    fbo->readToPixels(pixelsToCrop);
-    //ofTexture texture;
-   // texture.allocate(_w,_h,GL_RGB);
-    
-    
-    
- //   newFbo.readToPixels(topStripPixels);
-    ofPixels pixels;
-    newFbo.readToPixels(pixels);
-    topStripImage.setFromPixels(pixels);
-
+    //TOP STRIP
+    fbo->readToPixels(topStripImage);
+    topStripImage.crop(_x, _y, _w, 1);
+    //resize the image to the correct ledstrip size
+    topStripImage.resize(_numLeds, 1);
     topStripImage.update();
     
-   // topStripPixels.crop(_x, _y, _w, 1);
-    topStripImage.crop(_x, _y, _w, 1);
-    
-  //  texture.loadData(topStripPixels.getPixelsRef(), _w, 1, GL_RGB);
-    
-   // texture.readToPixels(topStripImage);
-    
-   // topStripImage.update();
-    
-    topStripFBO.begin();
-    topStripImage.draw(0, 0);
-    topStripFBO.end();
-    
-  //  topStripImage.update();
-    
-//    ofSetColor(255);
-//    
-   
-    
-   // fbo->readToPixels(topStripImage);
+    //BOTTOM STRIP
+    fbo->readToPixels(bottomStripImage);
+    bottomStripImage.crop(_x, _y+_h-1, _w, 1);
+    //resize the image to the correct ledstrip size
+    bottomStripImage.resize(_numLeds, 1);
+    bottomStripImage.update();
 
-   // fbo->readToPixels(bottomStripImage);
-    
-   // topStripImage.crop(_x,_y,_w,1);
-   // bottomStripImage.crop(_x,_y+_h-1,_w,1);
-
-   // imageToCrop.setFromPixels(pixelsToCrop);
-    
-    //fbo->readToPixels(bottomStripImage);
-    
-    //**from OF docs:**
-    //This crops the pixels to a new width and height.
-    //As a word of caution this reallocates memory and can be a bit expensive if done a lot.
-    
-//    pixelsToCrop.crop(_x,_y,_w,1);
-//    pixelsToCrop.setNumChannels(3);
-    
-   // pixelsToCrop.cropTo(topStripPixels, _x,_y,_w,1);
-   // pixelsToCrop.cropTo(bottomStripPixels, _x,_y+_h-1,_w,1);
-    
-//    ofPixels debug;
-//    debug.setImageType(OF_IMAGE_COLOR);
-//    debug.allocate(_w, 1, OF_IMAGE_COLOR);
-    
-//    for(int i = 0; i < _w; ++i)
-//    {
-//        debug.setColor(i, ofColor(255, 0, 0));
-//    }
-    
-//    topStripImage.setFromPixels(pixelsToCrop);
-//    topStripImage.setFromPixels(debug);
-//    topStripImage.update();
-    
-    
-   /* for(int i = 0; i < topStripImage.getWidth(); ++i)
-    {
-        cout << topStripImage.getColor(i, 0) << endl;
-    }*/
-    
-   // topStripImage.setFromPixels(topStripPixels);
-   // bottomStripImage.setFromPixels(bottomStripPixels);
-    
-    //crop the top line of pixels
-  // topStripImage.cropFrom(imageToCrop, _x,_y,_w,1);
-    
-    //crop the bottom line of pixels
-   // bottomStripImage.cropFrom(imageToCrop, _x,_y+_h-1,_w,1);
-  /*
-    topStripFBO.begin();
-    topStripImage.draw(0, 0);
-    topStripFBO.end();
-    
-    bottomStripFBO.begin();
-    bottomStripImage.draw(0, 0);
-    bottomStripFBO.end();*/
-    
-   // topStripImage.setFromPixels(topStrip);
-   // bottomStripImage.setFromPixels(bottomStrip);
 }
 
 
@@ -206,27 +110,34 @@ void ledWavePanels::draw(int y){
 
 void ledWaveStrips::draw(int x, int y){
     topStripImage.draw(x, y);
-    topStripFBO.draw(x, y+5);
-    //imageToCrop.draw(50,50);
+    bottomStripImage.draw(x, y+5);
+}
+
+void ledWaveStrips::drawToStrips(){
+    //cout<<"ledWaveStrips::drawToStrips"<<endl;
+    lgs->send(getTopStripPixels(), _topStripAddress, _numLeds*3);
+    lgs->send(getBottomStripPixels(), _bottomStripAddress, _numLeds*3);
 }
 
 //STRIPS
 unsigned char * ledWaveStrips::getTopStripPixels(){
-    //return topStripPixels.getPixels();
-    return topStripImage.getPixels();
+    
+    unsigned char * pixels = topStripImage.getPixels();
+    return pixels;
 }
+
 
 unsigned char * ledWaveStrips::getBottomStripPixels(){
     return bottomStripImage.getPixels();
 }
 
-string ledWaveStrips::getTopStripAddress(){
-    return _topStripAddress;
-}
-
-string ledWaveStrips::getBottomStripAddress(){
-    return _bottomStripAddress;
-}
+//string ledWaveStrips::getTopStripAddress(){
+//    return _topStripAddress;
+//}
+//
+//string ledWaveStrips::getBottomStripAddress(){
+//    return _bottomStripAddress;
+//}
 
 bool ledWave::hitTest(int x, int y){
     if(x > _x ){

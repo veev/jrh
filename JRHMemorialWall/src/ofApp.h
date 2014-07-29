@@ -5,6 +5,7 @@
 #include "DataManager.h"
 #include "visualSystem.h"
 #include "gui.h"
+#include "lumigeekSender.h"
 
 class ofApp : public ofBaseApp{
 
