@@ -5,6 +5,8 @@ void ofApp::setup(){
     
     DataManager::init();
     
+    ofSetFrameRate(20);
+    
     //setup event listeners
     gui.saveSetupButton.addListener(this, &ofApp::saveWaveSetup);
     gui.modeToggle.addListener(this, &ofApp::onModeToggle);
@@ -64,7 +66,7 @@ void ofApp::update(){
     //pull new frame from visual system
     frame = vs.getFrame();
     
-    ds.updateDisplayAsImage(vs.getFrameAsImage());
+   // ds.updateDisplayAsImage(vs.getFrameAsImage());
     ds.updateDisplay(frame);
 }
 
