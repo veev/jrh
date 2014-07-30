@@ -198,3 +198,10 @@ void displaySystem::saveWaveSetup(){
     //save the file
     DataManager::settings.saveFile();
 }
+
+void displaySystem::clear(){
+    //send clear signal to LEDs
+    for (int i=0;i<wavesStrips.size();i++){
+        wavesStrips.at(i)->clear();
+    }
+}

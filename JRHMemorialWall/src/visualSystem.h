@@ -20,6 +20,7 @@ class visualSystem{
     void mousePressed(int x, int y);
     void mouseReleased(int x, int y, int button);
     ofVec2f getField(ofVec2f position);
+    
 
     
     ofVideoPlayer 		testMovie;

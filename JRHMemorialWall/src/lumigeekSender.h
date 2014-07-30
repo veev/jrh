@@ -14,13 +14,15 @@ class lumigeekSender{
     
 public:
     lumigeekSender();
-    void setup(string host, int port);
-    void send(unsigned char * pixels, string address, int numPixels);
+    void setup(string host, int port, int numPixels);
+    void send(unsigned char * pixels, string address);
         static const string ADDRESS_1, ADDRESS_2;
+    void clear();
     
 private:
     ofxOscSender * sender;
-    string _host;
-    int _port;
+    int totalChannels, _numPixels;
+   // string _host;
+   // int _port;
 
 };

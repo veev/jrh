@@ -16,8 +16,7 @@ class ledWave{
     public:
     ledWave(int x, int y, int w, int h, int idNum);
     //void draw(int y);
-    
-    
+
     bool hitTest(int x, int y);
     
     int _x, _y, _w, _h, _idNum;
@@ -42,10 +41,11 @@ class ledWaveStrips: public ledWave{
     void drawToStrips();
     ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds, string host, int port);
     void updateFbo(ofFbo * fbo);
-    void updateImage(ofImage image);
+   // void updateImage(ofImage image);
+    void clear();
     
     ofPixels topStripPixels, bottomStripPixels;
-    ofImage topStripImage, bottomStripImage, imageToCrop;
+    ofImage topStripImage, bottomStripImage;
     
     unsigned char * getTopStripPixels();
     unsigned char * getBottomStripPixels();

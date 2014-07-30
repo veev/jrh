@@ -25,9 +25,11 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
         void onModeToggle(bool & control);
     
-    void saveWaveSetup();
+        void saveWaveSetup();
     
-        displaySystem ds;
+    void exit();
+    
+    displaySystem ds;
     visualSystem  vs;
     
     ofFbo * frame;

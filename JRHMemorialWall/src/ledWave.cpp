@@ -48,7 +48,7 @@ ledWaveStrips::ledWaveStrips(int x, int y, int w, int h, int idNum, string topAd
     
     lgs = new lumigeekSender();
     
-    lgs->setup(host, port);
+    lgs->setup(host, port, numLeds);
 
 }
 
@@ -128,8 +128,8 @@ void ledWaveStrips::drawToStrips(){
     }
     
    // topStripPixels.setNumChannels(3);
-    lgs->send(topStripPixels.getPixels(), _topStripAddress, _numLeds*3);
-    lgs->send(getBottomStripPixels(), _bottomStripAddress, _numLeds*3);
+    lgs->send(topStripPixels.getPixels(), _topStripAddress);
+    lgs->send(bottomStripPixels.getPixels(), _bottomStripAddress);
 }
 
 //STRIPS
@@ -155,4 +155,10 @@ bool ledWave::hitTest(int x, int y){
         }
     }
     return false;
+}
+
+void ledWaveStrips::clear(){
+    
+    lgs->clear();
+    
 }

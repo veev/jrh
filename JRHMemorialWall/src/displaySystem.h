@@ -29,6 +29,7 @@ class displaySystem{
     void mouseDragged(int x, int y, int button);
     void mouseReleased(int x, int y, int button);
     void saveWaveSetup();
+    void clear();
     
     vector <ledWavePanels *> wavesPanels;
     vector <ledWaveStrips *> wavesStrips;
