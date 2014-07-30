@@ -17,11 +17,18 @@ class visualSystem{
     ofFbo * getFrame();
     void loadTestMovie(string path);
     void update();
+    void mousePressed(int x, int y);
+    void mouseReleased(int x, int y, int button);
+    ofVec2f getField(ofVec2f position);
+
     
     ofVideoPlayer 		testMovie;
-   // ofFbo               display;
     ofFbo *             display;
-   // ofImage             image;
+    
+    int width, height, mouseX, mouseY;
+    
+    //noise field
+    float t;
     
     //particle system
     float timeStep;

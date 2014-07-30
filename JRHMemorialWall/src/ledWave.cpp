@@ -35,9 +35,11 @@ ledWaveStrips::ledWaveStrips(int x, int y, int w, int h, int idNum, string topAd
     _bottomStripAddress = bottomAddress;
     _numLeds = numLeds;
     
-    
     topStripImage.allocate(numLeds, 1, OF_IMAGE_COLOR);
     bottomStripImage.allocate(numLeds, 1, OF_IMAGE_COLOR);
+    
+    topStripPixels.allocate(numLeds, 1, OF_IMAGE_COLOR);
+    bottomStripPixels.allocate(numLeds, 1, OF_IMAGE_COLOR);
     
   //  cout<<"DataManager::getLEDStripHost(): "<<DataManager::getLEDStripHost()<<endl;
     
@@ -91,6 +93,7 @@ void ledWaveStrips::updateFbo(ofFbo * fbo){
     //resize the image to the correct ledstrip size
     topStripImage.resize(_numLeds, 1);
     topStripImage.update();
+    topStripPixels.setFromPixels(topStripImage.getPixels(), _numLeds, 1, 3);
     
     //BOTTOM STRIP
     fbo->readToPixels(bottomStripImage);
@@ -115,7 +118,17 @@ void ledWaveStrips::draw(int x, int y){
 
 void ledWaveStrips::drawToStrips(){
     //cout<<"ledWaveStrips::drawToStrips"<<endl;
-    lgs->send(getTopStripPixels(), _topStripAddress, _numLeds*3);
+    
+    //set pixel alpha value as brightness
+    //ofPixels * pixels = topStripImage.getPixelsRef();
+    for(int i=0; i<topStripPixels.size();i++){
+        ofColor c = topStripPixels.getColor(i, 0);
+        c.setBrightness(c.a);
+       // topStripPixels.setColor(i, c);
+    }
+    
+   // topStripPixels.setNumChannels(3);
+    lgs->send(topStripPixels.getPixels(), _topStripAddress, _numLeds*3);
     lgs->send(getBottomStripPixels(), _bottomStripAddress, _numLeds*3);
 }
 

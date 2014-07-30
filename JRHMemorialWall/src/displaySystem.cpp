@@ -16,9 +16,7 @@ displaySystem::displaySystem(){
 }
 
 void displaySystem::init(){
-    //setup the lumigeek sender class
-   // lgs.setup(DataManager::getLEDStripHost(), DataManager::getLEDStripPort());
-}
+    }
 
 //create an instance of the PanelsWave object
 void displaySystem::addPanelsWave(int x, int y, int w, int h, int idNum){
@@ -32,16 +30,11 @@ void displaySystem::addPanelsWave(int x, int y, int w, int h, int idNum){
 void displaySystem::addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds, string host, int port){
     ledWaveStrips * wave = new ledWaveStrips(x, y, w, h, idNum, topAddress, bottomAddress, numLeds, host, port);
     wavesStrips.push_back(wave);
-    
-    
-    //ledSenders.push_back();
 }
 
 //update the display with a new image
 void displaySystem::updateDisplay(ofFbo * frame){
     _frame = frame;
-    
-   // _frame->draw(0, 0);
     
     //update the fbo on the wave
     for (int i=0;i<wavesPanels.size();i++){
@@ -55,8 +48,8 @@ void displaySystem::updateDisplay(ofFbo * frame){
     }
 }
 
-void displaySystem::updateDisplayAsImage(ofImage image){
-   /*
+/*void displaySystem::updateDisplayAsImage(ofImage image){
+   
     cout<<"displaySystem::updateDisplayAsImage"<<endl;
     
     frameImage = image;
@@ -68,13 +61,10 @@ void displaySystem::updateDisplayAsImage(ofImage image){
         w.updateImage(frameImage);
     }
     */
-}
+//}*/
 
 void displaySystem::draw(){
-    //_frame->draw(0,0);
     ofSetColor(255);
-    
-   // frameImage.draw(50, 50);
     
     
     if(mode == TEST_MODE){
@@ -189,8 +179,6 @@ void displaySystem::saveWaveSetup(){
     cout<<"displaySystem::saveWaveSetup(){"<<endl;
     
     DataManager::settings.pushTag("waves");
-    
-    
     
     for (int i=0;i<wavesPanels.size();i++){
         ledWavePanels * w = wavesPanels.at(i);

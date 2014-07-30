@@ -17,7 +17,7 @@ lumigeekSender::lumigeekSender(){
 }
 
 void lumigeekSender::setup(string host, int port){
-    cout<<"lumigeek sender setup host: "<<host<<" port: "<<port<< endl;
+  //  cout<<"lumigeek sender setup host: "<<host<<" port: "<<port<< endl;
     
     //Open Connection to HOST:PORT - what is port for LEDs?
     sender = new ofxOscSender();
@@ -30,9 +30,9 @@ void lumigeekSender::setup(string host, int port){
 
 void lumigeekSender::send(unsigned char * pixels, string address, int numPixels){
     
-    cout<<"lumigeekSender::send address: "<<address<<endl;
-    cout<<"host: "<<_host<<endl;
-    cout<<"port: "<<_port<<endl;
+   // cout<<"lumigeekSender::send address: "<<address<<endl;
+   // cout<<"host: "<<_host<<endl;
+   // cout<<"port: "<<_port<<endl;
     
     
     

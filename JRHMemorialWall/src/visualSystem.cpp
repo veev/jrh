@@ -6,11 +6,29 @@
 //
 //
 
+
+
 #include "visualSystem.h"
 
+/*
+ All these settings control the behavior of the app. In general it's a better
+ idea to keep variables in the .h file, but this makes it easy to set them at
+ the same time you declare them.
+ */
+float complexity = 2; // wind complexity
+float pollenMass = .8; // pollen mass
+float timeSpeed = .02; // wind variation speed
+float phase = TWO_PI; // separate u-noise from v-noise
+float windSpeed = 40; // wind vector magnitude for debug
+int step = 10; // spatial sampling rate for debug
+bool debugMode = false;
+
 visualSystem::visualSystem(){
+    width=800;
+    height=600;
+    
     display = new ofFbo();
-    display->allocate(800,600,GL_RGB);
+    display->allocate(width,height,GL_RGB);
 
     //particle system
     // this number describes how many bins are used
@@ -21,16 +39,17 @@ visualSystem::visualSystem(){
 	// become inefficient.
 	int binPower = 3;
     
-	particleSystem.setup(ofGetWidth(), ofGetHeight(), binPower);
+	particleSystem.setup(width, height, binPower);
     
-	kParticles = 32;
+	kParticles = 30;
 	float padding = 0;
-	float maxVelocity = .5;
+	float maxVelocity = 5;
 	for(int i = 0; i < kParticles * 1024; i++) {
-		float x = ofRandom(padding, ofGetWidth() - padding);
-		float y = ofRandom(padding, ofGetHeight() - padding);
-		float xv = ofRandom(-maxVelocity, maxVelocity);
+		float x = ofRandom(padding, width - padding);
+		float y = ofRandom(padding, height - padding);
+		float xv = ofRandom(-maxVelocity, 0);
 		float yv = ofRandom(-maxVelocity, maxVelocity);
+        
 		Particle particle(x, y, xv, yv);
 		particleSystem.add(particle);
 	}
@@ -38,7 +57,7 @@ visualSystem::visualSystem(){
 	ofBackground(0, 0, 0);
     
 	timeStep = 1;
-	lineOpacity = 128;
+	lineOpacity = 50;
 	pointOpacity = 255;
 	isMousePressed = false;
 	slowMotion = false;
@@ -56,41 +75,50 @@ void visualSystem::loadTestMovie(string path){
 void visualSystem::update(){
     particleSystem.setTimeStep(timeStep);
     
-	ofEnableAlphaBlending();
-	ofSetColor(255, 255, 255, lineOpacity);
+	   
+    
+    //draw to FBO
+    display->begin();
+    ofBackground(0);
+
+    
+    ofEnableAlphaBlending();
+	ofSetColor(lineOpacity, lineOpacity, lineOpacity, 255);
 	particleSystem.setupForces();
 	// apply per-particle forces
 	glBegin(GL_LINES);
+    ofVec2f pos;
 	for(int i = 0; i < particleSystem.size(); i++) {
 		Particle& cur = particleSystem[i];
 		// global force on other particles
 		particleSystem.addRepulsionForce(cur, particleNeighborhood, particleRepulsion);
 		// forces on this particle
-		cur.bounceOffWalls(0, 0, ofGetWidth(), ofGetHeight());
+		//cur.bounceOffWalls(0, 0, width, height);
+        cur.loopAround(0,0,width,height);
 		cur.addDampingForce();
+        //apply force to particle
+        pos.set(cur.x,cur.y);
+        cur.applyForce(getField(pos));
 	}
 	glEnd();
-	// single global forces
-	particleSystem.addAttractionForce(ofGetWidth() / 2, ofGetHeight() / 2, ofGetWidth(), centerAttraction);
-	//if(isMousePressed)
-	//	particleSystem.addRepulsionForce(mouseX, mouseY, 100, 10);
+	
+    // single global forces
+	particleSystem.addAttractionForce(width / 2, height / 2, width, centerAttraction);
+	
+    if(isMousePressed)
+		particleSystem.addRepulsionForce(mouseX, mouseY, 100, 10);
 	particleSystem.update();
-	
-    
     
 	
-	ofDisableAlphaBlending();
     
 	//ofSetColor(255, 255, 255);
 	//ofDrawBitmapString(ofToString(kParticles) + "k particles", 32, 32);
 	//ofDrawBitmapString(ofToString((int) ofGetFrameRate()) + " fps", 32, 52);
+
     
-    
-    //draw to FBO
-    display->begin();
-    ofBackground(0);
-    ofSetColor(255, 255, 255, pointOpacity);
+    ofSetColor(pointOpacity, pointOpacity, pointOpacity, 255);
     particleSystem.draw();
+    ofDisableAlphaBlending();
     // ofSetColor(255);
     //testMovie.draw(0,0,800,600);
     display->end();
@@ -103,16 +131,32 @@ ofFbo * visualSystem::getFrame(){
     
     return display;
 }
-/*
-ofImage visualSystem::getFrameAsImage(){
-    
-   
-    displayPointer->readToPixels(image.getPixelsRef());
-   // image.update();
-    return image;
-    
-}*/
 
+void visualSystem::mousePressed(int x, int y){
+    isMousePressed = true;
+    mouseX = x;
+    mouseY = y;
+}
+
+void visualSystem::mouseReleased(int x, int y, int button){
+    isMousePressed = false;
+}
+
+/*
+ This is the magic method that samples a 2d slice of the 3d noise field. When
+ you call this method with a position, it returns a direction (a 2d vector). The
+ trick behind this method is that the u,v values for the field are taken from
+ out-of-phase slices in the first dimension: t + phase for the u, and t - phase
+ for the v.
+ */
+//--------------------------------------------------------------
+ofVec2f visualSystem::getField(ofVec2f position) {
+	float normx = ofNormalize(position.x, 0, width);
+	float normy = ofNormalize(position.y, 0, height);
+	float u = .5-ofNoise(t + phase, normx * complexity + phase, normy * complexity + phase);
+	float v = .5-ofNoise(t - phase, normx * complexity - phase, normy * complexity + phase);
+	return ofVec2f(u, v);
+}
 
 
 

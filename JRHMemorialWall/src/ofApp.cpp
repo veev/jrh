@@ -114,16 +114,19 @@ void ofApp::mouseMoved(int x, int y ){
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
     ds.mouseDragged(x, y, button);
+    vs.mousePressed(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     ds.mousePressed(x, y, button);
+    vs.mousePressed(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
     ds.mouseReleased(x, y, button);
+    vs.mouseReleased(x, y, button);
 }
 
 //--------------------------------------------------------------

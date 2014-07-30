@@ -22,7 +22,7 @@ class displaySystem{
     void draw();
     void drawWaves();
     void updateDisplay(ofFbo * frame);
-    void updateDisplayAsImage(ofImage image);
+   // void updateDisplayAsImage(ofImage image);
     void enterLiveMode();
     void enterTestMode();
     void mousePressed(int x, int y, int button);

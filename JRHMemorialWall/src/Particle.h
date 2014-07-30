@@ -51,11 +51,47 @@ public:
 			yv *= damping;
 		}
 	}
+    
+    //when particle reaches edge of particle field, loop is around to the other side
+    void loopAround(float left, float top, float right, float bottom, float damping = .3) {
+		bool collision = false;
+        
+		if (x > right){
+			x = left;
+			//xv *= -1;
+			collision = true;
+		} else if (x < left){
+			x = right;
+			//xv *= -1;
+			collision = true;
+		}
+        
+		if (y > bottom){
+			y = top;
+			//yv *= -1;
+			collision = true;
+		} else if (y < top){
+			y = bottom;
+			//yv *= -1;
+			collision = true;
+		}
+        
+		if (collision == true){
+			xv *= damping;
+			yv *= damping;
+		}
+	}
+    
 	void addDampingForce(float damping = .01) {
 		xf = xf - xv * damping;
-    yf = yf - yv * damping;
+        yf = yf - yv * damping;
 	}
 	void draw() {
 		glVertex2f(x, y);
 	}
+    
+    void applyForce(ofVec2f f){
+        xv += f.x;
+        yv += f.y;
+    }
 };
