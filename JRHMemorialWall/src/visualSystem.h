@@ -36,7 +36,13 @@ class visualSystem{
 	float particleNeighborhood, particleRepulsion;
 	float centerAttraction;
     
-	int kParticles;
+	int kParticles, fadeAmt;
 	ParticleSystem particleSystem;
 	bool isMousePressed, slowMotion;
+    
+    float complexity;
+    float pollenMass;
+    float timeSpeed;
+    float phase, hForce, vForce;
+
 };

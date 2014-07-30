@@ -10,6 +10,7 @@ void ofApp::setup(){
     //setup event listeners
     gui.saveSetupButton.addListener(this, &ofApp::saveWaveSetup);
     gui.modeToggle.addListener(this, &ofApp::onModeToggle);
+    
     gui.setup();
     
     int port = DataManager::settings.getValue("ledStrips:port", 4445);
@@ -64,6 +65,11 @@ void ofApp::onModeToggle(bool & control){
 //--------------------------------------------------------------
 void ofApp::update(){
     //pull new frame from visual system
+    vs.timeSpeed = gui.flowSpeed;
+    vs.timeStep = gui.timeSpeed;
+    vs.hForce = gui.horizontalForce;
+    vs.vForce = gui.verticalForce;
+    vs.fadeAmt = gui.fadeAmt;
     vs.update();
     frame = vs.getFrame();
     

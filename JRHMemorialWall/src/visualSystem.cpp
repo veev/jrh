@@ -10,22 +10,11 @@
 
 #include "visualSystem.h"
 
-/*
- All these settings control the behavior of the app. In general it's a better
- idea to keep variables in the .h file, but this makes it easy to set them at
- the same time you declare them.
- */
-float complexity = 2; // wind complexity
-float pollenMass = .8; // pollen mass
-float timeSpeed = .02; // wind variation speed
-float phase = TWO_PI; // separate u-noise from v-noise
-float windSpeed = 40; // wind vector magnitude for debug
-int step = 10; // spatial sampling rate for debug
-bool debugMode = false;
+
 
 visualSystem::visualSystem(){
-    width=800;
-    height=600;
+    width=600;
+    height=400;
     
     display = new ofFbo();
     display->allocate(width,height,GL_RGB);
@@ -41,7 +30,7 @@ visualSystem::visualSystem(){
     
 	particleSystem.setup(width, height, binPower);
     
-	kParticles = 30;
+	kParticles = 20;
 	float padding = 0;
 	float maxVelocity = 5;
 	for(int i = 0; i < kParticles * 1024; i++) {
@@ -56,14 +45,26 @@ visualSystem::visualSystem(){
     
 	ofBackground(0, 0, 0);
     
-	timeStep = 1;
-	lineOpacity = 50;
+	timeStep = .3;
+	lineOpacity = 100;
 	pointOpacity = 255;
 	isMousePressed = false;
 	slowMotion = false;
 	particleNeighborhood = 4;
 	particleRepulsion = 1;
 	centerAttraction = .01;
+    
+    /*
+     All these settings control the behavior of the app. In general it's a better
+     idea to keep variables in the .h file, but this makes it easy to set them at
+     the same time you declare them.
+     */
+    complexity = 2; // wind complexity
+    pollenMass = .8; // pollen mass
+    timeSpeed = .002; // wind variation speed
+    phase = TWO_PI; // separate u-noise from v-noise
+    hForce = .2;
+    vForce = .2;
 }
 
 void visualSystem::loadTestMovie(string path){
@@ -74,15 +75,22 @@ void visualSystem::loadTestMovie(string path){
 
 void visualSystem::update(){
     particleSystem.setTimeStep(timeStep);
-    
+    t = ofGetFrameNum() * timeSpeed;
 	   
     
     //draw to FBO
     display->begin();
-    ofBackground(0);
+
+    ofEnableAlphaBlending();
+    //ofBackground(0,0,0,100);
+   
+    ofFill();
+    ofSetColor(0, 0, 0, fadeAmt);
+    ofRect(0,0,width,height);
 
     
-    ofEnableAlphaBlending();
+
+    
 	ofSetColor(lineOpacity, lineOpacity, lineOpacity, 255);
 	particleSystem.setupForces();
 	// apply per-particle forces
@@ -118,6 +126,8 @@ void visualSystem::update(){
     
     ofSetColor(pointOpacity, pointOpacity, pointOpacity, 255);
     particleSystem.draw();
+    
+    
     ofDisableAlphaBlending();
     // ofSetColor(255);
     //testMovie.draw(0,0,800,600);
@@ -153,8 +163,12 @@ void visualSystem::mouseReleased(int x, int y, int button){
 ofVec2f visualSystem::getField(ofVec2f position) {
 	float normx = ofNormalize(position.x, 0, width);
 	float normy = ofNormalize(position.y, 0, height);
-	float u = .5-ofNoise(t + phase, normx * complexity + phase, normy * complexity + phase);
+    
+	float u = -ofNoise(t + phase, normx * complexity + phase, normy * complexity + phase);
 	float v = .5-ofNoise(t - phase, normx * complexity - phase, normy * complexity + phase);
+    u*=hForce;
+    v*=vForce;
+    
 	return ofVec2f(u, v);
 }
 

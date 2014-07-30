@@ -25,6 +25,9 @@ public:
     ofxPanel guiPanel;
     ofxButton saveSetupButton, hideGuiButton;
     ofxToggle modeToggle;
+    ofParameterGroup visualSystemParams;
+    ofParameter<float> flowSpeed, timeSpeed, flowComplexity, horizontalForce, verticalForce;
+    ofParameter<int> fadeAmt;
     
     bool isHidden;
     
