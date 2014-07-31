@@ -70,6 +70,7 @@ void ofApp::update(){
     vs.hForce = gui.horizontalForce;
     vs.vForce = gui.verticalForce;
     vs.fadeAmt = gui.fadeAmt;
+    vs.complexity = gui.flowComplexity;
     vs.update();
     frame = vs.getFrame();
     

@@ -111,7 +111,7 @@ void visualSystem::update(){
 	glEnd();
 	
     // single global forces
-	particleSystem.addAttractionForce(width / 2, height / 2, width, centerAttraction);
+	//particleSystem.addAttractionForce(width / 2, height / 2, width, centerAttraction);
 	
     if(isMousePressed)
 		particleSystem.addRepulsionForce(mouseX, mouseY, 100, 10);

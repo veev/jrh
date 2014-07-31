@@ -54,32 +54,32 @@ public:
     
     //when particle reaches edge of particle field, loop is around to the other side
     void loopAround(float left, float top, float right, float bottom, float damping = .3) {
-		bool collision = false;
+		//bool collision = false;
         
 		if (x > right){
 			x = left;
 			//xv *= -1;
-			collision = true;
+			//collision = true;
 		} else if (x < left){
 			x = right;
 			//xv *= -1;
-			collision = true;
+			//collision = true;
 		}
         
 		if (y > bottom){
 			y = top;
 			//yv *= -1;
-			collision = true;
+			//collision = true;
 		} else if (y < top){
 			y = bottom;
 			//yv *= -1;
-			collision = true;
+			//collision = true;
 		}
         
-		if (collision == true){
+		/*if (collision == true){
 			xv *= damping;
 			yv *= damping;
-		}
+		}*/
 	}
     
 	void addDampingForce(float damping = .01) {
