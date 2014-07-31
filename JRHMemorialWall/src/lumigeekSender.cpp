@@ -35,8 +35,6 @@ void lumigeekSender::send(unsigned char * pixels, string address){
    // cout<<"host: "<<_host<<endl;
    // cout<<"port: "<<_port<<endl;
     
-    
-    
     ofBuffer buffer;
     buffer.set(reinterpret_cast<const char*>(pixels), totalChannels); //casting the unsigned char to const char for buffer
     

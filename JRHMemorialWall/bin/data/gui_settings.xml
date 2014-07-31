@@ -7,7 +7,7 @@
 			<flow_complexity>1.32653</flow_complexity>
 			<H_force>0.479592</H_force>
 			<V_force>0.122449</V_force>
-		<fade_amount>135</fade_amount>
+		<fade_amount>124</fade_amount>
 		</Visual_System>
 	</GUI>
 </guiSettings>

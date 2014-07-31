@@ -36,10 +36,10 @@ visualSystem::visualSystem(){
 	for(int i = 0; i < kParticles * 1024; i++) {
 		float x = ofRandom(padding, width - padding);
 		float y = ofRandom(padding, height - padding);
-		float xv = ofRandom(-maxVelocity, 0);
-		float yv = ofRandom(-maxVelocity, maxVelocity);
+		//float xv = ofRandom(-maxVelocity, 0);
+		//float yv = ofRandom(-maxVelocity, maxVelocity);
         
-		Particle particle(x, y, xv, yv);
+		Particle particle(x, y);
 		particleSystem.add(particle);
 	}
     

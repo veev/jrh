@@ -35,8 +35,8 @@ ledWaveStrips::ledWaveStrips(int x, int y, int w, int h, int idNum, string topAd
     _bottomStripAddress = bottomAddress;
     _numLeds = numLeds;
     
-    topStripImage.allocate(numLeds, 1, OF_IMAGE_COLOR);
-    bottomStripImage.allocate(numLeds, 1, OF_IMAGE_COLOR);
+    topStripImage.allocate(_w, 1, OF_IMAGE_COLOR);
+    bottomStripImage.allocate(_w, 1, OF_IMAGE_COLOR);
     
     topStripPixels.allocate(numLeds, 1, OF_IMAGE_COLOR);
     bottomStripPixels.allocate(numLeds, 1, OF_IMAGE_COLOR);
@@ -88,20 +88,23 @@ void ledWaveStrips::updateFbo(ofFbo * fbo){
     // cout<<"ledWaveStrips::updateFbo"<<endl;
     
     //TOP STRIP
-    fbo->readToPixels(topStripImage);
-    topStripImage.crop(_x, _y, _w, 1);
+    ofImage imageToCrop;
+    imageToCrop.allocate(600, 400, OF_IMAGE_COLOR);
+    fbo->readToPixels(imageToCrop);
+    topStripImage.cropFrom(imageToCrop, _x, _y, _w, 1);
+    //topStripImage.update();
     //resize the image to the correct ledstrip size
     topStripImage.resize(_numLeds, 1);
     topStripImage.update();
     topStripPixels.setFromPixels(topStripImage.getPixels(), _numLeds, 1, 3);
     
     //BOTTOM STRIP
-    fbo->readToPixels(bottomStripImage);
-    bottomStripImage.crop(_x, _y+_h-1, _w, 1);
+  //  fbo->readToPixels(bottomStripImage);
+    bottomStripImage.cropFrom(imageToCrop, _x, _y+_h-1, _w, 1);
     //resize the image to the correct ledstrip size
     bottomStripImage.resize(_numLeds, 1);
     bottomStripImage.update();
-
+    bottomStripPixels.setFromPixels(topStripImage.getPixels(), _numLeds, 1, 3);
 }
 
 
@@ -121,11 +124,11 @@ void ledWaveStrips::drawToStrips(){
     
     //set pixel alpha value as brightness
     //ofPixels * pixels = topStripImage.getPixelsRef();
-    for(int i=0; i<topStripPixels.size();i++){
-        ofColor c = topStripPixels.getColor(i, 0);
-        c.setBrightness(c.a);
+   //for(int i=0; i<topStripPixels.size();i++){
+     //   ofColor c = topStripPixels.getColor(i, 0);
+       // c.setBrightness(c.a);
        // topStripPixels.setColor(i, c);
-    }
+   // }
     
    // topStripPixels.setNumChannels(3);
     lgs->send(topStripPixels.getPixels(), _topStripAddress);
