@@ -26,7 +26,7 @@ visualSystem::visualSystem(){
 	// because the screen is not subdivided enough. if
 	// it's too low, the bins take up so much memory as to
 	// become inefficient.
-	int binPower = 3;
+	int binPower = 2;
     
 	particleSystem.setup(width, height, binPower);
     
@@ -51,7 +51,7 @@ visualSystem::visualSystem(){
 	isMousePressed = false;
 	slowMotion = false;
 	particleNeighborhood = 4;
-	particleRepulsion = 1;
+	particleRepulsion = 0;
 	centerAttraction = .01;
     
     /*
@@ -85,12 +85,10 @@ void visualSystem::update(){
     //ofBackground(0,0,0,100);
    
     ofFill();
+    //fade out BG by drawing a rectangle
     ofSetColor(0, 0, 0, fadeAmt);
     ofRect(0,0,width,height);
 
-    
-
-    
 	ofSetColor(lineOpacity, lineOpacity, lineOpacity, 255);
 	particleSystem.setupForces();
 	// apply per-particle forces
@@ -104,9 +102,10 @@ void visualSystem::update(){
 		//cur.bounceOffWalls(0, 0, width, height);
         cur.loopAround(0,0,width,height);
 		cur.addDampingForce();
-        //apply force to particle
+        //apply noise field force to the particle
         pos.set(cur.x,cur.y);
         cur.applyForce(getField(pos));
+        //apply 
 	}
 	glEnd();
 	
@@ -114,7 +113,7 @@ void visualSystem::update(){
 	//particleSystem.addAttractionForce(width / 2, height / 2, width, centerAttraction);
 	
     if(isMousePressed)
-		particleSystem.addRepulsionForce(mouseX, mouseY, 100, 10);
+		particleSystem.addRepulsionForce(mouseX, mouseY, 50, 5);
 	particleSystem.update();
     
 	

@@ -26,7 +26,7 @@ public:
     ofxButton saveSetupButton, hideGuiButton;
     ofxToggle modeToggle;
     ofParameterGroup visualSystemParams;
-    ofParameter<float> flowSpeed, timeSpeed, flowComplexity, horizontalForce, verticalForce;
+    ofParameter<float> flowSpeed, timeSpeed, flowComplexity, horizontalForce, verticalForce, particleNeighborhood, particleRepulsion;
     ofParameter<int> fadeAmt;
     
     bool isHidden;

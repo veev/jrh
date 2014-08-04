@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+    isFullScreen = true;
     DataManager::init();
     
     ofSetFrameRate(20);
@@ -71,6 +72,8 @@ void ofApp::update(){
     vs.vForce = gui.verticalForce;
     vs.fadeAmt = gui.fadeAmt;
     vs.complexity = gui.flowComplexity;
+    vs.particleNeighborhood = gui.particleNeighborhood;
+    vs.particleRepulsion = gui.particleRepulsion;
     vs.update();
     frame = vs.getFrame();
     
@@ -109,6 +112,9 @@ void ofApp::keyReleased(int key){
             break;
         case ' ':
             gui.isHidden = !gui.isHidden;
+        case 'f':
+            isFullScreen = ! isFullScreen;
+            ofSetFullscreen(isFullScreen);
     }
     
 }

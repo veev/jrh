@@ -76,10 +76,6 @@ public:
 			//collision = true;
 		}
         
-		/*if (collision == true){
-			xv *= damping;
-			yv *= damping;
-		}*/
 	}
     
 	void addDampingForce(float damping = .01) {

@@ -1,13 +1,17 @@
 <guiSettings>
 	<GUI>
 		<TOGGLE_LIVE_MODE>0</TOGGLE_LIVE_MODE>
-	<Visual_System>
-			<flow_speed>0.019898</flow_speed>
-		<time_speed>0.377551</time_speed>
-			<flow_complexity>11.4286</flow_complexity>
+		<Visual_System>
+			<turbulence>0.0586735</turbulence>
+			<particle_speed>0.295918</particle_speed>
+			<density>8.36735</density>
 			<H_force>0.255102</H_force>
-			<V_force>0.469388</V_force>
-		<fade_amount>141</fade_amount>
+			<V_force>0.132653</V_force>
+			<fade_amount>40</fade_amount>
+		<particle_neighborhood>4</particle_neighborhood>
+			<particle_repulsion>0</particle_repulsion>
+		<p_neighborhood>0</p_neighborhood>
+			<p_repulsion>0.112245</p_repulsion>
 		</Visual_System>
 	</GUI>
 </guiSettings>
