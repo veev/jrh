@@ -13,6 +13,7 @@ void ofApp::setup(){
     //setup event listeners
     gui.saveSetupButton.addListener(this, &ofApp::saveWaveSetup);
     gui.modeToggle.addListener(this, &ofApp::onModeToggle);
+    gui.showKinect.addListener(this, &ofApp::onKinectToggle);
     
     gui.setup();
     
@@ -68,6 +69,10 @@ void ofApp::onModeToggle(bool & control){
         ds.enterTestMode();
 }
 
+void ofApp::onKinectToggle(bool & control){
+        vs.showKinect = control;
+}
+
 //--------------------------------------------------------------
 void ofApp::update(){
     //pull new frame from visual system
@@ -80,6 +85,9 @@ void ofApp::update(){
     vs.particleNeighborhood = gui.particleNeighborhood;
     vs.particleRepulsion = gui.particleRepulsion;
     vs.update();
+    vs.blurAmount = gui.blur;
+    vs.cv.contourFinderThreshold = gui.contourFinderThresh;
+    vs.kinectMix = gui.kinectMix;
     frame = vs.getFrame();
     
    // ds.updateDisplayAsImage(vs.getFrameAsImage());
@@ -94,9 +102,7 @@ void ofApp::draw(){
 
     ofBackground(20);
     ds.draw(displaySystemYOffset);
-    
-   // vs.getFrameAsImage().draw(50,50);
-    
+        
     if(!gui.isHidden)
         gui.draw();
 }
@@ -120,6 +126,13 @@ void ofApp::keyReleased(int key){
         case 'f':
             isFullScreen = ! isFullScreen;
             ofSetFullscreen(isFullScreen);
+            break;
+        case OF_KEY_UP:
+            vs.angleKinectUp();
+            break;
+        case OF_KEY_DOWN:
+            vs.angleKinectDown();
+            break;
     }
     
 }

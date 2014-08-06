@@ -24,6 +24,8 @@ class ofApp : public ofBaseApp{
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     void onModeToggle(bool & control);
+    void onKinectToggle(bool & control);
+
     void saveWaveSetup();
     
     void exit();

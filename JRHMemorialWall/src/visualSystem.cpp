@@ -16,7 +16,9 @@ visualSystem::visualSystem(){
     width=600;
     height=400;
     
-   // bloom.allocate(width, height);
+    bloom.allocate(width, height);
+    glow.allocate(width, height);
+    blur.allocate(width, height);
     
     cv.setup(width, height);
     
@@ -78,9 +80,10 @@ void visualSystem::loadTestMovie(string path){
 }
 
 void visualSystem::update(){
+    cv.update();
+    
     particleSystem.setTimeStep(timeStep);
     t = ofGetFrameNum() * timeSpeed;
-	   
     
     //draw to FBO
     display->begin();
@@ -136,17 +139,30 @@ void visualSystem::update(){
     //testMovie.draw(0,0,800,600);
     display->end();
 
-   /* bloom.setTexture(display->getTextureReference());
-    bloom.update();
-    
+    glow.setTexture(display->getTextureReference());
+    glow.setRadius(sin( ofGetElapsedTimef() )*150);
+    glow.update();
+
+    blur.setTexture(display->getTextureReference());
+    blur.setRadius(blurAmount);
+    blur.update();
+
     display->begin();
-    bloom.draw(0,0);
-    display->end();*/
+    ofClear(0);
+    blur.draw(0,0);
+    if(showKinect){
+        ofEnableAlphaBlending();
+        ofSetColor(255, 255, 255, kinectMix);
+        cv.draw();
+    }
+    ofDisableAlphaBlending();
+    display->end();
 }
 
 ofFbo * visualSystem::getFrame(){
    // testMovie.update();
     
+    //glow.draw(0,0, ofGetWidth(), ofGetHeight());
     
     return display;
 }
@@ -186,5 +202,14 @@ ofVec2f visualSystem::getField(ofVec2f position) {
 	return ofVec2f(u, v);
 }
 
+void visualSystem::angleKinectUp(){
+    cout<<"angleKinectUp"<<endl;
+    cv.angleKinect(-1);
+}
+
+void visualSystem::angleKinectDown(){
+    cout<<"angleKinectDown"<<endl;
+    cv.angleKinect(1);
+}
 
 

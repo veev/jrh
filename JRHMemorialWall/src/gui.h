@@ -25,9 +25,10 @@ public:
     ofxPanel guiPanel;
     ofxButton saveSetupButton, hideGuiButton;
     ofxToggle modeToggle;
-    ofParameterGroup visualSystemParams;
-    ofParameter<float> flowSpeed, timeSpeed, flowComplexity, horizontalForce, verticalForce, particleNeighborhood, particleRepulsion;
-    ofParameter<int> fadeAmt;
+    ofParameterGroup visualSystemParams, cvParams;
+    ofParameter<float> flowSpeed, timeSpeed, flowComplexity, horizontalForce, verticalForce, particleNeighborhood, particleRepulsion, contourFinderThresh;
+    ofParameter<int> fadeAmt, blur, kinectMix;
+    ofParameter<bool> showKinect;
     
     bool isHidden;
     

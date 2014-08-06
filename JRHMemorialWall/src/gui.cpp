@@ -27,15 +27,23 @@ void gui::setup(){
     visualSystemParams.add(fadeAmt.set("fade amount",100,0,255));
     visualSystemParams.add(particleNeighborhood.set("p neighborhood",4,0,10));
     visualSystemParams.add(particleRepulsion.set("p repulsion",1,-1,1));
+    visualSystemParams.add(blur.set("blur",1,0,20));
 
+    //cv params
+    cvParams.add(contourFinderThresh.set("Contour Threshold",0,0,255));
+    cvParams.add(showKinect.set("SHOW KINECT", false));
+    cvParams.add(kinectMix.set("Kinect Mix", 50, 0, 255));
     
     //create the gui
     guiPanel.setup("GUI","gui_settings.xml",810,10);
+    guiPanel.setWidthElements(200);
+    
     //guiPanel.setup(visualSystemParams);
     guiPanel.add(saveSetupButton.setup("SAVE SETUP"));
     guiPanel.add(modeToggle.setup("TOGGLE LIVE MODE", true));
     guiPanel.add(hideGuiButton.setup("HIDE GUI"));
     guiPanel.add(visualSystemParams);
+    guiPanel.add(cvParams);
     guiPanel.loadFromFile("gui_settings.xml");
 
 }

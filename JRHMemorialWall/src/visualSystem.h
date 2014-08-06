@@ -11,8 +11,9 @@
 #include "ParticleSystem.h"
 #include "computerVision.h"
 //#include "ofxFX.h"
-//#include "ofxBloom.h"
-//#include "ofxMultiTexture.h"
+#include "ofxBloom.h"
+#include "ofxMultiTexture.h"
+#include "ofxGlow.h"
 
 class visualSystem{
     
@@ -25,6 +26,9 @@ class visualSystem{
     void mouseReleased(int x, int y, int button);
     void mouseMoved(int x, int y);
     ofVec2f getField(ofVec2f position);
+    
+    void angleKinectUp();
+    void angleKinectDown();
     
 
     
@@ -54,7 +58,14 @@ class visualSystem{
     computerVision cv;
     
     //fx
-   // ofxBloom bloom;
-   // ofxMultiTexture mult;
+    ofxBloom bloom;
+    ofxGlow glow;
+    ofxMultiTexture mult;
+    ofxGaussianBlur blur;
+    
+    float blurAmount;
+    int kinectMix;
+    
+    bool showKinect;
 
 };

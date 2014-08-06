@@ -9,6 +9,8 @@
 #pragma once
 #include "ofMain.h"
 #include "ofxKinect.h"
+#include "ofxOpenCv.h"
+#include "ofxCv.h"
 
 
 class computerVision{
@@ -17,8 +19,14 @@ class computerVision{
     void setup(int width, int height);
     void update();
     void draw();
+    void angleKinect(int angle);
+    void getBlobs();
     
     ofxKinect kinect;
+    int kinectAngle;
+    ofxCvGrayscaleImage grayImage; // grayscale depth image
     
+    ofxCv::ContourFinder contourFinder;
+    float contourFinderThreshold;
 
 };
