@@ -4,11 +4,11 @@
     <port>4445</port>
 </ledStrips>
 <waves>
-    <wave id="1" type="panels" width="320" height="16" x="275" y="26" />
-    <wave id="2" type="panels" width="448" height="32" x="133" y="44" />
-    <wave id="3" type="strips" width="500" height="38" x="53" y="78" numLeds="407" host="192.168.3.215" />
-    <wave id="4" type="panels" width="512" height="48" x="36" y="121" />
-    <wave id="5" type="strips" width="500" height="51" x="38" y="172" numLeds="350" host="192.168.3.216" />
-    <wave id="6" type="panels" width="384" height="48" x="144" y="228" />
-    <wave id="7" type="strips" width="300" height="46" x="207" y="280" numLeds="350" host="192.168.3.217" />
+    <wave id="1" type="panels" width="320" height="16" x="46" y="10" />
+    <wave id="2" type="panels" width="448" height="32" x="46" y="30" />
+    <wave id="3" type="strips" width="468" height="38" x="53" y="78" numLeds="0" host="192.168.3.215" />
+    <wave id="4" type="panels" width="512" height="48" x="26" y="63" />
+    <wave id="5" type="strips" width="441" height="51" x="38" y="172" numLeds="0" host="192.168.3.216" />
+    <wave id="6" type="panels" width="384" height="48" x="86" y="114" />
+    <wave id="7" type="strips" width="371" height="46" x="207" y="280" numLeds="0" host="192.168.3.217" />
 </waves>

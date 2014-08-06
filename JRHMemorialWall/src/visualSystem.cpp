@@ -16,6 +16,10 @@ visualSystem::visualSystem(){
     width=600;
     height=400;
     
+   // bloom.allocate(width, height);
+    
+    cv.setup(width, height);
+    
     display = new ofFbo();
     display->allocate(width,height,GL_RGB);
 
@@ -48,7 +52,7 @@ visualSystem::visualSystem(){
 	timeStep = .3;
 	lineOpacity = 100;
 	pointOpacity = 255;
-	isMousePressed = false;
+	isMousePressed = true;
 	slowMotion = false;
 	particleNeighborhood = 4;
 	particleRepulsion = 0;
@@ -132,6 +136,12 @@ void visualSystem::update(){
     //testMovie.draw(0,0,800,600);
     display->end();
 
+   /* bloom.setTexture(display->getTextureReference());
+    bloom.update();
+    
+    display->begin();
+    bloom.draw(0,0);
+    display->end();*/
 }
 
 ofFbo * visualSystem::getFrame(){
@@ -149,6 +159,11 @@ void visualSystem::mousePressed(int x, int y){
 
 void visualSystem::mouseReleased(int x, int y, int button){
     isMousePressed = false;
+}
+
+void visualSystem::mouseMoved(int x, int y){
+    mouseX = x;
+    mouseY = y;
 }
 
 /*

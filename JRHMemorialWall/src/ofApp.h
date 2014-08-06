@@ -36,5 +36,6 @@ class ofApp : public ofBaseApp{
     gui gui;
     
     bool isFullScreen;
-		
+	int displaySystemYOffset;
+    
 };

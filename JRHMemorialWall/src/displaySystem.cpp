@@ -13,9 +13,11 @@ const string displaySystem::LIVE_MODE = "live_mode";
 
 displaySystem::displaySystem(){
     mode = TEST_MODE;
+    debugYOffset = 300;
 }
 
 void displaySystem::init(){
+    
     }
 
 //create an instance of the PanelsWave object
@@ -48,30 +50,14 @@ void displaySystem::updateDisplay(ofFbo * frame){
     }
 }
 
-/*void displaySystem::updateDisplayAsImage(ofImage image){
-   
-    cout<<"displaySystem::updateDisplayAsImage"<<endl;
-    
-    frameImage = image;
-    frameImage.update();
-    
-    for (int i=0;i<wavesStrips.size();i++){
-        ledWaveStrips w = wavesStrips.at(i);
-        //frame->draw(50,50);
-        w.updateImage(frameImage);
-    }
-    */
-//}*/
 
-void displaySystem::draw(){
+void displaySystem::draw(int offSetY){
     ofSetColor(255);
-    
     
     if(mode == TEST_MODE){
         //render test mode
         ofSetColor(255);
-        _frame->draw(0,0);
-       
+        _frame->draw(0,offSetY);
     }
      drawWaves();
 }
@@ -92,16 +78,15 @@ void displaySystem::drawWaves(){
         
         if(mode == TEST_MODE){
             //draw boxes for all the waves
-            ofSetColor(255, 100, 100);
-            ofRect(w->_x, w->_y, w->_w, w->_h);
-            ofDrawBitmapString(ofToString(w->_idNum), w->_x+2, w->_y+12);
+            ofSetColor(255, 0, 0, 255);
+            ofRect(w->_x, w->_y+debugYOffset, w->_w, w->_h);
+            ofDrawBitmapString(ofToString(w->_idNum), w->_x+2, w->_y+12+debugYOffset);
         }
-        else{
-            //draw the panels to the screen
-            w->draw(y);
-            y+=w->_h;
-        }
-      //  delete w;
+        
+        //draw the panels to the screen
+        ofSetColor(255);
+        w->draw(y);
+        y+=w->_h;
     }
     
     //STRIPS
@@ -111,20 +96,17 @@ void displaySystem::drawWaves(){
         
         if(mode == TEST_MODE){
             //draw boxes for all the waves
-            ofSetColor(100, 100, 255);
-            ofRect(w->_x, w->_y, w->_w, w->_h);
-            ofDrawBitmapString(ofToString(w->_idNum), w->_x+2, w->_y+12);
+            ofSetColor(0, 0, 255, 255);
+            ofRect(w->_x, w->_y+debugYOffset, w->_w, w->_h);
+            ofDrawBitmapString(ofToString(w->_idNum), w->_x+2, w->_y+12+debugYOffset);
             
+            //draw strips below
+            int yOffset = 200;
             ofSetColor(255);
-            
-            ofDrawBitmapString(ofToString(w->_idNum), 10, 620+(i*20)+7);
-            w->draw(30, 620+(i*20));
-          //
+            ofDrawBitmapString(ofToString(w->_idNum), 10, yOffset+(i*20)+7);
+            w->draw(30, yOffset+(i*20));
+            w->drawToStrips();
         }
-        
-       w->drawToStrips();
-        
-       // delete w;
     }
     
 }
@@ -190,7 +172,6 @@ void displaySystem::saveWaveSetup(){
         DataManager::settings.setAttribute("wave", "x", w->_x, w->_idNum-1);
         DataManager::settings.setAttribute("wave", "y", w->_y, w->_idNum-1);
     }
-    
     
     //make sure we pop back to the root after pushing...
     DataManager::settings.popTag();

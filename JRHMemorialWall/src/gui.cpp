@@ -36,7 +36,6 @@ void gui::setup(){
     guiPanel.add(modeToggle.setup("TOGGLE LIVE MODE", true));
     guiPanel.add(hideGuiButton.setup("HIDE GUI"));
     guiPanel.add(visualSystemParams);
-    
     guiPanel.loadFromFile("gui_settings.xml");
 
 }

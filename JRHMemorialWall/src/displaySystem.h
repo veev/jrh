@@ -19,7 +19,7 @@ class displaySystem{
     void init();
     void addPanelsWave(int x, int y, int w, int h, int idNum);
     void addStripWave(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds, string host, int port);
-    void draw();
+    void draw(int offsetY=300);
     void drawWaves();
     void updateDisplay(ofFbo * frame);
    // void updateDisplayAsImage(ofImage image);
@@ -40,7 +40,7 @@ class displaySystem{
     static const string LIVE_MODE;
     string mode;
     ledWave * draggableWave;
-    int mousePressedX, mousePressedY;
+    int mousePressedX, mousePressedY, debugYOffset;
     //vector <lumigeekSender> ledSenders;
     
     ofImage frameImage;

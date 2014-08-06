@@ -474,6 +474,8 @@
 		235ED478196B7A20006D6AD5 /* visualSystem */ = {
 			isa = PBXGroup;
 			children = (
+				2398C917195B7BC500842F6A /* computerVision.cpp */,
+				2398C918195B7BC500842F6A /* computerVision.h */,
 				23D0259719884FB600D4CD52 /* Particle.h */,
 				23D0259819884FB600D4CD52 /* ParticleSystem.cpp */,
 				23D0259919884FB600D4CD52 /* ParticleSystem.h */,
@@ -930,8 +932,6 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
-				2398C917195B7BC500842F6A /* computerVision.cpp */,
-				2398C918195B7BC500842F6A /* computerVision.h */,
 				2398C91A195B7C8800842F6A /* gui.cpp */,
 				2398C91B195B7C8800842F6A /* gui.h */,
 				2398C931195CC5E200842F6A /* DataManager.cpp */,

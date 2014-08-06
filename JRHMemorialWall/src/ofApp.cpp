@@ -6,6 +6,8 @@ void ofApp::setup(){
     isFullScreen = true;
     DataManager::init();
     
+    displaySystemYOffset = 300;
+    
     ofSetFrameRate(20);
     
     //setup event listeners
@@ -31,17 +33,20 @@ void ofApp::setup(){
             ds.addPanelsWave(x,y,w,h,id);
         }
         else if (type == DataManager::STRIPS){
-            int nleds = DataManager::settings.getAttribute("wave", "numLeds", 407, i);
+            //calculate # leds based on width
+            int nleds = DataManager::settings.getAttribute("wave", "numLeds", 0, i);
+            
+            if(nleds == 0)
+                nleds = round(.74 * w);
+            
             string host = DataManager::settings.getAttribute("wave", "host", "", i);
-            //int port = DataManager::settings.getAttribute("wave", "port", 4445, i);
             DataManager::settings.pushTag("wave",i);
-           // string ta = DataManager::settings.getValue("topStrip:address", "");
-          // string ba = DataManager::settings.getValue("topStrip:address", "");
             
             //create an instance of the strip object
             ds.addStripWave(x,y,w,h,id,lumigeekSender::ADDRESS_1,lumigeekSender::ADDRESS_2,nleds,host,port);
             DataManager::settings.popTag();
         }
+        
     }
     //make sure we pop back to the root after pushing...
     DataManager::settings.popTag();
@@ -88,7 +93,7 @@ void ofApp::draw(){
    // ds.updateDisplay(frame);
 
     ofBackground(20);
-    ds.draw();
+    ds.draw(displaySystemYOffset);
     
    // vs.getFrameAsImage().draw(50,50);
     
@@ -121,25 +126,25 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-
+    vs.mouseMoved(x, y-displaySystemYOffset);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-    ds.mouseDragged(x, y, button);
-    vs.mousePressed(x, y);
+    ds.mouseDragged(x, y-displaySystemYOffset, button);
+    vs.mousePressed(x, y-displaySystemYOffset);
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    ds.mousePressed(x, y, button);
-    vs.mousePressed(x, y);
+    ds.mousePressed(x, y-displaySystemYOffset, button);
+    //vs.mousePressed(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-    ds.mouseReleased(x, y, button);
-    vs.mouseReleased(x, y, button);
+    ds.mouseReleased(x, y-displaySystemYOffset, button);
+  //  vs.mouseReleased(x, y, button);
 }
 
 //--------------------------------------------------------------

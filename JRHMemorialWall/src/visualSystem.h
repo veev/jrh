@@ -9,6 +9,10 @@
 #pragma once
 #include "ofMain.h"
 #include "ParticleSystem.h"
+#include "computerVision.h"
+//#include "ofxFX.h"
+//#include "ofxBloom.h"
+//#include "ofxMultiTexture.h"
 
 class visualSystem{
     
@@ -19,6 +23,7 @@ class visualSystem{
     void update();
     void mousePressed(int x, int y);
     void mouseReleased(int x, int y, int button);
+    void mouseMoved(int x, int y);
     ofVec2f getField(ofVec2f position);
     
 
@@ -45,5 +50,11 @@ class visualSystem{
     float pollenMass;
     float timeSpeed;
     float phase, hForce, vForce;
+    
+    computerVision cv;
+    
+    //fx
+   // ofxBloom bloom;
+   // ofxMultiTexture mult;
 
 };

@@ -7,3 +7,7 @@
 //
 
 #include "computerVision.h"
+
+void computerVision::setup(int width, int height){
+    
+}
