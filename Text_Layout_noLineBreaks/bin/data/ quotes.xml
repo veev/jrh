@@ -1,0 +1,64 @@
+<quotes>
+	<issue id='1' name="Labor Rights"> 
+		<quote>
+			<line id='1' wave='2' x='30' y='80' text="&quot;The ultimate corruption is seen in" /> 
+			<line id='2' wave='2' x='30' y='120' text="the vast numbers of unemployment," />
+			<line id='3' wave='4' x='30' y='200' text="the denial of a secure and dignified retirement," />
+			<line id='4' wave='4' x='30' y='240' text="the denial of childcare to working mothers.&quot;" />  
+		</quote>
+	</issue>
+	<issue id='2' name="Rehabilitation">
+		<quote>
+			<line id='1' wave='2' x='30' y='80' text="&quot;Delancey Street is a microcosm worthy of everybody imitating," />
+			<line id='2' wave='2' x='30' y='120' text="where people of all colors and races and ethnic groups," />
+			<line id='3' wave='4' x='30' y='200' text="with every description of tough backgrounds you can imagine," /> 
+			<line id='4' wave='4' x='30' y='240' text="come together, form a family, emerge as" />
+			<line id='5' wave='6' x='30' y='360' text="the people they were intended to be" />
+			<line id='6' wave='6' x='30' y='400' text="with their lives straightened out." />
+			<line id='7' wave='2' x='30' y='80' text="Delancey street is not better off," />
+			<line id='8' wave='4' x='30' y='80' text="but we and our community are better off" />
+			<line id='9' wave='4' x='30' y='80' text="because of organizations like Delancey street.&quot;" />
+		</quote>
+	</issue>
+	<issue id='3' name="Affordable Housing">
+	 	<quote>
+	 		<line id='1' wave='2' x='30' y='80' text="&quot;There is no greater priority in San Francisco" />
+	 		<line id='2' wave='2' x='30' y='80' text="than the construction of housing" /> 
+	 		<line id='3' wave='2' x='30' y='80' text="for low and middle income working people.&quot;" />
+	 	</quote>
+	 </issue>
+	<issue id='4' name="Civil Rights"> 
+		<quote>
+			<line id='1' wave='2' x='30' y='80' text="&quot;Racism runs deep in this country." />
+			<line id='2' wave='2' x='30' y='80' text="It got off the boat with the first settlers" />
+			<line id='3' wave='2' x='30' y='80' text="and the first slaves hundreds of years ago." /> 
+			<line id='4' wave='2' x='30' y='80' text="We have made some small progress perhaps," />
+			<line id='5' wave='2' x='30' y='80' text="but I fear that in times of great stress and uncertainty" /> 
+			<line id='6' wave='2' x='30' y='80' text="that it will strike with renewed venom." />
+			<line id='7' wave='2' x='30' y='80' text="We must be committed as a union" />
+			<line id='8' wave='2' x='30' y='80' text="that our full resources will be used" />
+			<line id='9' wave='2' x='30' y='80' text="in the struggle against it.&quot;" />
+		</quote>
+	</issue>
+	<issue id='5' name="International Solidarity">
+	 	<quote>
+	 		<line id='1' wave='2' x='30' y='80' text="&quot;[We have] the solemn obligation of…" />
+	 		<line id='2' wave='2' x='30' y='80' text="looking at the world around us," /> 
+	 		<line id='3' wave='2' x='30' y='80' text="where there are things happening that we disagree with…" />
+	 		<line id='4' wave='2' x='30' y='80' text="and [mobilizing] to extend a hand" />
+	 		<line id='5' wave='2' x='30' y='80' text="of friendship and brotherhood" />
+	 		<line id='6' wave='2' x='30' y='80' text="to those people engaged in struggle" />
+	 		<line id='7' wave='2' x='30' y='80' text="for democracy and decency.&quot;" />
+	 	</quote>
+	 </issue>
+	<issue id='6' name="Economic Justice">
+		<quote>
+			<line id='1' wave='2' x='30' y='80' text="&quot;How do you explain the American dream" />
+			<line id='2' wave='2' x='30' y='80' text="to kids without school lunches,"/>
+			<line id='3' wave='2' x='30' y='80' text="to teenagers with nothing better to do than hang out,"/>
+			<line id='4' wave='2' x='30' y='80' text="or to workers and farmers whose homes and farms have been foreclosed,"/>
+			<line id='5' wave='2' x='30' y='80' text="to people without medical care who are physically hurting,"/>
+			<line id='6' wave='2' x='30' y='80' text="and to some - too many - who are without food?&quot;" />
+		</quote>
+	</issue>
+</quotes>
