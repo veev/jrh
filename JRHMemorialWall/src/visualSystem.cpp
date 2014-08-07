@@ -16,6 +16,9 @@ visualSystem::visualSystem(){
     width=600;
     height=400;
     
+    mouseX = -100;
+    mouseY = -100;
+    
     bloom.allocate(width, height);
     glow.allocate(width, height);
     blur.allocate(width, height);
@@ -98,6 +101,7 @@ void visualSystem::update(){
 
 	ofSetColor(lineOpacity, lineOpacity, lineOpacity, 255);
 	particleSystem.setupForces();
+    
 	// apply per-particle forces
 	glBegin(GL_LINES);
     ofVec2f pos;
@@ -118,18 +122,23 @@ void visualSystem::update(){
 	
     // single global forces
 	//particleSystem.addAttractionForce(width / 2, height / 2, width, centerAttraction);
-	
-    if(isMousePressed)
-		particleSystem.addRepulsionForce(mouseX, mouseY, 50, 5);
-	particleSystem.update();
     
+    //add forces for blobs from kinect
+    for(int i=0;i<cv.contourFinder.size();i++){
+        cv::Point2f center = cv.contourFinder.getCenter(i);
+        //cv::Point2f size = cv.contourFinder.getCentroid(i);
+        cv::Rect rect = cv.contourFinder.getBoundingRect(i);
+        particleSystem.addRepulsionForce(center.x, center.y, rect.width, 5);
+    }
 	
+    //if(isMouseMoved)
+    particleSystem.addRepulsionForce(mouseX, mouseY, 50, 5);
+	particleSystem.update();
     
 	//ofSetColor(255, 255, 255);
 	//ofDrawBitmapString(ofToString(kParticles) + "k particles", 32, 32);
 	//ofDrawBitmapString(ofToString((int) ofGetFrameRate()) + " fps", 32, 52);
 
-    
     ofSetColor(pointOpacity, pointOpacity, pointOpacity, 255);
     particleSystem.draw();
     
@@ -178,6 +187,7 @@ void visualSystem::mouseReleased(int x, int y, int button){
 }
 
 void visualSystem::mouseMoved(int x, int y){
+   // isMouseMoved = true;
     mouseX = x;
     mouseY = y;
 }

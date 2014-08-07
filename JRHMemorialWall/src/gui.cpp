@@ -30,9 +30,11 @@ void gui::setup(){
     visualSystemParams.add(blur.set("blur",1,0,20));
 
     //cv params
+    cvParams.setName("Computer Vision");
     cvParams.add(contourFinderThresh.set("Contour Threshold",0,0,255));
     cvParams.add(showKinect.set("SHOW KINECT", false));
     cvParams.add(kinectMix.set("Kinect Mix", 50, 0, 255));
+    cvParams.add(flipVertical.set("Flip V", false));
     
     //create the gui
     guiPanel.setup("GUI","gui_settings.xml",810,10);

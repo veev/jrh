@@ -5,7 +5,7 @@
 			<turbulence>0.0586735</turbulence>
 			<particle_speed>0.255102</particle_speed>
 			<density>8.36735</density>
-			<H_force>0.408163</H_force>
+			<H_force>0.306122</H_force>
 			<V_force>0.132653</V_force>
 			<fade_amount>40</fade_amount>
 			<p_neighborhood>0</p_neighborhood>
@@ -14,8 +14,8 @@
 		</Visual_System>
 	<group>
 			<Contour_Threshol>191.25</Contour_Threshol>
-			<SHOW_KINECT>1</SHOW_KINECT>
-		<Contour_Threshold>186.046</Contour_Threshold>
+			<SHOW_KINECT>0</SHOW_KINECT>
+		<Contour_Threshold>117.092</Contour_Threshold>
 			<Kinect_Mix>113</Kinect_Mix>
 		</group>
 	</GUI>

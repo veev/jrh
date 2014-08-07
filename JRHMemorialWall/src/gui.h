@@ -28,7 +28,7 @@ public:
     ofParameterGroup visualSystemParams, cvParams;
     ofParameter<float> flowSpeed, timeSpeed, flowComplexity, horizontalForce, verticalForce, particleNeighborhood, particleRepulsion, contourFinderThresh;
     ofParameter<int> fadeAmt, blur, kinectMix;
-    ofParameter<bool> showKinect;
+    ofParameter<bool> showKinect, flipVertical;
     
     bool isHidden;
     

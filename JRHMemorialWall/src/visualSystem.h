@@ -48,7 +48,7 @@ class visualSystem{
     
 	int kParticles, fadeAmt;
 	ParticleSystem particleSystem;
-	bool isMousePressed, slowMotion;
+	bool isMousePressed, slowMotion, isMouseMoved;
     
     float complexity;
     float pollenMass;

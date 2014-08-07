@@ -88,6 +88,7 @@ void ofApp::update(){
     vs.blurAmount = gui.blur;
     vs.cv.contourFinderThreshold = gui.contourFinderThresh;
     vs.kinectMix = gui.kinectMix;
+    vs.cv.flipVertical = gui.flipVertical;
     frame = vs.getFrame();
     
    // ds.updateDisplayAsImage(vs.getFrameAsImage());

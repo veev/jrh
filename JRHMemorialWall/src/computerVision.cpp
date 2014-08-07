@@ -11,6 +11,7 @@
 void computerVision::setup(int width, int height){
     
 	kinect.init();
+    flipVertical = false;
 	//kinect.init(true); // shows infrared instead of RGB video image
 	//kinect.init(false, false); // disable video image (faster fps)
 	
@@ -39,11 +40,11 @@ void computerVision::setup(int width, int height){
 void computerVision::update(){
     
     kinect.update();
-	
 	// there is a new frame and we are connected
 	if(kinect.isFrameNew()) {
 		// load grayscale depth image from the kinect source
 		grayImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
+        grayImage.mirror(flipVertical, true);
 		contourFinder.setThreshold(contourFinderThreshold);
 		contourFinder.findContours(grayImage);
     }
@@ -53,8 +54,6 @@ void computerVision::draw(){
     grayImage.draw(0, 0);
     ofSetLineWidth(2);
 	contourFinder.draw();
-    
-    //contourFinder.getContours();
 }
 
 
