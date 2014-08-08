@@ -18,22 +18,26 @@ void ofApp::setup(){
     quoteHeight = 125;
     alignment = "LEFT";
     
-    layoutInfo.loadFont("Futura.ttf", 8);
+    layoutInfo.loadFont("Futur", 8);
     layoutInfo.setLineLength(ofGetWidth() - margin * 2);
     
-    layoutText.loadFont("FuturaBold.ttf", 6);
+    layoutText.loadFont("FuturBol", 6);
     layoutText.setLineLength(ofGetWidth() - margin * 2);
     
-    settings.loadFile("quotes.xml");
-    
-    
+ if(settings.loadFile("quotes.xml") ) {
+     
+ }
+    else {
+        
+        ofLogError("XML file did not load!");
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    if(settings.loadFile("quotes.xml") ) {
-        
+   
+      /*
         settings.pushTag("quotes");
         
         int numIssues = settings.getNumTags("issue");
@@ -56,10 +60,7 @@ void ofApp::update(){
         layoutText.setLineLength(MAX(margin * 2, ofGetMouseX() - margin));
         layoutText.setLineSpacing(ofMap(ofGetMouseY(), 0, ofGetHeight(), 0.0f, 2.0f, true));
     
-    } else {
-       
-        ofLogError("Settings file did not load!");
-    }
+    */
     
 }
 

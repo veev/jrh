@@ -25,10 +25,11 @@ public:
     ofxPanel guiPanel;
     ofxButton saveSetupButton, hideGuiButton;
     ofxToggle modeToggle;
-    ofParameterGroup visualSystemParams, cvParams;
+    ofParameterGroup visualSystemParams, cvParams, dsParams;
     ofParameter<float> flowSpeed, timeSpeed, flowComplexity, horizontalForce, verticalForce, particleNeighborhood, particleRepulsion, contourFinderThresh;
     ofParameter<int> fadeAmt, blur, kinectMix;
-    ofParameter<bool> showKinect, flipVertical;
+    ofParameter<bool> showKinect, flipVertical, mirrorLEDStrips;
+    ofParameter<ofColor> ledPanelsColor, ledStripsColor;
     
     bool isHidden;
     

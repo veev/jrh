@@ -33,6 +33,8 @@ class displaySystem{
     
     vector <ledWavePanels *> wavesPanels;
     vector <ledWaveStrips *> wavesStrips;
+    bool mirrorStrips;
+    ofColor ledPanelsColor, ledStripsColor;
     
     private:
     ofFbo * _frame;
@@ -41,7 +43,6 @@ class displaySystem{
     string mode;
     ledWave * draggableWave;
     int mousePressedX, mousePressedY, debugYOffset;
-    //vector <lumigeekSender> ledSenders;
     
     ofImage frameImage;
 

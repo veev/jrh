@@ -5,10 +5,10 @@
 </ledStrips>
 <waves>
     <wave id="1" type="panels" width="320" height="16" x="46" y="10" />
-    <wave id="2" type="panels" width="448" height="32" x="46" y="30" />
-    <wave id="3" type="strips" width="468" height="38" x="53" y="78" numLeds="0" host="192.168.3.215" />
-    <wave id="4" type="panels" width="512" height="48" x="26" y="63" />
+    <wave id="2" type="panels" width="448" height="32" x="45" y="40" />
+    <wave id="3" type="strips" width="468" height="38" x="44" y="30" numLeds="0" host="192.168.3.215" />
+    <wave id="4" type="panels" width="512" height="48" x="28" y="87" />
     <wave id="5" type="strips" width="441" height="51" x="38" y="172" numLeds="0" host="192.168.3.216" />
-    <wave id="6" type="panels" width="384" height="48" x="98" y="113" />
+    <wave id="6" type="panels" width="384" height="48" x="98" y="142" />
     <wave id="7" type="strips" width="371" height="46" x="207" y="280" numLeds="0" host="192.168.3.217" />
 </waves>

@@ -27,6 +27,7 @@
 		233117B41991DB790089EBA4 /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 233117A71991DB790089EBA4 /* Utilities.cpp */; };
 		233117B51991DB790089EBA4 /* Wrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 233117A81991DB790089EBA4 /* Wrappers.cpp */; };
 		233117B61991DB790089EBA4 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 233117A91991DB790089EBA4 /* opencv.a */; };
+		233117C0199574680089EBA4 /* textManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 233117BE199574680089EBA4 /* textManager.cpp */; };
 		2344B6F1196F40C100D737F0 /* strip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2344B6EF196F40C100D737F0 /* strip.cpp */; };
 		235ED477196B3185006D6AD5 /* visualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235ED475196B3185006D6AD5 /* visualSystem.cpp */; };
 		23714909196E244500A5B58B /* lumigeekSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23714907196E244500A5B58B /* lumigeekSender.cpp */; };
@@ -212,6 +213,8 @@
 		233117A71991DB790089EBA4 /* Utilities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
 		233117A81991DB790089EBA4 /* Wrappers.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Wrappers.cpp; sourceTree = "<group>"; };
 		233117A91991DB790089EBA4 /* opencv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = opencv.a; path = ../../../addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a; sourceTree = "<group>"; };
+		233117BE199574680089EBA4 /* textManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = textManager.cpp; sourceTree = "<group>"; };
+		233117BF199574680089EBA4 /* textManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textManager.h; sourceTree = "<group>"; };
 		2344B6EF196F40C100D737F0 /* strip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strip.cpp; sourceTree = "<group>"; };
 		2344B6F0196F40C100D737F0 /* strip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strip.h; sourceTree = "<group>"; };
 		235ED475196B3185006D6AD5 /* visualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = visualSystem.cpp; sourceTree = "<group>"; };
@@ -763,6 +766,8 @@
 				23D0259919884FB600D4CD52 /* ParticleSystem.h */,
 				235ED475196B3185006D6AD5 /* visualSystem.cpp */,
 				235ED476196B3185006D6AD5 /* visualSystem.h */,
+				233117BE199574680089EBA4 /* textManager.cpp */,
+				233117BF199574680089EBA4 /* textManager.h */,
 			);
 			name = visualSystem;
 			sourceTree = "<group>";
@@ -1434,6 +1439,7 @@
 				FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */,
 				2398C919195B7BC500842F6A /* computerVision.cpp in Sources */,
 				233117B51991DB790089EBA4 /* Wrappers.cpp in Sources */,
+				233117C0199574680089EBA4 /* textManager.cpp in Sources */,
 				E212C821D1064B92DD953A42 /* ofxCvHaarFinder.cpp in Sources */,
 				63020F16C7E8DED980111241 /* ofxCvImage.cpp in Sources */,
 				D3301F6A0B43BB293ED97C1D /* ofxCvShortImage.cpp in Sources */,

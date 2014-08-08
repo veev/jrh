@@ -17,6 +17,12 @@ gui::gui(){
 
 void gui::setup(){
     
+    //display system
+    dsParams.setName("Display System");
+    dsParams.add(mirrorLEDStrips.set("mirror strips", false));
+    dsParams.add(ledPanelsColor.set("Panel Color",ofColor(255),ofColor(0, 0),ofColor(255)));
+    dsParams.add(ledStripsColor.set("Strip Color",ofColor(255),ofColor(0, 0),ofColor(255)));
+    
     //visualSystem
     visualSystemParams.setName("Visual System");
 	visualSystemParams.add(flowSpeed.set("turbulence",.002,0,.1));
@@ -44,6 +50,7 @@ void gui::setup(){
     guiPanel.add(saveSetupButton.setup("SAVE SETUP"));
     guiPanel.add(modeToggle.setup("TOGGLE LIVE MODE", true));
     guiPanel.add(hideGuiButton.setup("HIDE GUI"));
+    guiPanel.add(dsParams);
     guiPanel.add(visualSystemParams);
     guiPanel.add(cvParams);
     guiPanel.loadFromFile("gui_settings.xml");

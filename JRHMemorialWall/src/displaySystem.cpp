@@ -14,11 +14,12 @@ const string displaySystem::LIVE_MODE = "live_mode";
 displaySystem::displaySystem(){
     mode = TEST_MODE;
     debugYOffset = 300;
+    mirrorStrips = false;
 }
 
 void displaySystem::init(){
     
-    }
+}
 
 //create an instance of the PanelsWave object
 void displaySystem::addPanelsWave(int x, int y, int w, int h, int idNum){
@@ -44,10 +45,21 @@ void displaySystem::updateDisplay(ofFbo * frame){
         w->updateFbo(frame);
     }
     
+    //make a copy of the FBO and color it...
+    ofFbo *colorCopy = new ofFbo();
+    colorCopy->allocate(frame->getWidth(), frame->getHeight(), GL_RGB);
+    //draw into the copy
+    colorCopy->begin();
+    ofSetColor(ledStripsColor);
+    frame->draw(0,0);
+    colorCopy->end();
+    
     for (int i=0;i<wavesStrips.size();i++){
         ledWaveStrips * w = wavesStrips.at(i);
-        w->updateFbo(frame);
+        w->updateFbo(colorCopy, mirrorStrips);
     }
+    
+    delete colorCopy;
 }
 
 
@@ -71,6 +83,7 @@ void displaySystem::drawWaves(){
     
     int y=0;
     
+    //PANELS
     for (int i=0;i<wavesPanels.size();i++)
     {
         ledWavePanels * w = wavesPanels.at(i);
@@ -84,7 +97,7 @@ void displaySystem::drawWaves(){
         }
         
         //draw the panels to the screen
-        ofSetColor(255);
+        ofSetColor(ledPanelsColor);
         w->draw(y);
         y+=w->_h;
     }

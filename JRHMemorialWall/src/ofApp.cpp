@@ -76,6 +76,9 @@ void ofApp::onKinectToggle(bool & control){
 //--------------------------------------------------------------
 void ofApp::update(){
     //pull new frame from visual system
+    ds.mirrorStrips = gui.mirrorLEDStrips;
+    ds.ledPanelsColor = gui.ledPanelsColor;
+    ds.ledStripsColor = gui.ledStripsColor;
     vs.timeSpeed = gui.flowSpeed;
     vs.timeStep = gui.timeSpeed;
     vs.hForce = gui.horizontalForce;

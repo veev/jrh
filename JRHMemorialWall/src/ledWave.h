@@ -38,11 +38,11 @@ class ledWaveStrips: public ledWave{
     
     public:
     void draw(int x, int y);
-    void drawToStrips();
+    void drawToStrips(bool mirror = false);
     ledWaveStrips(int x, int y, int w, int h, int idNum, string topAddress, string bottomAddress, int numLeds, string host, int port);
-    void updateFbo(ofFbo * fbo);
-   // void updateImage(ofImage image);
+    void updateFbo(ofFbo * fbo, bool mirror = false);
     void clear();
+    //void mirror();
     
     ofPixels topStripPixels, bottomStripPixels;
     ofImage topStripImage, bottomStripImage;
@@ -58,6 +58,7 @@ class ledWaveStrips: public ledWave{
     vector <ofColor> colors;
     int _numLeds;
     lumigeekSender * lgs;
+    ofColor colorShift;
     
     private:
     string _topStripAddress, _bottomStripAddress;
