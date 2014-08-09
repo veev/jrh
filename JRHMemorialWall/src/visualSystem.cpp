@@ -126,7 +126,6 @@ void visualSystem::update(){
     //add forces for blobs from kinect
     for(int i=0;i<cv.contourFinder.size();i++){
         cv::Point2f center = cv.contourFinder.getCenter(i);
-        //cv::Point2f size = cv.contourFinder.getCentroid(i);
         cv::Rect rect = cv.contourFinder.getBoundingRect(i);
         particleSystem.addRepulsionForce(center.x, center.y, rect.width, 5);
     }
@@ -135,9 +134,6 @@ void visualSystem::update(){
     particleSystem.addRepulsionForce(mouseX, mouseY, 50, 5);
 	particleSystem.update();
     
-	//ofSetColor(255, 255, 255);
-	//ofDrawBitmapString(ofToString(kParticles) + "k particles", 32, 32);
-	//ofDrawBitmapString(ofToString((int) ofGetFrameRate()) + " fps", 32, 52);
 
     ofSetColor(pointOpacity, pointOpacity, pointOpacity, 255);
     particleSystem.draw();
@@ -148,16 +144,20 @@ void visualSystem::update(){
     //testMovie.draw(0,0,800,600);
     display->end();
 
-    glow.setTexture(display->getTextureReference());
+   /* glow.setTexture(display->getTextureReference());
     glow.setRadius(sin( ofGetElapsedTimef() )*150);
-    glow.update();
+    glow.update();*/
 
     blur.setTexture(display->getTextureReference());
     blur.setRadius(blurAmount);
     blur.update();
 
+    //Apply blur FX
     display->begin();
     ofClear(0);
+    //draw text layer here
+    //tm.update();
+    
     blur.draw(0,0);
     if(showKinect){
         ofEnableAlphaBlending();
@@ -165,6 +165,7 @@ void visualSystem::update(){
         cv.draw();
     }
     ofDisableAlphaBlending();
+    tm.draw();
     display->end();
 }
 
@@ -222,4 +223,7 @@ void visualSystem::angleKinectDown(){
     cv.angleKinect(1);
 }
 
+void visualSystem::showQuote(int quoteId){
+    tm.setActiveQuote(quoteId);
+}
 

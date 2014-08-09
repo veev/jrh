@@ -10,10 +10,10 @@
 #include "ofMain.h"
 #include "ParticleSystem.h"
 #include "computerVision.h"
-//#include "ofxFX.h"
 #include "ofxBloom.h"
 #include "ofxMultiTexture.h"
 #include "ofxGlow.h"
+#include "textManager.h"
 
 class visualSystem{
     
@@ -29,6 +29,7 @@ class visualSystem{
     
     void angleKinectUp();
     void angleKinectDown();
+    void showQuote(int quoteId);
     
 
     
@@ -65,7 +66,8 @@ class visualSystem{
     
     float blurAmount;
     int kinectMix;
-    
     bool showKinect;
+    
+    textManager tm;
 
 };

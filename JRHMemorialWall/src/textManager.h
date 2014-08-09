@@ -6,9 +6,27 @@
 //
 //
 
-#ifndef __JRHMemorialWall__textManager__
-#define __JRHMemorialWall__textManager__
+#pragma once
+#include "ofMain.h"
+#include "DataManager.h"
+#include "ofxFTGLFont.h"
+#include "ledWave.h"
 
-#include <iostream>
+class textManager{
+    
+public:
+    textManager();
+    void setup(string dataPath);
+    void update();
+    void draw();
+    void setActiveQuote(int quoteId);
+    
+    int activeQuoteID, lineSpacing, padding;
+    vector <ledWavePanels *> wavesPanels;
 
-#endif /* defined(__JRHMemorialWall__textManager__) */
+    
+private:
+    ofxFTGLFont font;
+
+    
+};

@@ -54,7 +54,9 @@ void ofApp::setup(){
     
     //load the test movie
     vs.loadTestMovie(DataManager::getTestVideoPath());
-    ds.init();
+    
+    //update the LEDwave pointer on the textManager to point to the wavesPanels controlled by Display System
+    vs.tm.wavesPanels = ds.wavesPanels;
 }
 
 void ofApp::saveWaveSetup(){
@@ -136,6 +138,33 @@ void ofApp::keyReleased(int key){
             break;
         case OF_KEY_DOWN:
             vs.angleKinectDown();
+            break;
+        case '0':
+            vs.showQuote(0);
+            break;
+        case '1':
+            vs.showQuote(1);
+            break;
+        case '2':
+            vs.showQuote(2);
+            break;
+        case '3':
+            vs.showQuote(3);
+            break;
+        case '4':
+            vs.showQuote(4);
+            break;
+        case '5':
+            vs.showQuote(5);
+            break;
+        case '6':
+            vs.showQuote(6);
+            break;
+        case '7':
+            vs.showQuote(7);
+            break;
+        case '8':
+            vs.showQuote(8);
             break;
     }
     
