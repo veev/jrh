@@ -37,6 +37,7 @@ void textManager::draw(){
             string str = DataManager::settings.getAttribute("line", "text", "", i);
             str = ofToUpper(str);
             int waveNum = DataManager::settings.getAttribute("line", "wave", 4, i);
+            int lineNum = DataManager::settings.getAttribute("line", "line", 0, i);
             
             //find the wave by id
             ledWavePanels * w;
@@ -47,7 +48,7 @@ void textManager::draw(){
             }
             ofRectangle textBox = font.getStringBoundingBox(str, 0, 0);
             int x = w->_x + padding;
-            int y = w->_y + padding + textBox.height + (textBox.height+lineSpacing)*i;
+            int y = w->_y + padding + textBox.height + (textBox.height+lineSpacing)*(lineNum-1);
         
             //TODO: use ledWavePanel pointer vector to determine positioning
             font.drawString(str, x, y);
