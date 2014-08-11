@@ -1965,8 +1965,8 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					/Volumes/HDD/OpenFrameworks/of_v0.8.3_osx_release/addons/ofxOpenCv/libs/opencv/lib/osx,
-					/Volumes/HDD/OpenFrameworks/of_v0.8.3_osx_release/addons/ofxFTGL/libs/FTGL/lib/osx,
+					../../../addons/ofxOpenCv/libs/opencv/lib/osx,
+					../../../addons/ofxFTGL/libs/FTGL/lib/osx,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxFTGL/libs/FTGL/include/ ../../../addons/ofxCv/libs/ofxCv/include/ ../../../addons/ofxOpenCv/libs/opencv/include/ ../../../addons/ofxCv/libs/CLD/include/";
