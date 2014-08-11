@@ -26,8 +26,14 @@
 		</Computer_Vision>
 	<Display_System>
 			<mirror_strips>1</mirror_strips>
-		<Panel_Color>219, 220, 255, 255</Panel_Color>
-			<Strip_Color>220, 255, 223, 255</Strip_Color>
+		<Panel_Color>206, 252, 255, 255</Panel_Color>
+			<Strip_Color>255, 234, 189, 255</Strip_Color>
+		<Panel_Hue>130</Panel_Hue>
+			<Panel_Brightness>255</Panel_Brightness>
+			<Panel_Saturation>49</Panel_Saturation>
+			<Strip_Hue>29</Strip_Hue>
+			<Strip_Brightness>255</Strip_Brightness>
+			<Strip_Saturation>66</Strip_Saturation>
 		</Display_System>
 	</GUI>
 </guiSettings>

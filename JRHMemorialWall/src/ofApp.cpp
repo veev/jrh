@@ -77,6 +77,8 @@ void ofApp::onKinectToggle(bool & control){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    gui.update();
+    
     //pull new frame from visual system
     ds.mirrorStrips = gui.mirrorLEDStrips;
     ds.ledPanelsColor = gui.ledPanelsColor;
