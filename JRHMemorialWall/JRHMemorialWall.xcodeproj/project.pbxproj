@@ -1677,6 +1677,12 @@
 					../../../addons/ofxOsc/libs/oscpack/src,
 					../../../addons/ofxOsc/libs/oscpack/src/ip,
 					../../../addons/ofxOsc/libs/oscpack/src/ip/posix,
+					../../../addons/ofxFTGL/libs,
+					../../../addons/ofxFTGL/libs/FTGL,
+					../../../addons/ofxFTGL/libs/FTGL/include,
+					../../../addons/ofxFTGL/libs/FTGL/lib,
+					../../../addons/ofxFTGL/libs/FTGL/lib/osx,
+					../../../addons/ofxFTGL/src,
 					../../../addons/ofxOsc/libs/oscpack/src/ip/win32,
 					../../../addons/ofxOsc/libs/oscpack/src/osc,
 					../../../addons/ofxOsc/src,
@@ -1693,6 +1699,7 @@
 					"$(OF_CORE_LIBS)",
 					"../../../addons/ofxKinect/libs/libusb-1.0/lib/osx/usb-1.0.a",
 					../../../addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a,
+					../../../addons/ofxFTGL/libs/FTGL/lib/osx/libftgl.a,
 				);
 				SDKROOT = macosx;
 			};
@@ -1762,6 +1769,12 @@
 					../../../addons/ofxOsc/libs/oscpack/src,
 					../../../addons/ofxOsc/libs/oscpack/src/ip,
 					../../../addons/ofxOsc/libs/oscpack/src/ip/posix,
+					../../../addons/ofxFTGL/libs,
+					../../../addons/ofxFTGL/libs/FTGL,
+					../../../addons/ofxFTGL/libs/FTGL/include,
+					../../../addons/ofxFTGL/libs/FTGL/lib,
+					../../../addons/ofxFTGL/libs/FTGL/lib/osx,
+					../../../addons/ofxFTGL/src,
 					../../../addons/ofxOsc/libs/oscpack/src/ip/win32,
 					../../../addons/ofxOsc/libs/oscpack/src/osc,
 					../../../addons/ofxOsc/src,
@@ -1778,6 +1791,7 @@
 					"$(OF_CORE_LIBS)",
 					"../../../addons/ofxKinect/libs/libusb-1.0/lib/osx/usb-1.0.a",
 					../../../addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a,
+					../../../addons/ofxFTGL/libs/FTGL/lib/osx/libftgl.a,
 				);
 				SDKROOT = macosx;
 			};
@@ -1863,8 +1877,8 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
-					/Volumes/HDD/OpenFrameworks/of_v0.8.3_osx_release/addons/ofxOpenCv/libs/opencv/lib/osx,
-					/Volumes/HDD/OpenFrameworks/of_v0.8.3_osx_release/addons/ofxFTGL/libs/FTGL/lib/osx,
+					../../../addons/ofxOpenCv/libs/opencv/lib/osx,
+					../../../addons/ofxFTGL/libs/FTGL/lib/osx,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxFTGL/libs/FTGL/include/ ../../../addons/ofxCv/libs/ofxCv/include/ ../../../addons/ofxOpenCv/libs/opencv/include/ ../../../addons/ofxCv/libs/CLD/include/";
