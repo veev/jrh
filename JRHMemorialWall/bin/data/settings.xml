@@ -22,21 +22,16 @@
 <quotes>
     <issue id="1" name="Labor Rights"> 
         <quote>
-            <line id="1" wave="4" line="1" x="30" y="80" text="The ultimate corruption is seen in" /> 
-            <line id="2" wave="4" line="2" x="30" y="120" text="the vast numbers of unemployment," />
+            <line id="1" wave="4" line="1" x="30" y="80" text="The ultimate corruption is seen in" font="1"/> 
+            <line id="2" wave="4" line="2" x="30" y="120" text="the vast numbers of unemployment," font="1"/>
         </quote>
     </issue>
     <issue id="2" name="Rehabilitation">
         <quote>
-            <line id="1" wave="2" x="30" y="80" text="Delancey Street is a microcosm worthy of everybody imitating," />
-            <line id="2" wave="2" x="30" y="120" text="where people of all colors and races and ethnic groups," />
-            <line id="3" wave="4" x="30" y="200" text="with every description of tough backgrounds you can imagine," /> 
-            <line id="4" wave="4" x="30" y="240" text="come together, form a family, emerge as" />
-            <line id="5" wave="6" x="30" y="360" text="the people they were intended to be" />
-            <line id="6" wave="6" x="30" y="400" text="with their lives straightened out." />
-            <line id="7" wave="2" x="30" y="80" text="Delancey street is not better off," />
-            <line id="8" wave="4" x="30" y="80" text="but we and our community are better off" />
-            <line id="9" wave="4" x="30" y="80" text="because of organizations like Delancey street." />
+            <line id="1" wave="2" line="1" x="30" y="80" text="Delancey Street is ..." font="1"/>
+            <line id="2" wave="4" line="1" x="30" y="120" text="where people of all colors and races and ethnic groups..." font="1"/>
+            <line id="4" wave="4" line="2" x="30" y="240" text="come together, form a family, emerge as" font="1"/>
+            <line id="5" wave="6" line="1" x="30" y="360" text="the people they were intended to be..." font="1"/>
         </quote>
     </issue>
     <issue id="3" name="Affordable Housing">

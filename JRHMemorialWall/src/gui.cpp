@@ -20,8 +20,18 @@ void gui::setup(){
     //display system
     dsParams.setName("Display System");
     dsParams.add(mirrorLEDStrips.set("mirror strips", false));
+    
     dsParams.add(ledPanelsColor.set("Panel Color",ofColor(255),ofColor(0, 0),ofColor(255)));
+    dsParams.add(ledPanelHue.set("Panel Hue",0,0,255));
+    dsParams.add(ledPanelBrightness.set("Panel Brightness",0,0,255));
+    dsParams.add(ledPanelSaturation.set("Panel Saturation",0,0,255));
+
     dsParams.add(ledStripsColor.set("Strip Color",ofColor(255),ofColor(0, 0),ofColor(255)));
+    dsParams.add(ledStripHue.set("Strip Hue",0,0,255));
+    dsParams.add(ledStripBrightness.set("Strip Brightness",0,0,255));
+    dsParams.add(ledStripSaturation.set("Strip Saturation",0,0,255));
+
+    //add event listeners here to update color when hue changes, and vice-versus
     
     //visualSystem
     visualSystemParams.setName("Visual System");
@@ -54,7 +64,22 @@ void gui::setup(){
     guiPanel.add(visualSystemParams);
     guiPanel.add(cvParams);
     guiPanel.loadFromFile("gui_settings.xml");
+}
 
+void gui::update(){
+    //update led panel color
+    ofColor c = ledPanelsColor;
+    c.setHue(ledPanelHue);
+    c.setSaturation(ledPanelSaturation);
+    c.setBrightness(ledPanelBrightness);
+    ledPanelsColor.set(c);
+    
+    //update led strip color
+    c = ledStripsColor;
+    c.setHue(ledStripHue);
+    c.setSaturation(ledStripSaturation);
+    c.setBrightness(ledStripBrightness);
+    ledStripsColor.set(c);
 }
 
 void gui::draw(){

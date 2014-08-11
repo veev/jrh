@@ -22,6 +22,7 @@ public:
 private:
     ofxOscSender * sender;
     int totalChannels, _numPixels;
+    bool setupSuccessful;
    // string _host;
    // int _port;
 
