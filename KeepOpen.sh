@@ -1,8 +1,8 @@
 #!/bin/sh
-if [ $(ps ax | grep -v grep | grep "LANscapes_OF83.app" | wc -l) -eq 0 ]
+if [ $(ps ax | grep -v grep | grep "JRHMemorialWall.app" | wc -l) -eq 0 ]
 then
-echo "LANscapes not running. opening…"
-open /OpenFrameworks/of_v0.8.3_osx_release/apps/LANscapes/LANscapes_OF83/bin/LANscapes_OF83.app
+echo "JRHMemorialWall not running. opening…"
+open /OpenFrameworks/of_v0.8.3_osx_release/apps/jrh/JRHMemorialWall/bin/JRHMemorialWall.app
 else
-echo "LANscapes running"
+echo "JRHMemorialWall running"
 fi
