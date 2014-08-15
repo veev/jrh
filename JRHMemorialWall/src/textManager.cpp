@@ -10,7 +10,7 @@
 
 textManager::textManager(){
     //load fonts
-    font.loadFont("fonts/Futur", 10);
+    font.loadFont("/Library/Fonts/Futura.ttc", 10);
     lineSpacing = 5;
     padding = 5;
     activeQuoteID = 0;
