@@ -40,4 +40,5 @@ class ofApp : public ofBaseApp{
     bool isFullScreen;
 	int displaySystemYOffset;
     
+    
 };

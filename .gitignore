@@ -6,3 +6,4 @@ BinnedParticleSystemVectors/build/
 Text_Layout_noLineBreaks/build/
 *.DS_STORE
 *.DS_Store
+!launch_kiosk.app
