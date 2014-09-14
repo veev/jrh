@@ -35,6 +35,7 @@ class displaySystem{
     vector <ledWaveStrips *> wavesStrips;
     bool mirrorStrips;
     ofColor ledPanelsColor, ledStripsColor;
+    int width, height;
     
     private:
     ofFbo * _frame;

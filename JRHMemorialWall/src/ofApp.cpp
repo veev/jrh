@@ -181,6 +181,11 @@ void ofApp::keyReleased(int key){
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
     vs.mouseMoved(x, y-displaySystemYOffset);
+    
+    if(x < ds.width && y < ds.height)
+        ofHideCursor();
+    else
+        ofShowCursor();
 }
 
 //--------------------------------------------------------------
