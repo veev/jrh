@@ -96,6 +96,7 @@ void ofApp::update(){
     vs.cv.contourFinderThreshold = gui.contourFinderThresh;
     vs.kinectMix = gui.kinectMix;
     vs.cv.flipVertical = gui.flipVertical;
+    vs.cv.flipH = gui.flipH;
     frame = vs.getFrame();
     
    // ds.updateDisplayAsImage(vs.getFrameAsImage());

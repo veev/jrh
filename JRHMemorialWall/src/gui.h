@@ -29,7 +29,7 @@ public:
     ofParameterGroup visualSystemParams, cvParams, dsParams;
     ofParameter<float> flowSpeed, timeSpeed, flowComplexity, horizontalForce, verticalForce, particleNeighborhood, particleRepulsion, contourFinderThresh;
     ofParameter<int> fadeAmt, blur, kinectMix, ledPanelHue, ledStripHue, ledPanelBrightness, ledStripBrightness, ledPanelSaturation, ledStripSaturation;
-    ofParameter<bool> showKinect, flipVertical, mirrorLEDStrips;
+    ofParameter<bool> showKinect, flipVertical, flipH, mirrorLEDStrips;
     ofParameter<ofColor> ledPanelsColor, ledStripsColor;
     
     bool isHidden;

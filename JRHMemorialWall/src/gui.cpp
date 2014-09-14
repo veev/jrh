@@ -51,6 +51,8 @@ void gui::setup(){
     cvParams.add(showKinect.set("SHOW KINECT", false));
     cvParams.add(kinectMix.set("Kinect Mix", 50, 0, 255));
     cvParams.add(flipVertical.set("Flip V", false));
+    cvParams.add(flipH.set("Flip H", false));
+
     
     //create the gui
     guiPanel.setup("GUI","gui_settings.xml",810,10);
