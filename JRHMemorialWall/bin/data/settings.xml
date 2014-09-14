@@ -5,49 +5,49 @@
 </ledStrips>
 <waves>
     <wave id="1" type="panels" width="320" height="16" x="46" y="10" />
-    <wave id="2" type="panels" width="448" height="32" x="45" y="40" />
-    <wave id="3" type="strips" width="468" height="38" x="44" y="30" numLeds="0" host="192.168.3.215" />
-    <wave id="4" type="panels" width="480" height="48" x="28" y="87" />
-    <wave id="5" type="strips" width="441" height="51" x="38" y="172" numLeds="0" host="192.168.3.216" />
-    <wave id="6" type="panels" width="320" height="48" x="98" y="142" />
-    <wave id="7" type="strips" width="371" height="46" x="207" y="280" numLeds="0" host="192.168.3.217" />
+    <wave id="2" type="panels" width="448" height="32" x="42" y="30" />
+    <wave id="3" type="strips" width="468" height="38" x="40" y="64" numLeds="0" host="192.168.4.5" />
+    <wave id="4" type="panels" width="480" height="48" x="40" y="109" />
+    <wave id="5" type="strips" width="441" height="51" x="39" y="161" numLeds="0" host="192.168.4.6" />
+    <wave id="6" type="panels" width="320" height="48" x="86" y="220" />
+    <wave id="7" type="strips" width="371" height="46" x="78" y="271" numLeds="0" host="192.168.4.7" />
 </waves>
 <!--FONTS-->
 <fonts path="fonts">
-    <font id="1" file="Futur" size="32"/>
-    <font id="2" file="Futur" size="64"/>
-    <font id="3" file="Futur" size="96"/>
+    <font id="1" file="Futur" size="32" />
+    <font id="2" file="Futur" size="64" />
+    <font id="3" file="Futur" size="96" />
 </fonts>
 <!--QUOTES-->
 <quotes>
-    <issue id="1" name="Labor Rights"> 
+    <issue id="1" name="Labor Rights">
         <quote>
-            <line id="1" wave="4" line="1" x="30" y="80" text="The ultimate corruption is seen in" font="1"/> 
-            <line id="2" wave="4" line="2" x="30" y="120" text="the vast numbers of unemployment," font="1"/>
+            <line id="1" wave="4" line="1" x="30" y="80" text="The ultimate corruption is seen in" font="1" />
+            <line id="2" wave="4" line="2" x="30" y="120" text="the vast numbers of unemployment," font="1" />
         </quote>
     </issue>
     <issue id="2" name="Rehabilitation">
         <quote>
-            <line id="1" wave="2" line="1" x="30" y="80" text="Delancey Street is ..." font="1"/>
-            <line id="2" wave="4" line="1" x="30" y="120" text="where people of all colors and races and ethnic groups..." font="1"/>
-            <line id="4" wave="4" line="2" x="30" y="240" text="come together, form a family, emerge as" font="1"/>
-            <line id="5" wave="6" line="1" x="30" y="360" text="the people they were intended to be..." font="1"/>
+            <line id="1" wave="2" line="1" x="30" y="80" text="Delancey Street is ..." font="1" />
+            <line id="2" wave="4" line="1" x="30" y="120" text="where people of all colors and races and ethnic groups..." font="1" />
+            <line id="4" wave="4" line="2" x="30" y="240" text="come together, form a family, emerge as" font="1" />
+            <line id="5" wave="6" line="1" x="30" y="360" text="the people they were intended to be..." font="1" />
         </quote>
     </issue>
     <issue id="3" name="Affordable Housing">
         <quote>
             <line id="1" wave="2" x="30" y="80" text="There is no greater priority in San Francisco" />
-            <line id="2" wave="2" x="30" y="80" text="than the construction of housing" /> 
+            <line id="2" wave="2" x="30" y="80" text="than the construction of housing" />
             <line id="3" wave="2" x="30" y="80" text="for low and middle income working people." />
         </quote>
     </issue>
-    <issue id="4" name="Civil Rights"> 
+    <issue id="4" name="Civil Rights">
         <quote>
             <line id="1" wave="2" x="30" y="80" text="Racism runs deep in this country." />
             <line id="2" wave="2" x="30" y="80" text="It got off the boat with the first settlers" />
-            <line id="3" wave="2" x="30" y="80" text="and the first slaves hundreds of years ago." /> 
+            <line id="3" wave="2" x="30" y="80" text="and the first slaves hundreds of years ago." />
             <line id="4" wave="2" x="30" y="80" text="We have made some small progress perhaps," />
-            <line id="5" wave="2" x="30" y="80" text="but I fear that in times of great stress and uncertainty" /> 
+            <line id="5" wave="2" x="30" y="80" text="but I fear that in times of great stress and uncertainty" />
             <line id="6" wave="2" x="30" y="80" text="that it will strike with renewed venom." />
             <line id="7" wave="2" x="30" y="80" text="We must be committed as a union" />
             <line id="8" wave="2" x="30" y="80" text="that our full resources will be used" />
@@ -57,7 +57,7 @@
     <issue id="5" name="International Solidarity">
         <quote>
             <line id="1" wave="2" x="30" y="80" text="[We have] the solemn obligation of…" />
-            <line id="2" wave="2" x="30" y="80" text="looking at the world around us," /> 
+            <line id="2" wave="2" x="30" y="80" text="looking at the world around us," />
             <line id="3" wave="2" x="30" y="80" text="where there are things happening that we disagree with…" />
             <line id="4" wave="2" x="30" y="80" text="and [mobilizing] to extend a hand" />
             <line id="5" wave="2" x="30" y="80" text="of friendship and brotherhood" />
@@ -68,10 +68,10 @@
     <issue id="6" name="Economic Justice">
         <quote>
             <line id="1" wave="2" x="30" y="80" text="How do you explain the American dream" />
-            <line id="2" wave="2" x="30" y="80" text="to kids without school lunches,"/>
-            <line id="3" wave="2" x="30" y="80" text="to teenagers with nothing better to do than hang out,"/>
-            <line id="4" wave="2" x="30" y="80" text="or to workers and farmers whose homes and farms have been foreclosed,"/>
-            <line id="5" wave="2" x="30" y="80" text="to people without medical care who are physically hurting,"/>
+            <line id="2" wave="2" x="30" y="80" text="to kids without school lunches," />
+            <line id="3" wave="2" x="30" y="80" text="to teenagers with nothing better to do than hang out," />
+            <line id="4" wave="2" x="30" y="80" text="or to workers and farmers whose homes and farms have been foreclosed," />
+            <line id="5" wave="2" x="30" y="80" text="to people without medical care who are physically hurting," />
             <line id="6" wave="2" x="30" y="80" text="and to some - too many - who are without food?" />
         </quote>
     </issue>

@@ -7,7 +7,7 @@
 			<density>8.36735</density>
 			<H_force>0.306122</H_force>
 			<V_force>0.132653</V_force>
-			<fade_amount>80</fade_amount>
+			<fade_amount>28</fade_amount>
 			<p_neighborhood>0</p_neighborhood>
 			<p_repulsion>0.112245</p_repulsion>
 		<blur>4</blur>
@@ -19,21 +19,21 @@
 			<Kinect_Mix>113</Kinect_Mix>
 		</group>
 	<Computer_Vision>
-			<Contour_Threshold>130.102</Contour_Threshold>
+			<Contour_Threshold>76.7602</Contour_Threshold>
 			<SHOW_KINECT>0</SHOW_KINECT>
 			<Kinect_Mix>117</Kinect_Mix>
 			<Flip_V>0</Flip_V>
 		</Computer_Vision>
 	<Display_System>
-			<mirror_strips>1</mirror_strips>
-		<Panel_Color>206, 252, 255, 255</Panel_Color>
-			<Strip_Color>255, 234, 189, 255</Strip_Color>
-		<Panel_Hue>130</Panel_Hue>
+			<mirror_strips>0</mirror_strips>
+		<Panel_Color>255, 255, 255, 255</Panel_Color>
+			<Strip_Color>167, 255, 216, 255</Strip_Color>
+		<Panel_Hue>149</Panel_Hue>
 			<Panel_Brightness>255</Panel_Brightness>
-			<Panel_Saturation>49</Panel_Saturation>
-			<Strip_Hue>29</Strip_Hue>
+			<Panel_Saturation>0</Panel_Saturation>
+			<Strip_Hue>109</Strip_Hue>
 			<Strip_Brightness>255</Strip_Brightness>
-			<Strip_Saturation>66</Strip_Saturation>
+			<Strip_Saturation>88</Strip_Saturation>
 		</Display_System>
 	</GUI>
 </guiSettings>
