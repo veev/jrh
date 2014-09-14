@@ -73,6 +73,8 @@ void ofApp::onModeToggle(bool & control){
         ds.enterLiveMode();
     else
         ds.enterTestMode();
+    
+    gui.isHidden = control;
 }
 
 void ofApp::onKinectToggle(bool & control){
@@ -118,6 +120,8 @@ void ofApp::draw(){
         
     if(!gui.isHidden)
         gui.draw();
+    else
+        ofDrawBitmapString("LIVE MODE [press spacebar to exit]", 10, ds.height + 20);
 }
 
 //--------------------------------------------------------------

@@ -12,6 +12,7 @@ gui::gui(){
     //setup listeners
    hideGuiButton.addListener(this, &gui::onHideGuiButton);
    // modeToggle.addListener(this, &gui::onModeToggle);
+    isHidden = false;
     
 }
 
