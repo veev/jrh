@@ -19,7 +19,6 @@ void ofApp::setup(){
     //update the LEDwave pointer on the textManager to point to the wavesPanels controlled by Display System
     vs.tm.wavesPanels = ds.wavesPanels;
 
-    
     //setup event listeners
     gui.saveSetupButton.addListener(this, &ofApp::saveWaveSetup);
     gui.modeToggle.addListener(this, &ofApp::onModeToggle);
@@ -129,14 +128,13 @@ void ofApp::keyPressed(int key){
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
     switch(key){
-        case 't':
-            ds.enterTestMode();
-            break;
-        case 'l':
-            ds.enterLiveMode();
-            break;
         case ' ':
             gui.isHidden = !gui.isHidden;
+            if(gui.isHidden)
+                ds.enterLiveMode();
+            else
+                ds.enterTestMode();
+            break;
         case 'f':
             isFullScreen = ! isFullScreen;
             ofSetFullscreen(isFullScreen);

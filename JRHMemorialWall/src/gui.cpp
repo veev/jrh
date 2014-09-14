@@ -61,7 +61,6 @@ void gui::setup(int x){
     //guiPanel.setup(visualSystemParams);
     guiPanel.add(saveSetupButton.setup("SAVE SETUP"));
     guiPanel.add(modeToggle.setup("TOGGLE LIVE MODE", true));
-    guiPanel.add(hideGuiButton.setup("HIDE GUI"));
     guiPanel.add(dsParams);
     guiPanel.add(visualSystemParams);
     guiPanel.add(cvParams);

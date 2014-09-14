@@ -12,6 +12,8 @@
 	<dict>
 		<key>8332E24A-DF75-4451-998C-16AE4A25311B</key>
 		<string>https://github.com/veev/jrh.git</string>
+		<key>860259D4-05AD-4921-B72A-7407383C7EC9</key>
+		<string>https://github.com/toolbits/ofxWatchdog.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>JRHMemorialWall/JRHMemorialWall.xcodeproj/project.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>8332E24A-DF75-4451-998C-16AE4A25311B</key>
 		<string>../../..</string>
+		<key>860259D4-05AD-4921-B72A-7407383C7EC9</key>
+		<string>../../../../../addons/ofxWatchdog</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/veev/jrh.git</string>
@@ -35,6 +39,14 @@
 			<string>8332E24A-DF75-4451-998C-16AE4A25311B</string>
 			<key>IDESourceControlWCCName</key>
 			<string>jrh</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>860259D4-05AD-4921-B72A-7407383C7EC9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxWatchdog</string>
 		</dict>
 	</array>
 </dict>
