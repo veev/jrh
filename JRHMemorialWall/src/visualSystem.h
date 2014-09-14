@@ -18,7 +18,7 @@
 class visualSystem{
     
     public:
-    visualSystem();
+    void init(int w=600, int h=400);
     ofFbo * getFrame();
     void loadTestMovie(string path);
     void update();

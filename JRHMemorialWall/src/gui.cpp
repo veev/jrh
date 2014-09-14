@@ -15,7 +15,7 @@ gui::gui(){
     
 }
 
-void gui::setup(){
+void gui::setup(int x){
     
     //display system
     dsParams.setName("Display System");
@@ -55,7 +55,7 @@ void gui::setup(){
 
     
     //create the gui
-    guiPanel.setup("GUI","gui_settings.xml",810,10);
+    guiPanel.setup("GUI","gui_settings.xml", x,10);
     guiPanel.setWidthElements(200);
     
     //guiPanel.setup(visualSystemParams);

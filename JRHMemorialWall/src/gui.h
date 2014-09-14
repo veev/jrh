@@ -15,7 +15,7 @@ class gui{
     
 public:
     gui();
-    void setup();
+    void setup(int x=0);
     void update();
     void draw();
     void hide(bool control = true);

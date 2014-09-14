@@ -12,9 +12,9 @@
 
 
 
-visualSystem::visualSystem(){
-    width=600;
-    height=400;
+void visualSystem::init(int w, int h){
+    width=w;
+    height=h;
     
     mouseX = -100;
     mouseY = -100;
