@@ -10,12 +10,21 @@ void ofApp::setup(){
     
     ofSetFrameRate(20);
     
+    int vsw = DataManager::settings.getAttribute("visualSystem", "width", 600);
+    int vsh = DataManager::settings.getAttribute("visualSystem", "height", 400);
+    vs.init(vsw, vsh);
+    //load the test movie
+    vs.loadTestMovie(DataManager::getTestVideoPath());
+    
+    //update the LEDwave pointer on the textManager to point to the wavesPanels controlled by Display System
+    vs.tm.wavesPanels = ds.wavesPanels;
+
     //setup event listeners
     gui.saveSetupButton.addListener(this, &ofApp::saveWaveSetup);
     gui.modeToggle.addListener(this, &ofApp::onModeToggle);
     gui.showKinect.addListener(this, &ofApp::onKinectToggle);
     
-    gui.setup();
+    gui.setup(vsw+20);
     
     int port = DataManager::settings.getValue("ledStrips:port", 4445);
     //create wave objects
@@ -52,12 +61,7 @@ void ofApp::setup(){
     //make sure we pop back to the root after pushing...
     DataManager::settings.popTag();
     
-    //load the test movie
-    vs.loadTestMovie(DataManager::getTestVideoPath());
-    
-    //update the LEDwave pointer on the textManager to point to the wavesPanels controlled by Display System
-    vs.tm.wavesPanels = ds.wavesPanels;
-}
+    }
 
 void ofApp::saveWaveSetup(){
     cout<<"ofApp::saveWaveSetup"<<endl;
@@ -69,6 +73,8 @@ void ofApp::onModeToggle(bool & control){
         ds.enterLiveMode();
     else
         ds.enterTestMode();
+    
+    gui.isHidden = control;
 }
 
 void ofApp::onKinectToggle(bool & control){
@@ -96,6 +102,7 @@ void ofApp::update(){
     vs.cv.contourFinderThreshold = gui.contourFinderThresh;
     vs.kinectMix = gui.kinectMix;
     vs.cv.flipVertical = gui.flipVertical;
+    vs.cv.flipH = gui.flipH;
     frame = vs.getFrame();
     
    // ds.updateDisplayAsImage(vs.getFrameAsImage());
@@ -113,6 +120,8 @@ void ofApp::draw(){
         
     if(!gui.isHidden)
         gui.draw();
+    else
+        ofDrawBitmapString("LIVE MODE [press spacebar to exit]", 10, ds.height + 20);
 }
 
 //--------------------------------------------------------------
@@ -123,14 +132,13 @@ void ofApp::keyPressed(int key){
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
     switch(key){
-        case 't':
-            ds.enterTestMode();
-            break;
-        case 'l':
-            ds.enterLiveMode();
-            break;
         case ' ':
             gui.isHidden = !gui.isHidden;
+            if(gui.isHidden)
+                ds.enterLiveMode();
+            else
+                ds.enterTestMode();
+            break;
         case 'f':
             isFullScreen = ! isFullScreen;
             ofSetFullscreen(isFullScreen);
@@ -175,6 +183,11 @@ void ofApp::keyReleased(int key){
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
     vs.mouseMoved(x, y-displaySystemYOffset);
+    
+    if(x < ds.width && y < ds.height)
+        ofHideCursor();
+    else
+        ofShowCursor();
 }
 
 //--------------------------------------------------------------

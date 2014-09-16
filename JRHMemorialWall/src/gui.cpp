@@ -12,10 +12,11 @@ gui::gui(){
     //setup listeners
    hideGuiButton.addListener(this, &gui::onHideGuiButton);
    // modeToggle.addListener(this, &gui::onModeToggle);
+    isHidden = false;
     
 }
 
-void gui::setup(){
+void gui::setup(int x){
     
     //display system
     dsParams.setName("Display System");
@@ -51,15 +52,16 @@ void gui::setup(){
     cvParams.add(showKinect.set("SHOW KINECT", false));
     cvParams.add(kinectMix.set("Kinect Mix", 50, 0, 255));
     cvParams.add(flipVertical.set("Flip V", false));
+    cvParams.add(flipH.set("Flip H", false));
+
     
     //create the gui
-    guiPanel.setup("GUI","gui_settings.xml",810,10);
+    guiPanel.setup("GUI","gui_settings.xml", x,10);
     guiPanel.setWidthElements(200);
     
     //guiPanel.setup(visualSystemParams);
     guiPanel.add(saveSetupButton.setup("SAVE SETUP"));
     guiPanel.add(modeToggle.setup("TOGGLE LIVE MODE", true));
-    guiPanel.add(hideGuiButton.setup("HIDE GUI"));
     guiPanel.add(dsParams);
     guiPanel.add(visualSystemParams);
     guiPanel.add(cvParams);

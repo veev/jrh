@@ -15,6 +15,8 @@ displaySystem::displaySystem(){
     mode = TEST_MODE;
     debugYOffset = 300;
     mirrorStrips = false;
+    
+    width = height = 0;
 }
 
 void displaySystem::init(){
@@ -27,6 +29,10 @@ void displaySystem::addPanelsWave(int x, int y, int w, int h, int idNum){
     ledWavePanels * wave = new ledWavePanels(x, y, w, h, idNum);
     wavesPanels.push_back(wave);
     
+    //update overall ds width and height values
+    if(w>width)
+        width = w;
+    height += h;
 }
 
 //create an instance of the StripWave object

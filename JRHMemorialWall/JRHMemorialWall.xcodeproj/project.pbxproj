@@ -33,6 +33,7 @@
 		233117F2199576B10089EBA4 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 233117E9199576B10089EBA4 /* libftgl.a */; };
 		2344B6F1196F40C100D737F0 /* strip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2344B6EF196F40C100D737F0 /* strip.cpp */; };
 		235ED477196B3185006D6AD5 /* visualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 235ED475196B3185006D6AD5 /* visualSystem.cpp */; };
+		236733F719C6316100AA910A /* ofxWatchdog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 236733F519C6316100AA910A /* ofxWatchdog.cpp */; };
 		23714909196E244500A5B58B /* lumigeekSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23714907196E244500A5B58B /* lumigeekSender.cpp */; };
 		2398C916195B7B4B00842F6A /* displaySystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2398C914195B7B4B00842F6A /* displaySystem.cpp */; };
 		2398C919195B7BC500842F6A /* computerVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2398C917195B7BC500842F6A /* computerVision.cpp */; };
@@ -252,6 +253,8 @@
 		235ED475196B3185006D6AD5 /* visualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = visualSystem.cpp; sourceTree = "<group>"; };
 		235ED476196B3185006D6AD5 /* visualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visualSystem.h; sourceTree = "<group>"; };
 		23640F57DF6C4BB6BFC5DA4C /* PacketListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PacketListener.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/PacketListener.h; sourceTree = SOURCE_ROOT; };
+		236733F519C6316100AA910A /* ofxWatchdog.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxWatchdog.cpp; sourceTree = "<group>"; };
+		236733F619C6316100AA910A /* ofxWatchdog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxWatchdog.h; sourceTree = "<group>"; };
 		23714907196E244500A5B58B /* lumigeekSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lumigeekSender.cpp; sourceTree = "<group>"; };
 		23714908196E244500A5B58B /* lumigeekSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lumigeekSender.h; sourceTree = "<group>"; };
 		2398C914195B7B4B00842F6A /* displaySystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = displaySystem.cpp; sourceTree = "<group>"; };
@@ -899,6 +902,24 @@
 			name = visualSystem;
 			sourceTree = "<group>";
 		};
+		236733F319C6316100AA910A /* ofxWatchdog */ = {
+			isa = PBXGroup;
+			children = (
+				236733F419C6316100AA910A /* src */,
+			);
+			name = ofxWatchdog;
+			sourceTree = "<group>";
+		};
+		236733F419C6316100AA910A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				236733F519C6316100AA910A /* ofxWatchdog.cpp */,
+				236733F619C6316100AA910A /* ofxWatchdog.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxWatchdog/src;
+			sourceTree = "<group>";
+		};
 		2398C91D195B7C9700842F6A /* displaySystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -1192,6 +1213,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				236733F319C6316100AA910A /* ofxWatchdog */,
 				233117C1199576B10089EBA4 /* ofxFTGL */,
 				233117821991DB790089EBA4 /* ofxCv */,
 				233117531991BF780089EBA4 /* ofxFX */,
@@ -1567,6 +1589,7 @@
 				235ED477196B3185006D6AD5 /* visualSystem.cpp in Sources */,
 				169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */,
 				FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */,
+				236733F719C6316100AA910A /* ofxWatchdog.cpp in Sources */,
 				2398C919195B7BC500842F6A /* computerVision.cpp in Sources */,
 				233117B51991DB790089EBA4 /* Wrappers.cpp in Sources */,
 				233117C0199574680089EBA4 /* textManager.cpp in Sources */,
