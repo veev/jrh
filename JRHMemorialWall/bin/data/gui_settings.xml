@@ -26,7 +26,7 @@
 		</Computer_Vision>
 	<Display_System>
 			<mirror_strips>1</mirror_strips>
-		<Panel_Color>206, 252, 255, 255</Panel_Color>
+		<Panel_Color>205, 251, 255, 255</Panel_Color>
 			<Strip_Color>255, 234, 189, 255</Strip_Color>
 		<Panel_Hue>130</Panel_Hue>
 			<Panel_Brightness>255</Panel_Brightness>
