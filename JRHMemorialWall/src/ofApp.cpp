@@ -3,6 +3,8 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+    ofHideCursor();
+    
     isFullScreen = true;
     DataManager::init();
     
