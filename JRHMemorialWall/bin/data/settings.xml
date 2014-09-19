@@ -1,17 +1,17 @@
-<visualSystem width="600" height="400"/>
+<visualSystem width="600" height="400" />
 <panel width="32" height="16" />
 <testVideoPath>../../../media/test2.mp4</testVideoPath>
 <ledStrips>
     <port>4445</port>
 </ledStrips>
 <waves>
-    <wave id="1" type="panels" width="320" height="16" x="46" y="10" />
-    <wave id="2" type="panels" width="448" height="32" x="42" y="30" />
-    <wave id="3" type="strips" width="468" height="38" x="40" y="64" numLeds="0" host="192.168.4.5" />
-    <wave id="4" type="panels" width="480" height="48" x="40" y="109" />
-    <wave id="5" type="strips" width="441" height="51" x="39" y="161" numLeds="0" host="192.168.4.6" />
-    <wave id="6" type="panels" width="320" height="48" x="86" y="220" />
-    <wave id="7" type="strips" width="371" height="46" x="78" y="271" numLeds="0" host="192.168.4.7" />
+    <wave id="1" type="panels" width="320" height="16" x="216" y="58" />
+    <wave id="2" type="panels" width="448" height="32" x="86" y="80" />
+    <wave id="3" type="strips" width="468" height="38" x="77" y="116" numLeds="0" host="192.168.4.5" />
+    <wave id="4" type="panels" width="480" height="48" x="42" y="161" />
+    <wave id="5" type="strips" width="441" height="51" x="52" y="216" numLeds="0" host="192.168.4.3" />
+    <wave id="6" type="panels" width="320" height="48" x="59" y="269" />
+    <wave id="7" type="strips" width="371" height="46" x="88" y="322" numLeds="0" host="192.168.4.7" />
 </waves>
 <!--FONTS-->
 <fonts path="fonts">
