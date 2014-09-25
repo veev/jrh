@@ -99,6 +99,8 @@ void visualSystem::update(){
     ofSetColor(0, 0, 0, fadeAmt);
     ofRect(0,0,width,height);
 
+    //PARTICLE SYSTEM DRAWING STARTS HERE
+    if(isOn){
 	ofSetColor(lineOpacity, lineOpacity, lineOpacity, 255);
 	particleSystem.setupForces();
     
@@ -130,24 +132,24 @@ void visualSystem::update(){
         particleSystem.addRepulsionForce(center.x, center.y, rect.width, 5);
     }
 	
-    //if(isMouseMoved)
+    //mouse interaction
     particleSystem.addRepulsionForce(mouseX, mouseY, 50, 5);
 	particleSystem.update();
     
-
     ofSetColor(pointOpacity, pointOpacity, pointOpacity, 255);
     particleSystem.draw();
     
     
     ofDisableAlphaBlending();
-    // ofSetColor(255);
-    //testMovie.draw(0,0,800,600);
+        
+    }
     display->end();
 
    /* glow.setTexture(display->getTextureReference());
     glow.setRadius(sin( ofGetElapsedTimef() )*150);
     glow.update();*/
 
+    if(isOn){
     blur.setTexture(display->getTextureReference());
     blur.setRadius(blurAmount);
     blur.update();
@@ -167,6 +169,7 @@ void visualSystem::update(){
     ofDisableAlphaBlending();
     tm.draw();
     display->end();
+    }
 }
 
 ofFbo * visualSystem::getFrame(){

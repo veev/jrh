@@ -88,9 +88,11 @@ void ofApp::update(){
     gui.update();
     
     //pull new frame from visual system
+    
     ds.mirrorStrips = gui.mirrorLEDStrips;
     ds.ledPanelsColor = gui.ledPanelsColor;
     ds.ledStripsColor = gui.ledStripsColor;
+    vs.isOn = !gui.disableSignal;
     vs.timeSpeed = gui.flowSpeed;
     vs.timeStep = gui.timeSpeed;
     vs.hForce = gui.horizontalForce;
@@ -117,7 +119,8 @@ void ofApp::draw(){
    // frame = vs.getFrame();
    // ds.updateDisplay(frame);
 
-    ofBackground(20);
+    ofBackground(0);
+    ofSetColor(255,255,255,255);
     ds.draw(displaySystemYOffset);
         
     if(!gui.isHidden)

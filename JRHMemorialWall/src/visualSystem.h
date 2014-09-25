@@ -66,7 +66,7 @@ class visualSystem{
     
     float blurAmount;
     int kinectMix;
-    bool showKinect;
+    bool showKinect, isOn;
     
     textManager tm;
 
