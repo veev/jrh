@@ -16,6 +16,9 @@ void visualSystem::init(int w, int h){
     width=w;
     height=h;
     
+    displayPixels.allocate(w, h, OF_IMAGE_COLOR);
+   // textPixels.allocate(w, h, OF_IMAGE_COLOR);
+    
     mouseX = -100;
     mouseY = -100;
     
@@ -41,7 +44,7 @@ void visualSystem::init(int w, int h){
     
 	particleSystem.setup(width, height, binPower);
     
-	kParticles = 20;
+	kParticles = 40;
 	float padding = 0;
 	float maxVelocity = 5;
 	for(int i = 0; i < kParticles * 1024; i++) {
@@ -91,6 +94,9 @@ void visualSystem::update(){
     particleSystem.setTimeStep(timeStep);
     t = ofGetFrameNum() * timeSpeed;
     
+    display->readToPixels(displayPixels);
+    
+    
     //draw to FBO
     display->begin();
 
@@ -122,7 +128,11 @@ void visualSystem::update(){
         cur.applyForce(getField(pos));
         
         //stop the particle if it is over an empty area with text
-        
+        if(displayPixels.getColor(cur.x, cur.y).getBrightness() < 230){
+            if(tm.pixels.getColor(cur.x, cur.y).getBrightness() > 0){
+                cur.stop();
+            }
+        }
 	}
 	glEnd();
 	

@@ -3,14 +3,14 @@
 		<TOGGLE_LIVE_MODE>0</TOGGLE_LIVE_MODE>
 		<Visual_System>
 			<turbulence>0.0586735</turbulence>
-			<particle_speed>0.255102</particle_speed>
+			<particle_speed>0.632653</particle_speed>
 			<density>8.36735</density>
-			<H_force>0.306122</H_force>
-			<V_force>0.132653</V_force>
-			<fade_amount>23</fade_amount>
-			<p_neighborhood>1.12245</p_neighborhood>
-			<p_repulsion>0.112245</p_repulsion>
-		<blur>4</blur>
+			<H_force>0.112245</H_force>
+			<V_force>0.25</V_force>
+			<fade_amount>111</fade_amount>
+			<p_neighborhood>0.459184</p_neighborhood>
+			<p_repulsion>1</p_repulsion>
+		<blur>3</blur>
 		</Visual_System>
 	<group>
 			<Contour_Threshol>191.25</Contour_Threshol>
@@ -36,5 +36,6 @@
 			<Strip_Brightness>255</Strip_Brightness>
 			<Strip_Saturation>91</Strip_Saturation>
 		</Display_System>
+	<LEDs_ON>0</LEDs_ON>
 	</GUI>
 </guiSettings>

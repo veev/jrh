@@ -22,6 +22,7 @@ textManager::textManager(){
 
 void textManager::setup(int width, int height){
     textFbo.allocate(width, height);
+    pixels.allocate(width, height, OF_IMAGE_COLOR);
 }
 
 void textManager::update(){
@@ -78,7 +79,7 @@ void textManager::update(){
          DataManager::settings.popTag();
          DataManager::settings.popTag();*/
     
-
+    textFbo.readToPixels(pixels);
 }
 
 void textManager::draw(){

@@ -23,11 +23,13 @@ public:
     
     int activeQuoteID, lineSpacing, padding;
     vector <ledWavePanels *> wavesPanels;
+    ofPixels pixels;
 
     
 private:
     ofxFTGLFont font;
     ofImage quote, croppedQuote;
     ofFbo textFbo;
+    
     
 };

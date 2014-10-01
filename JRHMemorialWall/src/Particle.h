@@ -90,4 +90,10 @@ public:
         xv += f.x;
         yv += f.y;
     }
+    
+    void stop(){
+        xv = 0;
+        yv = 0;
+        resetForce();
+    }
 };
