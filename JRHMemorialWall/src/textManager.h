@@ -16,7 +16,7 @@ class textManager{
     
 public:
     textManager();
-    void setup(string dataPath);
+    void setup(int width, int height);
     void update();
     void draw();
     void setActiveQuote(int quoteId);
@@ -27,6 +27,7 @@ public:
     
 private:
     ofxFTGLFont font;
-
+    ofImage quote, croppedQuote;
+    ofFbo textFbo;
     
 };

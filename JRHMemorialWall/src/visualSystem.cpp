@@ -27,6 +27,8 @@ void visualSystem::init(int w, int h){
     
     display = new ofFbo();
     display->allocate(width,height,GL_RGB);
+    
+    tm.setup(w, h);
 
     //particle system
     // this number describes how many bins are used
@@ -84,6 +86,7 @@ void visualSystem::loadTestMovie(string path){
 
 void visualSystem::update(){
     cv.update();
+    tm.update();
     
     particleSystem.setTimeStep(timeStep);
     t = ofGetFrameNum() * timeSpeed;
@@ -112,18 +115,17 @@ void visualSystem::update(){
 		// global force on other particles
 		particleSystem.addRepulsionForce(cur, particleNeighborhood, particleRepulsion);
 		// forces on this particle
-		//cur.bounceOffWalls(0, 0, width, height);
         cur.loopAround(0,0,width,height);
-		cur.addDampingForce();
+		cur.addDampingForce(); //slows the particle down
         //apply noise field force to the particle
         pos.set(cur.x,cur.y);
         cur.applyForce(getField(pos));
-        //apply 
+        
+        //stop the particle if it is over an empty area with text
+        
 	}
 	glEnd();
 	
-    // single global forces
-	//particleSystem.addAttractionForce(width / 2, height / 2, width, centerAttraction);
     
     //add forces for blobs from kinect
     for(int i=0;i<cv.contourFinder.size();i++){
@@ -145,29 +147,36 @@ void visualSystem::update(){
     }
     display->end();
 
-   /* glow.setTexture(display->getTextureReference());
-    glow.setRadius(sin( ofGetElapsedTimef() )*150);
-    glow.update();*/
 
+    
     if(isOn){
+        //apply the blur
     blur.setTexture(display->getTextureReference());
     blur.setRadius(blurAmount);
     blur.update();
 
     //Apply blur FX
     display->begin();
-    ofClear(0);
-    //draw text layer here
-    //tm.update();
-    
-    blur.draw(0,0);
-    if(showKinect){
+        ofClearAlpha();
         ofEnableAlphaBlending();
+        ofSetColor(255,255,255,255);
+      //  tm.draw();
+        
+    //draw the blurred particle system
+    blur.draw(0,0);
+        
+        //draw the kinect image (for debugging)
+    if(showKinect){
+      //  ofEnableAlphaBlending();
         ofSetColor(255, 255, 255, kinectMix);
         cv.draw();
+        //ofDisableAlphaBlending();
     }
-    ofDisableAlphaBlending();
-    tm.draw();
+    
+     //   ofSetColor(255, 255, 255, 10);
+    //tm.draw();
+        
+        ofDisableAlphaBlending();
     display->end();
     }
 }

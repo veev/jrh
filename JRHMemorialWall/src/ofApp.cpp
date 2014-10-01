@@ -18,8 +18,6 @@ void ofApp::setup(){
     //load the test movie
     vs.loadTestMovie(DataManager::getTestVideoPath());
     
-    //update the LEDwave pointer on the textManager to point to the wavesPanels controlled by Display System
-    vs.tm.wavesPanels = ds.wavesPanels;
 
     //setup event listeners
     gui.saveSetupButton.addListener(this, &ofApp::saveWaveSetup);
@@ -62,6 +60,9 @@ void ofApp::setup(){
     }
     //make sure we pop back to the root after pushing...
     DataManager::settings.popTag();
+    
+    //update the LEDwave pointer on the textManager to point to the wavesPanels controlled by Display System
+    vs.tm.wavesPanels = ds.wavesPanels;
     
     }
 
