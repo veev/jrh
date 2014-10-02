@@ -36,5 +36,6 @@
 			<Strip_Brightness>255</Strip_Brightness>
 			<Strip_Saturation>91</Strip_Saturation>
 		</Display_System>
+	<Disable_Signal>1</Disable_Signal>
 	</GUI>
 </guiSettings>
