@@ -69,5 +69,8 @@ class visualSystem{
     bool showKinect, isOn;
     
     textManager tm;
+    
+private:
+    ofPixels displayPixels, textPixels;
 
 };

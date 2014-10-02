@@ -36,6 +36,10 @@
 			<Strip_Brightness>255</Strip_Brightness>
 			<Strip_Saturation>91</Strip_Saturation>
 		</Display_System>
+<<<<<<< HEAD
+	<Disable_Signal>1</Disable_Signal>
+=======
 	<LEDs_ON>0</LEDs_ON>
+>>>>>>> FETCH_HEAD
 	</GUI>
 </guiSettings>

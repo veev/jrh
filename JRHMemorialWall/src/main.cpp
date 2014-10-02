@@ -10,7 +10,7 @@ int main( ){
     //   reboot : automatically restart the process
     // override : use internal signal handler (optional)
     //  verbose : print more log information (optional)
-    ofxWatchdog::watch(3000, true, true, true);
+    ofxWatchdog::watch(5000, true, true, true);
     
 	ofSetupOpenGL(1024,768,OF_FULLSCREEN);			// <-------- setup the GL context
 
