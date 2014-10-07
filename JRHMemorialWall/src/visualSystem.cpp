@@ -15,6 +15,7 @@
 void visualSystem::init(int w, int h){
     width=w;
     height=h;
+    particleBrightnessShift = 10;
     
     displayPixels.allocate(w, h, OF_IMAGE_COLOR);
    // textPixels.allocate(w, h, OF_IMAGE_COLOR);
@@ -126,6 +127,7 @@ void visualSystem::update(){
         //apply noise field force to the particle
         pos.set(cur.x,cur.y);
         cur.applyForce(getField(pos));
+        cur.updateColor(particleBrightnessShift);
         
         //stop the particle if it is over an empty area with text
         if(displayPixels.getColor(cur.x, cur.y).getBrightness() < 230){

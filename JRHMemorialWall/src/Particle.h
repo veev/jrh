@@ -7,14 +7,14 @@ public:
 	float x, y;
 	float xv, yv;
 	float xf, yf;
-    ofColor color;
+    float _particleBrightnessShift;
     
 	Particle(float _x = 0, float _y = 0,
 		float _xv = 0, float _yv = 0) :
 		x(_x), y(_y),
 		xv(_xv), yv(_yv) {
             //white by default
-            color.set(255);
+           // color.set(255);
 	}
 	void updatePosition(float timeStep) {
 		// f = ma, m = 1, f = a, v = int(a)
@@ -23,6 +23,11 @@ public:
 		x += xv * timeStep;
 		y += yv * timeStep;
 	}
+    
+    void updateColor(float particleBrightnessShift){
+        _particleBrightnessShift = particleBrightnessShift;
+    }
+    
 	void resetForce() {
 		xf = 0;
 		yf = 0;
@@ -92,7 +97,7 @@ public:
        // cout<<"xv: "<<xv<<" yv: "<<yv<<endl;
         //ofSetColor(xf,255,yf);
     
-        float b = ofClamp(1-(abs(yv)+abs(xv))/10, 0, 1);
+        float b = ofClamp(1-(abs(yv)+abs(xv))/_particleBrightnessShift, 0, 1);
        // cout<<"b: "<<b<<endl;
         glColor3f(b, b, b);
 		glVertex2f(x, y);

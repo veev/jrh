@@ -42,7 +42,7 @@ class visualSystem{
     float t;
     
     //particle system
-    float timeStep;
+    float timeStep, particleBrightnessShift;
 	int lineOpacity, pointOpacity;
 	float particleNeighborhood, particleRepulsion;
 	float centerAttraction;

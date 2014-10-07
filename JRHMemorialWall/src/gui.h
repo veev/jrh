@@ -28,7 +28,7 @@ public:
     ofxToggle modeToggle;
     ofParameterGroup visualSystemParams, cvParams, dsParams;
     ofParameter<float> flowSpeed, timeSpeed, flowComplexity, horizontalForce, verticalForce, particleNeighborhood, particleRepulsion, contourFinderThresh;
-    ofParameter<int> fadeAmt, blur, kinectMix, ledPanelHue, ledStripHue, ledPanelBrightness, ledStripBrightness, ledPanelSaturation, ledStripSaturation;
+    ofParameter<int> fadeAmt, blur, kinectMix, ledPanelHue, ledStripHue, ledPanelBrightness, ledStripBrightness, ledPanelSaturation, ledStripSaturation, particleBrightnessShift;
     ofParameter<bool> showKinect, flipVertical, flipH, mirrorLEDStrips, disableSignal;
     ofParameter<ofColor> ledPanelsColor, ledStripsColor;
     

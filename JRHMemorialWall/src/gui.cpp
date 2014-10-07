@@ -44,7 +44,9 @@ void gui::setup(int x){
     visualSystemParams.add(fadeAmt.set("fade amount",100,0,255));
     visualSystemParams.add(particleNeighborhood.set("p neighborhood",4,0,10));
     visualSystemParams.add(particleRepulsion.set("p repulsion",1,-1,1));
-    visualSystemParams.add(blur.set("blur",1,0,20));
+    visualSystemParams.add(blur.set("blur",1,0,10));
+    visualSystemParams.add(particleBrightnessShift.set("Particle Brightness",10,0,100));
+
 
     //cv params
     cvParams.setName("Computer Vision");

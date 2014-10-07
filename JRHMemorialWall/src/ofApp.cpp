@@ -108,6 +108,7 @@ void ofApp::update(){
     vs.kinectMix = gui.kinectMix;
     vs.cv.flipVertical = gui.flipVertical;
     vs.cv.flipH = gui.flipH;
+    vs.particleBrightnessShift = gui.particleBrightnessShift;
     frame = vs.getFrame();
     
    // ds.updateDisplayAsImage(vs.getFrameAsImage());
