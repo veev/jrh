@@ -64,7 +64,7 @@ class visualSystem{
     ofxMultiTexture mult;
     ofxGaussianBlur blur;
     
-    float blurAmount;
+    float blurAmount, depthCutoff, depthForce;
     int kinectMix;
     bool showKinect, isOn;
     

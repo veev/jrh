@@ -46,8 +46,14 @@ void computerVision::update(){
 		// load grayscale depth image from the kinect source
 		grayImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
         grayImage.mirror(flipVertical, flipH);
-		contourFinder.setThreshold(contourFinderThreshold);
-		contourFinder.findContours(grayImage);
+        
+        
+        
+        if(contourFinderOn){
+            contourFinder.setThreshold(contourFinderThreshold);
+            contourFinder.findContours(grayImage);
+        }
+        
     }
     
 }

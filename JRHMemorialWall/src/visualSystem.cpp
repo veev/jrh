@@ -157,8 +157,8 @@ void visualSystem::update(){
         //cout<<"depthValue: "<<depthValue<<endl;
         
         
-        if(depthValue >150){
-            cur.repel((depthValue/255)*2.3);
+        if(depthValue > depthCutoff){
+            cur.repel((depthValue/255)*depthForce);
         }
         else{
             cur.wasRepeled = false;
@@ -170,11 +170,11 @@ void visualSystem::update(){
 	
     
     //add forces for blobs from kinect
-    /*for(int i=0;i<cv.contourFinder.size();i++){
+    for(int i=0;i<cv.contourFinder.size();i++){
         cv::Point2f center = cv.contourFinder.getCenter(i);
         cv::Rect rect = cv.contourFinder.getBoundingRect(i);
         particleSystem.addRepulsionForce(center.x, center.y, rect.width, 5);
-    }*/
+    }
 	
     //mouse interaction
     particleSystem.addRepulsionForce(mouseX, mouseY, 50, 5);

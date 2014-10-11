@@ -12,6 +12,8 @@
 			<p_repulsion>0.0714285</p_repulsion>
 		<blur>3</blur>
 		<Particle_Brightness>95</Particle_Brightness>
+		<Depth_Cutoff>188.648</Depth_Cutoff>
+			<Depth_Force>2.11735</Depth_Force>
 		</Visual_System>
 	<group>
 			<Contour_Threshol>191.25</Contour_Threshol>
@@ -25,6 +27,7 @@
 			<Kinect_Mix>117</Kinect_Mix>
 			<Flip_V>1</Flip_V>
 		<Flip_H>0</Flip_H>
+		<Contour_Finder>0</Contour_Finder>
 		</Computer_Vision>
 	<Display_System>
 			<mirror_strips>0</mirror_strips>
