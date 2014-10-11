@@ -84,7 +84,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>860259D4-05AD-4921-B72A-7407383C7EC9</string>
+			<string>BB48781AAC70C89AED1A649A93F25300AFE948DD</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxWatchdog</string>
 		</dict>
@@ -92,7 +92,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>BB48781AAC70C89AED1A649A93F25300AFE948DD</string>
+			<string>860259D4-05AD-4921-B72A-7407383C7EC9</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxWatchdog</string>
 		</dict>

@@ -8,13 +8,13 @@ public:
 	float xv, yv;
 	float xf, yf;
     float _particleBrightnessShift;
+    bool wasRepeled;
     
 	Particle(float _x = 0, float _y = 0,
 		float _xv = 0, float _yv = 0) :
 		x(_x), y(_y),
 		xv(_xv), yv(_yv) {
-            //white by default
-           // color.set(255);
+            wasRepeled = false;
 	}
 	void updatePosition(float timeStep) {
 		// f = ma, m = 1, f = a, v = int(a)
@@ -22,6 +22,7 @@ public:
 		yv += yf;
 		x += xv * timeStep;
 		y += yv * timeStep;
+       // wasRepeled = false;
 	}
     
     void updateColor(float particleBrightnessShift){
@@ -106,6 +107,21 @@ public:
     void applyForce(ofVec2f f){
         xv += f.x;
         yv += f.y;
+    }
+    
+    void repel(float amt){
+        //BLACK = 0, want force to be 1
+        //WHITE = 1, want for to be -1
+        float f = (1-amt);
+        
+        if(wasRepeled)
+            f*=-1;
+        
+        
+        xv *= f;
+        yv *= f;
+        
+        wasRepeled = true;
     }
     
     void stop(){

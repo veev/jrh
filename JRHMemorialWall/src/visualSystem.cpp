@@ -117,6 +117,11 @@ void visualSystem::update(){
 	// apply per-particle forces
 	glBegin(GL_LINES);
     ofVec2f pos;
+    
+    //get depth pixels from kinect image
+    ofPixels depthPixels;
+    depthPixels.setFromPixels(cv.grayImage.getPixels(), cv.grayImage.getWidth(), cv.grayImage.getHeight(), OF_IMAGE_GRAYSCALE);
+        
 	for(int i = 0; i < particleSystem.size(); i++) {
 		Particle& cur = particleSystem[i];
 		// global force on other particles
@@ -124,27 +129,52 @@ void visualSystem::update(){
 		// forces on this particle
         cur.loopAround(0,0,width,height);
 		cur.addDampingForce(); //slows the particle down
+        
+        
+        
+        
+        
         //apply noise field force to the particle
+        
+        
         pos.set(cur.x,cur.y);
         cur.applyForce(getField(pos));
         cur.updateColor(particleBrightnessShift);
         
+        //SHOW TEXT
         //stop the particle if it is over an empty area with text
         if(displayPixels.getColor(cur.x, cur.y).getBrightness() < 230){
             if(tm.pixels.getColor(cur.x, cur.y).getBrightness() > 0){
                 cur.stop();
             }
         }
+        
+        //effect particle speed based on kinect camera depth map
+        //cv.grayImage.getPixels()
+        
+        float depthValue = depthPixels.getColor(cur.x, cur.y).getBrightness();
+        //cout<< "depthValue: "<<depthValue<<endl;
+        //cout<<"depthValue: "<<depthValue<<endl;
+        
+        
+        if(depthValue >150){
+            cur.repel((depthValue/255)*2.3);
+        }
+        else{
+            cur.wasRepeled = false;
+        }
+        
+        
 	}
 	glEnd();
 	
     
     //add forces for blobs from kinect
-    for(int i=0;i<cv.contourFinder.size();i++){
+    /*for(int i=0;i<cv.contourFinder.size();i++){
         cv::Point2f center = cv.contourFinder.getCenter(i);
         cv::Rect rect = cv.contourFinder.getBoundingRect(i);
         particleSystem.addRepulsionForce(center.x, center.y, rect.width, 5);
-    }
+    }*/
 	
     //mouse interaction
     particleSystem.addRepulsionForce(mouseX, mouseY, 50, 5);

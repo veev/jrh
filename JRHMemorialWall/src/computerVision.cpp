@@ -49,6 +49,7 @@ void computerVision::update(){
 		contourFinder.setThreshold(contourFinderThreshold);
 		contourFinder.findContours(grayImage);
     }
+    
 }
 
 void computerVision::draw(){
