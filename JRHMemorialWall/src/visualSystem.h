@@ -66,7 +66,7 @@ class visualSystem{
     
     float blurAmount, depthCutoff, depthForce;
     int kinectMix;
-    bool showKinect, isOn;
+    bool showKinect, isOn, contourFinderOn;
     
     textManager tm;
     

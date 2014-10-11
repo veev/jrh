@@ -113,7 +113,7 @@ void ofApp::update(){
     vs.cv.contourFinderThreshold = gui.contourFinderThresh;
     vs.cv.flipVertical = gui.flipVertical;
     vs.cv.flipH = gui.flipH;
-    vs.cv.contourFinderOn = gui.contourFinder;
+    vs.contourFinderOn = gui.contourFinder;
     vs.depthCutoff = gui.depthMapCutoff;
     vs.depthForce = gui.depthMapForce;
     

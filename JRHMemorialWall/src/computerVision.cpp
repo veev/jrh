@@ -47,8 +47,6 @@ void computerVision::update(){
 		grayImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
         grayImage.mirror(flipVertical, flipH);
         
-        
-        
         if(contourFinderOn){
             contourFinder.setThreshold(contourFinderThreshold);
             contourFinder.findContours(grayImage);
@@ -61,7 +59,8 @@ void computerVision::update(){
 void computerVision::draw(){
     grayImage.draw(0, 0);
     ofSetLineWidth(2);
-	contourFinder.draw();
+    if(contourFinderOn)
+        contourFinder.draw();
 }
 
 

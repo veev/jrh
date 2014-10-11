@@ -22,7 +22,7 @@
 			<Kinect_Mix>113</Kinect_Mix>
 		</group>
 	<Computer_Vision>
-			<Contour_Threshold>31.2245</Contour_Threshold>
+			<Contour_Threshold>141.811</Contour_Threshold>
 			<SHOW_KINECT>0</SHOW_KINECT>
 			<Kinect_Mix>117</Kinect_Mix>
 			<Flip_V>1</Flip_V>
