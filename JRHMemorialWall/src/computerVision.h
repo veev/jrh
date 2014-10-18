@@ -29,6 +29,6 @@ class computerVision{
     ofxCv::ContourFinder contourFinder;
     float contourFinderThreshold;
     
-    bool flipVertical, flipH;
+    bool flipVertical, flipH, contourFinderOn;
 
 };

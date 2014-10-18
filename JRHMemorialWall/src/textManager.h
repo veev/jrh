@@ -20,8 +20,9 @@ public:
     void update();
     void draw();
     void setActiveQuote(int quoteId);
+    void fadeTo(int a, int speed);
     
-    int activeQuoteID, lineSpacing, padding;
+    int activeQuoteID, lineSpacing, padding, alpha;
     vector <ledWavePanels *> wavesPanels;
     ofPixels pixels;
 
@@ -30,6 +31,7 @@ private:
     ofxFTGLFont font;
     ofImage quote, croppedQuote;
     ofFbo textFbo;
+    int targetAlpha, fadeSpeed;
     
     
 };

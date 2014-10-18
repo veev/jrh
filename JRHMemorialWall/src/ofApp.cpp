@@ -88,11 +88,13 @@ void ofApp::onKinectToggle(bool & control){
 void ofApp::update(){
     gui.update();
     
-    //pull new frame from visual system
-    
+    //UPDATE GUI Vars
+    //Display System
     ds.mirrorStrips = gui.mirrorLEDStrips;
     ds.ledPanelsColor = gui.ledPanelsColor;
     ds.ledStripsColor = gui.ledStripsColor;
+    
+    //Visual System
     vs.isOn = !gui.disableSignal;
     vs.timeSpeed = gui.flowSpeed;
     vs.timeStep = gui.timeSpeed;
@@ -104,10 +106,17 @@ void ofApp::update(){
     vs.particleRepulsion = gui.particleRepulsion;
     vs.update();
     vs.blurAmount = gui.blur;
-    vs.cv.contourFinderThreshold = gui.contourFinderThresh;
     vs.kinectMix = gui.kinectMix;
+    vs.particleBrightnessShift = gui.particleBrightnessShift;
+    
+    //Computer Vision
+    vs.cv.contourFinderThreshold = gui.contourFinderThresh;
     vs.cv.flipVertical = gui.flipVertical;
     vs.cv.flipH = gui.flipH;
+    vs.contourFinderOn = gui.contourFinder;
+    vs.depthCutoff = gui.depthMapCutoff;
+    vs.depthForce = gui.depthMapForce;
+    
     frame = vs.getFrame();
     
    // ds.updateDisplayAsImage(vs.getFrameAsImage());

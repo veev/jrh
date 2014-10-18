@@ -42,7 +42,7 @@ class visualSystem{
     float t;
     
     //particle system
-    float timeStep;
+    float timeStep, particleBrightnessShift;
 	int lineOpacity, pointOpacity;
 	float particleNeighborhood, particleRepulsion;
 	float centerAttraction;
@@ -64,9 +64,9 @@ class visualSystem{
     ofxMultiTexture mult;
     ofxGaussianBlur blur;
     
-    float blurAmount;
+    float blurAmount, depthCutoff, depthForce;
     int kinectMix;
-    bool showKinect, isOn;
+    bool showKinect, isOn, contourFinderOn;
     
     textManager tm;
     

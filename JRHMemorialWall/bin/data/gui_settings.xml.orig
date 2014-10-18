@@ -2,15 +2,29 @@
 	<GUI>
 		<TOGGLE_LIVE_MODE>0</TOGGLE_LIVE_MODE>
 		<Visual_System>
-			<turbulence>0.0586735</turbulence>
+<<<<<<< HEAD
+			<turbulence>0.0459184</turbulence>
 			<particle_speed>0.632653</particle_speed>
 			<density>8.36735</density>
 			<H_force>0.112245</H_force>
-			<V_force>0.25</V_force>
-			<fade_amount>104</fade_amount>
-			<p_neighborhood>0.459184</p_neighborhood>
-			<p_repulsion>1</p_repulsion>
+			<V_force>0.132653</V_force>
+			<fade_amount>35</fade_amount>
+			<p_neighborhood>0</p_neighborhood>
+			<p_repulsion>-1</p_repulsion>
+=======
+			<turbulence>0.052551</turbulence>
+			<particle_speed>0.632653</particle_speed>
+			<density>8.36735</density>
+			<H_force>0.112245</H_force>
+			<V_force>0.142857</V_force>
+			<fade_amount>36</fade_amount>
+			<p_neighborhood>0.408163</p_neighborhood>
+			<p_repulsion>0.0714285</p_repulsion>
+>>>>>>> FETCH_HEAD
 		<blur>3</blur>
+		<Particle_Brightness>95</Particle_Brightness>
+		<Depth_Cutoff>188.648</Depth_Cutoff>
+			<Depth_Force>2.11735</Depth_Force>
 		</Visual_System>
 	<group>
 			<Contour_Threshol>191.25</Contour_Threshol>
@@ -19,11 +33,12 @@
 			<Kinect_Mix>113</Kinect_Mix>
 		</group>
 	<Computer_Vision>
-			<Contour_Threshold>31.2245</Contour_Threshold>
+			<Contour_Threshold>141.811</Contour_Threshold>
 			<SHOW_KINECT>0</SHOW_KINECT>
 			<Kinect_Mix>117</Kinect_Mix>
 			<Flip_V>1</Flip_V>
 		<Flip_H>0</Flip_H>
+		<Contour_Finder>0</Contour_Finder>
 		</Computer_Vision>
 	<Display_System>
 			<mirror_strips>0</mirror_strips>
@@ -36,10 +51,6 @@
 			<Strip_Brightness>255</Strip_Brightness>
 			<Strip_Saturation>91</Strip_Saturation>
 		</Display_System>
-<<<<<<< HEAD
-	<Disable_Signal>1</Disable_Signal>
-=======
-	<LEDs_ON>0</LEDs_ON>
->>>>>>> FETCH_HEAD
+	<LEDs_ON>1</LEDs_ON>
 	</GUI>
 </guiSettings>

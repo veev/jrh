@@ -15,6 +15,7 @@
 void visualSystem::init(int w, int h){
     width=w;
     height=h;
+    particleBrightnessShift = 10;
     
     displayPixels.allocate(w, h, OF_IMAGE_COLOR);
    // textPixels.allocate(w, h, OF_IMAGE_COLOR);
@@ -100,7 +101,7 @@ void visualSystem::update(){
     //draw to FBO
     display->begin();
 
-    ofEnableAlphaBlending();
+    //ofEnableAlphaBlending();
     //ofBackground(0,0,0,100);
    
     ofFill();
@@ -116,6 +117,11 @@ void visualSystem::update(){
 	// apply per-particle forces
 	glBegin(GL_LINES);
     ofVec2f pos;
+    
+    //get depth pixels from kinect image
+    ofPixels depthPixels;
+    depthPixels.setFromPixels(cv.grayImage.getPixels(), cv.grayImage.getWidth(), cv.grayImage.getHeight(), OF_IMAGE_GRAYSCALE);
+        
 	for(int i = 0; i < particleSystem.size(); i++) {
 		Particle& cur = particleSystem[i];
 		// global force on other particles
@@ -123,26 +129,56 @@ void visualSystem::update(){
 		// forces on this particle
         cur.loopAround(0,0,width,height);
 		cur.addDampingForce(); //slows the particle down
+        
+        
+        
+        
+        
         //apply noise field force to the particle
+        
+        
         pos.set(cur.x,cur.y);
         cur.applyForce(getField(pos));
+        cur.updateColor(particleBrightnessShift);
         
+        //SHOW TEXT
         //stop the particle if it is over an empty area with text
         if(displayPixels.getColor(cur.x, cur.y).getBrightness() < 230){
-            if(tm.pixels.getColor(cur.x, cur.y).getBrightness() > 0){
+            if(tm.pixels.getColor(cur.x, cur.y).getBrightness() > 20){
                 cur.stop();
             }
         }
+        
+        //effect particle speed based on kinect camera depth map
+        //cv.grayImage.getPixels()
+        
+        float depthValue = depthPixels.getColor(cur.x, cur.y).getBrightness();
+        //cout<< "depthValue: "<<depthValue<<endl;
+        //cout<<"depthValue: "<<depthValue<<endl;
+        
+        
+        if(depthValue > depthCutoff){
+            cur.repel((depthValue/255)*depthForce);
+        }
+        else{
+            cur.wasRepeled = false;
+        }
+        
+        
 	}
 	glEnd();
 	
     
     //add forces for blobs from kinect
+        if(contourFinderOn){
     for(int i=0;i<cv.contourFinder.size();i++){
         cv::Point2f center = cv.contourFinder.getCenter(i);
         cv::Rect rect = cv.contourFinder.getBoundingRect(i);
         particleSystem.addRepulsionForce(center.x, center.y, rect.width, 5);
     }
+        }
+        
+        cv.contourFinderOn = contourFinderOn;
 	
     //mouse interaction
     particleSystem.addRepulsionForce(mouseX, mouseY, 50, 5);
@@ -152,7 +188,7 @@ void visualSystem::update(){
     particleSystem.draw();
     
     
-    ofDisableAlphaBlending();
+   // ofDisableAlphaBlending();
         
     }
     display->end();
@@ -167,10 +203,22 @@ void visualSystem::update(){
 
     //Apply blur FX
     display->begin();
+        
+        //need to enable these special blame functions in order to properly blend apha PNGs
+        glPushAttrib(GL_ALL_ATTRIB_BITS);
+        
+        glEnable(GL_BLEND);
+        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,GL_ONE,GL_ONE_MINUS_SRC_ALPHA);
+        
+        //Draw stuff here
+        // ...
+        
+        
         ofClearAlpha();
-        ofEnableAlphaBlending();
+       // ofEnableAlphaBlending();
         ofSetColor(255,255,255,255);
-      //  tm.draw();
+        //draw text layer
+       // tm.draw();
         
     //draw the blurred particle system
     blur.draw(0,0);
@@ -184,9 +232,11 @@ void visualSystem::update(){
     }
     
      //   ofSetColor(255, 255, 255, 10);
-    //tm.draw();
+    tm.draw();
         
-        ofDisableAlphaBlending();
+       // ofDisableAlphaBlending();
+        glDisable(GL_BLEND);
+        glPopAttrib();
     display->end();
     }
 }

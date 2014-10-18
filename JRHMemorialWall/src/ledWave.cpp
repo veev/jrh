@@ -20,8 +20,8 @@ ledWavePanels::ledWavePanels(int x, int y, int w, int h, int idNum) : ledWave(x,
     type = DataManager::PANELS;
     
     //allocate the fbo size
-    _fbo.allocate(w, h);
-    image.allocate(w, h, OF_IMAGE_COLOR);
+    _fbo.allocate(w, h, GL_RGBA);
+    image.allocate(w, h, OF_IMAGE_COLOR_ALPHA);
     
 }
 
@@ -67,21 +67,6 @@ void ledWavePanels::updateFbo(ofFbo * fbo){
     
 }
 
-/*void ledWaveStrips::updateImage(ofImage image){
-    ofImage newImage = image;
-    newImage.update();
-    newImage.crop(_x, _y, _w, 1);
-    newImage.update();
-    
-    topStripImage = newImage;
-    
-    topStripImage.update();
-    topStripImage = image;
-    imageToCrop = image;
-    
-    topStripImage.update();
-    imageToCrop.update();*/
-//}
 
 void ledWaveStrips::updateFbo(ofFbo * fbo, bool mirror){
     
@@ -119,11 +104,7 @@ void ledWaveStrips::updateFbo(ofFbo * fbo, bool mirror){
     
 }
 
-/*void ledWaveStrips::mirror(){
-   // topStripImage
-    topStripPixels.mirror(false, true);
-    bottomStripPixels.mirror(false, true);
-}*/
+
 
 
 void ledWavePanels::draw(int y){
