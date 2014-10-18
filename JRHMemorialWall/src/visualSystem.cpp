@@ -204,6 +204,7 @@ void visualSystem::update(){
     //Apply blur FX
     display->begin();
         
+        //need to enable these special blame functions in order to properly blend apha PNGs
         glPushAttrib(GL_ALL_ATTRIB_BITS);
         
         glEnable(GL_BLEND);
