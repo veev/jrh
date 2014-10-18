@@ -12,9 +12,8 @@
 			<p_repulsion>0.0714285</p_repulsion>
 		<blur>3</blur>
 		<Particle_Brightness>95</Particle_Brightness>
-		<Depth_Cutoff>188.648</Depth_Cutoff>
-			<Depth_Force>2.11735</Depth_Force>
-		<Text_Fade_Amt>200</Text_Fade_Amt>
+		<Depth_Cutoff>15.6122</Depth_Cutoff>
+			<Depth_Force>5</Depth_Force>
 		</Visual_System>
 	<group>
 			<Contour_Threshol>191.25</Contour_Threshol>
@@ -23,7 +22,7 @@
 			<Kinect_Mix>113</Kinect_Mix>
 		</group>
 	<Computer_Vision>
-			<Contour_Threshold>141.811</Contour_Threshold>
+			<Contour_Threshold>16.9133</Contour_Threshold>
 			<SHOW_KINECT>0</SHOW_KINECT>
 			<Kinect_Mix>117</Kinect_Mix>
 			<Flip_V>1</Flip_V>
