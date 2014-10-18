@@ -92,7 +92,7 @@ public:
        // cout<<"xv: "<<xv<<" yv: "<<yv<<endl;
         //ofSetColor(xf,255,yf);
     
-        float b = ofClamp(1-(abs(yv)+abs(xv))/10, 0, 1);
+        float b = ofClamp(1-(abs(yv)+abs(xv))/20, 0, 1);
        // cout<<"b: "<<b<<endl;
         glColor3f(b, b, b);
 		glVertex2f(x, y);
