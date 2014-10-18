@@ -101,7 +101,7 @@ void visualSystem::update(){
     //draw to FBO
     display->begin();
 
-    ofEnableAlphaBlending();
+    //ofEnableAlphaBlending();
     //ofBackground(0,0,0,100);
    
     ofFill();
@@ -144,7 +144,7 @@ void visualSystem::update(){
         //SHOW TEXT
         //stop the particle if it is over an empty area with text
         if(displayPixels.getColor(cur.x, cur.y).getBrightness() < 230){
-            if(tm.pixels.getColor(cur.x, cur.y).getBrightness() > 0){
+            if(tm.pixels.getColor(cur.x, cur.y).getBrightness() > 20){
                 cur.stop();
             }
         }
@@ -188,7 +188,7 @@ void visualSystem::update(){
     particleSystem.draw();
     
     
-    ofDisableAlphaBlending();
+   // ofDisableAlphaBlending();
         
     }
     display->end();
@@ -203,10 +203,21 @@ void visualSystem::update(){
 
     //Apply blur FX
     display->begin();
+        
+        glPushAttrib(GL_ALL_ATTRIB_BITS);
+        
+        glEnable(GL_BLEND);
+        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,GL_ONE,GL_ONE_MINUS_SRC_ALPHA);
+        
+        //Draw stuff here
+        // ...
+        
+        
         ofClearAlpha();
-        ofEnableAlphaBlending();
+       // ofEnableAlphaBlending();
         ofSetColor(255,255,255,255);
-      //  tm.draw();
+        //draw text layer
+       // tm.draw();
         
     //draw the blurred particle system
     blur.draw(0,0);
@@ -220,9 +231,11 @@ void visualSystem::update(){
     }
     
      //   ofSetColor(255, 255, 255, 10);
-    //tm.draw();
+    tm.draw();
         
-        ofDisableAlphaBlending();
+       // ofDisableAlphaBlending();
+        glDisable(GL_BLEND);
+        glPopAttrib();
     display->end();
     }
 }

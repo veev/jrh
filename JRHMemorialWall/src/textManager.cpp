@@ -14,6 +14,9 @@ textManager::textManager(){
     lineSpacing = 5;
     padding = 5;
     activeQuoteID = 0;
+    alpha = 0;
+    targetAlpha = 0;
+    fadeSpeed = 1;
     
     //preload all the images
     //quote.loadImage("quotes/1.png");
@@ -21,68 +24,44 @@ textManager::textManager(){
     }
 
 void textManager::setup(int width, int height){
-    textFbo.allocate(width, height);
-    pixels.allocate(width, height, OF_IMAGE_COLOR);
+    textFbo.allocate(width, height, GL_RGBA);
+    pixels.allocate(width, height, OF_IMAGE_COLOR_ALPHA);
 }
 
 void textManager::update(){
-   /*  ofSetColor(255, 0, 0, 100);
-    if(quote.isAllocated()){
-        quote.draw(0, 0);
-    }*/
     
+       // ofSetColor(255);
     
-        ofSetColor(255);
-        //parse XML to get the text
-        /* DataManager::settings.pushTag("quotes");
-         DataManager::settings.pushTag("issue", activeQuoteID-1);
-         DataManager::settings.pushTag("quote");
-         int y = 48+font.getSize()+padding;
-         for(int i=0; i<DataManager::settings.getNumTags("line");i++){
-         string str = DataManager::settings.getAttribute("line", "text", "", i);
-         str = ofToUpper(str);
-         int waveNum = DataManager::settings.getAttribute("line", "wave", 4, i);
-         int lineNum = DataManager::settings.getAttribute("line", "line", 0, i);*/
-        
+    //set alpha
+    alpha += round((targetAlpha - alpha)/fadeSpeed);
+    
         //find the wave by id
         textFbo.begin();
+    ofSetColor(255, 255, 255, alpha);
         //ofClearAlpha();
     ofClear(0,0,0,0);
-    if(activeQuoteID != 0){
+   // if(activeQuoteID != 0){
         ledWavePanels * w;
         int cropY = 0;
         for(int wcnt = 0; wcnt<wavesPanels.size(); wcnt++){
             w = wavesPanels.at(wcnt);
             //draw the text to the correct location in the text fbo layer
             
+            
             quote.drawSubsection(w->_x, w->_y, w->_w, w->_h, 0, cropY);
             cropY+=w->_h;
             
-            //if(w->_idNum == waveNum)
-            //  break;
-        }
+                    }
         
-    }
+   // }
         textFbo.end();
-        
-        /*  ofRectangle textBox = font.getStringBoundingBox(str, 0, 0);
-         int x = w->_x + padding;
-         int y = w->_y + padding + textBox.height + (textBox.height+lineSpacing)*(lineNum-1);
-         
-         //TODO: use ledWavePanel pointer vector to determine positioning
-         font.drawString(str, x, y);
-         
-         //go to next line
-         //y += textBox.height + lineSpacing;
-         }
-         DataManager::settings.popTag();
-         DataManager::settings.popTag();
-         DataManager::settings.popTag();*/
     
     textFbo.readToPixels(pixels);
+  
 }
 
 void textManager::draw(){
+    ofSetColor(255, 255, 255, 255);
     textFbo.draw(0,0);
 }
 
@@ -90,11 +69,17 @@ void textManager::setActiveQuote(int quoteId){
     activeQuoteID = quoteId;
     
     if(quoteId == 0){
-        quote.clear();
+      //  quote.clear();
+        fadeTo(0, 20);
     }
     else{
+        //load the image for that quote
         quote.loadImage("quotes/"+ofToString(quoteId)+".png");
+        fadeTo(200, 50);
     }
-    
-    //load the image for that quote
+}
+
+void textManager::fadeTo(int a, int speed){
+    targetAlpha = a;
+    fadeSpeed = speed;
 }
