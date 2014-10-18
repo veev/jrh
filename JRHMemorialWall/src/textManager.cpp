@@ -17,10 +17,8 @@ textManager::textManager(){
     alpha = 0;
     targetAlpha = 0;
     fadeSpeed = 1;
-    
-    //preload all the images
-    //quote.loadImage("quotes/1.png");
-    
+    fadeToValue = 255;
+        
     }
 
 void textManager::setup(int width, int height){
@@ -75,7 +73,7 @@ void textManager::setActiveQuote(int quoteId){
     else{
         //load the image for that quote
         quote.loadImage("quotes/"+ofToString(quoteId)+".png");
-        fadeTo(200, 50);
+        fadeTo(fadeToValue, 50);
     }
 }
 

@@ -108,6 +108,7 @@ void ofApp::update(){
     vs.blurAmount = gui.blur;
     vs.kinectMix = gui.kinectMix;
     vs.particleBrightnessShift = gui.particleBrightnessShift;
+    vs.tm.fadeToValue = gui.textFadeTo;
     
     //Computer Vision
     vs.cv.contourFinderThreshold = gui.contourFinderThresh;

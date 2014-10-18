@@ -47,11 +47,12 @@ void gui::setup(int x){
     visualSystemParams.add(blur.set("blur",1,0,10));
     visualSystemParams.add(particleBrightnessShift.set("Particle Brightness",10,0,100));
     visualSystemParams.add(depthMapCutoff.set("Depth Cutoff",200,0,255));
-    visualSystemParams.add(depthMapForce.set("Depth Force",2.2,0,5));
+    visualSystemParams.add(depthMapForce.set("Depth Force",2.2,0,10));
+    visualSystemParams.add(textFadeTo.set("Text Fade Amt",200,0,255));
 
 
 
-    //cv params
+    //computer vision params
     cvParams.setName("Computer Vision");
     cvParams.add(contourFinder.set("Contour Finder", false));
     cvParams.add(contourFinderThresh.set("Contour Threshold",0,0,255));

@@ -22,7 +22,7 @@ public:
     void setActiveQuote(int quoteId);
     void fadeTo(int a, int speed);
     
-    int activeQuoteID, lineSpacing, padding, alpha;
+    int activeQuoteID, lineSpacing, padding, alpha, fadeToValue;
     vector <ledWavePanels *> wavesPanels;
     ofPixels pixels;
 
