@@ -157,13 +157,14 @@ void visualSystem::update(){
         //cout<<"depthValue: "<<depthValue<<endl;
         
         
-        if(depthValue > depthCutoff){
+        //particles sticking to bottom of screen for some reason
+       /* if(depthValue > depthCutoff){
             cur.repel((depthValue/255)*depthForce);
         }
         else{
             cur.wasRepeled = false;
         }
-        
+*/
         
 	}
 	glEnd();
@@ -171,11 +172,11 @@ void visualSystem::update(){
     
     //add forces for blobs from kinect
         if(contourFinderOn){
-    for(int i=0;i<cv.contourFinder.size();i++){
-        cv::Point2f center = cv.contourFinder.getCenter(i);
-        cv::Rect rect = cv.contourFinder.getBoundingRect(i);
-        particleSystem.addRepulsionForce(center.x, center.y, rect.width, 5);
-    }
+            for(int i=0;i<cv.contourFinder.size();i++){
+                cv::Point2f center = cv.contourFinder.getCenter(i);
+                cv::Rect rect = cv.contourFinder.getBoundingRect(i);
+                particleSystem.addRepulsionForce(center.x, center.y, rect.width, 5);
+            }
         }
         
         cv.contourFinderOn = contourFinderOn;
