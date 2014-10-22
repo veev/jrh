@@ -45,7 +45,7 @@ void visualSystem::init(int w, int h){
     
 	particleSystem.setup(width, height, binPower);
     
-	kParticles = 40;
+	kParticles = 15;
 	float padding = 0;
 	float maxVelocity = 5;
 	for(int i = 0; i < kParticles * 1024; i++) {

@@ -22,7 +22,8 @@ public:
     void setActiveQuote(int quoteId);
     void fadeTo(int a, int speed);
     
-    int activeQuoteID, lineSpacing, padding, alpha, fadeToValue;
+    int activeQuoteID, lineSpacing, padding, alpha;
+    float fadeToValue;
     vector <ledWavePanels *> wavesPanels;
     ofPixels pixels;
 
@@ -31,7 +32,7 @@ private:
     ofxFTGLFont font;
     ofImage quote, croppedQuote;
     ofFbo textFbo;
-    int targetAlpha, fadeSpeed;
+    float targetAlpha, fadeSpeed;
     
     
 };

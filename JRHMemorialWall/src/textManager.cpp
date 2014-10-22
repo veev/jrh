@@ -31,7 +31,8 @@ void textManager::update(){
        // ofSetColor(255);
     
     //set alpha
-    alpha += round((targetAlpha - alpha)/fadeSpeed);
+    alpha += (targetAlpha - alpha)/fadeSpeed;
+    alpha = round(alpha);
     
         //find the wave by id
         textFbo.begin();
@@ -68,12 +69,12 @@ void textManager::setActiveQuote(int quoteId){
     
     if(quoteId == 0){
       //  quote.clear();
-        fadeTo(0, 20);
+        fadeTo(0, 50);
     }
     else{
         //load the image for that quote
         quote.loadImage("quotes/"+ofToString(quoteId)+".png");
-        fadeTo(fadeToValue, 50);
+        fadeTo(fadeToValue, 100);
     }
 }
 

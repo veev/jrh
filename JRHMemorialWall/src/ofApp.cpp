@@ -10,7 +10,7 @@ void ofApp::setup(){
     
     displaySystemYOffset = 300;
     
-    ofSetFrameRate(20);
+    ofSetFrameRate(30);
     
     int vsw = DataManager::settings.getAttribute("visualSystem", "width", 600);
     int vsh = DataManager::settings.getAttribute("visualSystem", "height", 400);
