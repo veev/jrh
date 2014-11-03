@@ -65,7 +65,7 @@ void ofApp::setup(){
     vs.tm.wavesPanels = ds.wavesPanels;
     
     webSocket.setup();
-   // webSocket.server.addListener(<#T *app#>)
+    //webSocket.server.addListener(<#T *app#>)
     ofAddListener(webSocket.onGotMessage,this, &ofApp::onMessageFromTouchscreen);
     
     }

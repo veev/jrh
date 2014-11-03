@@ -2180,8 +2180,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					../../../addons/ofxOpenCv/libs/opencv/lib/osx,
 					../../../addons/ofxFTGL/libs/FTGL/lib/osx,
-					/Volumes/HDD/OpenFrameworks/of_v0.8.3_osx_release/addons/ofxFTGL/libs/FTGL/lib/osx,
-					/Volumes/HDD/OpenFrameworks/of_v0.8.4_osx_release/addons/ofxLibwebsockets/libs/libwebsockets/lib/osx,
+					../../../addons/ofxLibwebsockets/libs/libwebsockets/lib/osx,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "libs/jsoncpp ../../../addons/ofxOpenCv/libs/opencv/include/ ../../../addons/ofxCv/libs/CLD/include/ ../../../addons/ofxLibwebsockets/libs/libwebsockets/include/ src ../../../addons/ofxLibwebsockets/libs/ofxLibwebsockets/include/ libs/ofxLibwebsockets/src ../../../addons/ofxCv/libs/ofxCv/include/ libs/jsoncpp/json libs/libwebsockets/include/ libs/ofxLibwebsockets/include/ofxLibwebsockets ../../../addons/ofxFTGL/libs/FTGL/include/ libs/ofxLibwebsockets/include";
