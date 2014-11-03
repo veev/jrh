@@ -64,7 +64,16 @@ void ofApp::setup(){
     //update the LEDwave pointer on the textManager to point to the wavesPanels controlled by Display System
     vs.tm.wavesPanels = ds.wavesPanels;
     
+    webSocket.setup();
+   // webSocket.server.addListener(<#T *app#>)
+    ofAddListener(webSocket.onGotMessage,this, &ofApp::onMessageFromTouchscreen);
+    
     }
+
+void ofApp::onMessageFromTouchscreen(int & m){
+    cout<<"onMessageFromTouchscreen: "<<m<<endl;
+    vs.showQuote(m);
+}
 
 void ofApp::saveWaveSetup(){
     cout<<"ofApp::saveWaveSetup"<<endl;

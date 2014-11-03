@@ -24,9 +24,18 @@ textManager::textManager(){
 void textManager::setup(int width, int height){
     textFbo.allocate(width, height, GL_RGBA);
     pixels.allocate(width, height, OF_IMAGE_COLOR_ALPHA);
+    quote.allocate(480, 144, OF_IMAGE_COLOR_ALPHA);
+
 }
 
 void textManager::update(){
+    
+    if(loadNewQuote){
+    //load the image for that quote
+    quote.loadImage("quotes/"+ofToString(activeQuoteID)+".png");
+    fadeTo(fadeToValue, 100);
+        loadNewQuote = false;
+    }
     
        // ofSetColor(255);
     
@@ -72,9 +81,7 @@ void textManager::setActiveQuote(int quoteId){
         fadeTo(0, 50);
     }
     else{
-        //load the image for that quote
-        quote.loadImage("quotes/"+ofToString(quoteId)+".png");
-        fadeTo(fadeToValue, 100);
+        loadNewQuote = true;
     }
 }
 

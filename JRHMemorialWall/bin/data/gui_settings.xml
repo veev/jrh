@@ -14,7 +14,7 @@
 		<Particle_Brightness>95</Particle_Brightness>
 		<Depth_Cutoff>255</Depth_Cutoff>
 			<Depth_Force>0</Depth_Force>
-		<Text_Fade_Amt>200</Text_Fade_Amt>
+		<Text_Fade_Amt>255</Text_Fade_Amt>
 		</Visual_System>
 	<group>
 			<Contour_Threshol>191.25</Contour_Threshol>
@@ -41,6 +41,6 @@
 			<Strip_Brightness>255</Strip_Brightness>
 			<Strip_Saturation>91</Strip_Saturation>
 		</Display_System>
-	<LEDs_ON>1</LEDs_ON>
+	<LEDs_ON>0</LEDs_ON>
 	</GUI>
 </guiSettings>
