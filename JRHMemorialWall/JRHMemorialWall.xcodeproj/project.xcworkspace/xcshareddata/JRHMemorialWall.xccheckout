@@ -14,8 +14,6 @@
 		<string>https://github.com/Flightphase/ofxFTGL.git</string>
 		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
 		<string>https://github.com/kylemcdonald/ofxCv.git</string>
-		<key>860259D4-05AD-4921-B72A-7407383C7EC9</key>
-		<string>https://github.com/toolbits/ofxWatchdog.git</string>
 		<key>B7CCA6A8C889ED4C803FBF307564FD139754E943</key>
 		<string>https://github.com/patriciogonzalezvivo/ofxFX.git</string>
 		<key>BB48781AAC70C89AED1A649A93F25300AFE948DD</key>
@@ -24,19 +22,17 @@
 		<string>https://github.com/veev/jrh.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>JRHMemorialWall/JRHMemorialWall.xcodeproj/project.xcworkspace</string>
+	<string>JRHMemorialWall/JRHMemorialWall.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>2A0CFE1019F698B00C9572577BCC47738F98F3F2</key>
-		<string>../../../../addons/ofxFTGL</string>
+		<string>../../../../../addons/ofxFTGL</string>
 		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
-		<string>../../../../addons/ofxCv</string>
-		<key>860259D4-05AD-4921-B72A-7407383C7EC9</key>
-		<string>../../../../addons/ofxWatchdog</string>
+		<string>../../../../../addons/ofxCv</string>
 		<key>B7CCA6A8C889ED4C803FBF307564FD139754E943</key>
-		<string>../../../../addons/ofxFX</string>
+		<string>../../../../../addons/ofxFX</string>
 		<key>BB48781AAC70C89AED1A649A93F25300AFE948DD</key>
-		<string>../../../../addons/ofxWatchdog</string>
+		<string>../../../../../addons/ofxWatchdog</string>
 		<key>C8C1FAB0C6661C780C818A261C848CF056D7D5CC</key>
 		<string>../../..</string>
 	</dict>
@@ -79,14 +75,6 @@
 			<string>B7CCA6A8C889ED4C803FBF307564FD139754E943</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxFX</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>860259D4-05AD-4921-B72A-7407383C7EC9</string>
-			<key>IDESourceControlWCCName</key>
-			<string>ofxWatchdog</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
