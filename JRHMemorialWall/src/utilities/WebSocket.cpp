@@ -87,9 +87,9 @@ void WebSocket::onIdle( ofxLibwebsockets::Event& args ){
 void WebSocket::onMessage( ofxLibwebsockets::Event& args ){
     cout<<"got message "<<args.message<<endl;
     
-    int m = ofToInt(args.message);
+   // int m = ofToInt(args.message);
     
-    ofNotifyEvent(onGotMessage, m);
+    ofNotifyEvent(onGotMessage, args.message);
     
     // trace out string messages or JSON messages!
     if ( !args.json.isNull() ){

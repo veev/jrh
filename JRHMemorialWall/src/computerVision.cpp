@@ -70,12 +70,9 @@ void computerVision::draw(){
         contourFinder.draw();
 }
 
-
-
 void computerVision::angleKinect(int angle){
     kinectAngle += angle;
     kinect.setCameraTiltAngle(kinectAngle);
     cout<<"angle kinect to: "<<kinectAngle<<endl;
-    
 }
 

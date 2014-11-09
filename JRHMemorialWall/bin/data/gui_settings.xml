@@ -41,6 +41,6 @@
 			<Strip_Brightness>255</Strip_Brightness>
 			<Strip_Saturation>91</Strip_Saturation>
 		</Display_System>
-	<LEDs_ON>0</LEDs_ON>
+	<LEDs_ON>1</LEDs_ON>
 	</GUI>
 </guiSettings>

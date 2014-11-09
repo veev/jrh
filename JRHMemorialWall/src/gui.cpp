@@ -68,7 +68,7 @@ void gui::setup(int x){
     guiPanel.setWidthElements(200);
     
     //guiPanel.setup(visualSystemParams);
-    guiPanel.add(disableSignal.set("LEDs ON", false));
+    guiPanel.add(ledsOn.set("LEDs ON", false));
     guiPanel.add(saveSetupButton.setup("SAVE SETUP"));
     guiPanel.add(modeToggle.setup("TOGGLE LIVE MODE", true));
     guiPanel.add(dsParams);

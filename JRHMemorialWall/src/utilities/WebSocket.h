@@ -33,6 +33,6 @@ public:
     void onMessage( ofxLibwebsockets::Event& args );
     void onBroadcast( ofxLibwebsockets::Event& args );
     
-    ofEvent<int> onGotMessage;
+    ofEvent<string> onGotMessage;
     
 };

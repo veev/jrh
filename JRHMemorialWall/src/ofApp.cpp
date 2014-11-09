@@ -65,14 +65,27 @@ void ofApp::setup(){
     vs.tm.wavesPanels = ds.wavesPanels;
     
     webSocket.setup();
-    //webSocket.server.addListener(<#T *app#>)
-    ofAddListener(webSocket.onGotMessage,this, &ofApp::onMessageFromTouchscreen);
+    ofAddListener(webSocket.onGotMessage,this, &ofApp::onMessage);
     
     }
 
-void ofApp::onMessageFromTouchscreen(int & m){
+void ofApp::onMessage(string & m){
     cout<<"onMessageFromTouchscreen: "<<m<<endl;
-    vs.showQuote(m);
+    if(m == "on"){
+        gui.ledsOn.set(true);
+    }
+    else if( m == "off"){
+        gui.ledsOn.set(false);
+    }
+    else if(m == "mute"){
+        
+    }
+    else if(m == "unmute"){
+        
+    }
+    else{
+       vs.showQuote(ofToInt(m));
+    }
 }
 
 void ofApp::saveWaveSetup(){
@@ -104,7 +117,7 @@ void ofApp::update(){
     ds.ledStripsColor = gui.ledStripsColor;
     
     //Visual System
-    vs.isOn = !gui.disableSignal;
+    vs.isOn = gui.ledsOn;
     vs.timeSpeed = gui.flowSpeed;
     vs.timeStep = gui.timeSpeed;
     vs.hForce = gui.horizontalForce;
