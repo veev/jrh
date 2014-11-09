@@ -20,6 +20,8 @@
 		<string>https://github.com/toolbits/ofxWatchdog.git</string>
 		<key>C8C1FAB0C6661C780C818A261C848CF056D7D5CC</key>
 		<string>https://github.com/veev/jrh.git</string>
+		<key>F2A56CF7160E6C2DBD4B1C184D835E2B1BF1B32A</key>
+		<string>https://github.com/ofTheo/ofxKinect.git</string>
 		<key>FB950DA91696DB40601A43AFF1A56B2E39217374</key>
 		<string>https://github.com/labatrockwell/ofxLibwebsockets.git</string>
 	</dict>
@@ -37,6 +39,8 @@
 		<string>../../../../addons/ofxWatchdog</string>
 		<key>C8C1FAB0C6661C780C818A261C848CF056D7D5CC</key>
 		<string>../../..</string>
+		<key>F2A56CF7160E6C2DBD4B1C184D835E2B1BF1B32A</key>
+		<string>../../../../../addons/ofxKinect</string>
 		<key>FB950DA91696DB40601A43AFF1A56B2E39217374</key>
 		<string>../../../../addons/ofxLibwebsockets</string>
 	</dict>
@@ -79,6 +83,14 @@
 			<string>B7CCA6A8C889ED4C803FBF307564FD139754E943</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxFX</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F2A56CF7160E6C2DBD4B1C184D835E2B1BF1B32A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxKinect</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

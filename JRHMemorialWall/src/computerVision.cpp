@@ -35,6 +35,10 @@ void computerVision::setup(int width, int height){
     //contour finder
     contourFinder.setMinAreaRadius(10);
 	contourFinder.setMaxAreaRadius(200);
+    
+    background.setLearningTime(1);
+    background.setThresholdValue(10);
+
 
 }
 
@@ -47,9 +51,12 @@ void computerVision::update(){
 		grayImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
         grayImage.mirror(flipVertical, flipH);
         
+        background.update(kinect, thresholded);
+        thresholded.update();
+        
         if(contourFinderOn){
             contourFinder.setThreshold(contourFinderThreshold);
-            contourFinder.findContours(grayImage);
+            contourFinder.findContours(thresholded);
         }
         
     }
@@ -57,7 +64,7 @@ void computerVision::update(){
 }
 
 void computerVision::draw(){
-    grayImage.draw(0, 0);
+    thresholded.draw(0, 0);
     ofSetLineWidth(2);
     if(contourFinderOn)
         contourFinder.draw();
