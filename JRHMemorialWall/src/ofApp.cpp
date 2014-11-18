@@ -71,17 +71,19 @@ void ofApp::setup(){
 
 void ofApp::onMessage(string & m){
     cout<<"onMessageFromTouchscreen: "<<m<<endl;
-    if(m == "on"){
+    if(m == "ON"){
         gui.ledsOn.set(true);
+        //send ON message to touchscreen
     }
-    else if( m == "off"){
+    else if( m == "OFF"){
         gui.ledsOn.set(false);
+        //send OFF message to touchscreen
     }
-    else if(m == "mute"){
-        
+    else if(m == "MUTE"){
+        //send MUTE message to touchscreen
     }
-    else if(m == "unmute"){
-        
+    else if(m == "UNMUTE"){
+        //send UNMUTE message to touchscreen
     }
     else{
        vs.showQuote(ofToInt(m));

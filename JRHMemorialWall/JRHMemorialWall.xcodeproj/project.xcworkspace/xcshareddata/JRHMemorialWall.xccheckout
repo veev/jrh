@@ -40,7 +40,7 @@
 		<key>C8C1FAB0C6661C780C818A261C848CF056D7D5CC</key>
 		<string>../../..</string>
 		<key>F2A56CF7160E6C2DBD4B1C184D835E2B1BF1B32A</key>
-		<string>../../../../../addons/ofxKinect</string>
+		<string>../../../../addons/ofxKinect</string>
 		<key>FB950DA91696DB40601A43AFF1A56B2E39217374</key>
 		<string>../../../../addons/ofxLibwebsockets</string>
 	</dict>
