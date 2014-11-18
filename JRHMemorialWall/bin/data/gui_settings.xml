@@ -24,12 +24,14 @@
 		</group>
 	<Computer_Vision>
 			<Contour_Threshold>18.2143</Contour_Threshold>
-			<SHOW_KINECT>1</SHOW_KINECT>
+			<SHOW_KINECT>0</SHOW_KINECT>
 			<Kinect_Mix>67</Kinect_Mix>
 			<Flip_V>1</Flip_V>
 		<Flip_H>0</Flip_H>
 		<Contour_Finder>1</Contour_Finder>
 		<BG_Sub_Time>6</BG_Sub_Time>
+		<Rep_Force>0.408163</Rep_Force>
+			<Contour_Thresh>0</Contour_Thresh>
 		</Computer_Vision>
 	<Display_System>
 			<mirror_strips>0</mirror_strips>
@@ -42,6 +44,6 @@
 			<Strip_Brightness>255</Strip_Brightness>
 			<Strip_Saturation>91</Strip_Saturation>
 		</Display_System>
-	<LEDs_ON>1</LEDs_ON>
+	<LEDs_ON>0</LEDs_ON>
 	</GUI>
 </guiSettings>
