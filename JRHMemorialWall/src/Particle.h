@@ -67,22 +67,27 @@ public:
 		//bool collision = false;
         
 		if (x > right){
-			x = left;
+			x = right;
 			//xv *= -1;
 			//collision = true;
 		} else if (x < left){
 			x = right;
+          //  y=ofRandom(bottom);
 			//xv *= -1;
 			//collision = true;
 		}
         
 		if (y > bottom){
-			y = top;
-			//yv *= -1;
+			//y = top;
+			yv = 0;
+            x = right;
+            y=ofRandom(bottom);
 			//collision = true;
 		} else if (y < top){
-			y = bottom;
-			//yv *= -1;
+			//y = bottom;
+			yv = 0;
+            x = right;
+            y=ofRandom(bottom);
 			//collision = true;
 		}
         
