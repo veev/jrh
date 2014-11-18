@@ -130,13 +130,7 @@ void visualSystem::update(){
         cur.loopAround(0,0,width,height);
 		cur.addDampingForce(); //slows the particle down
         
-        
-        
-        
-        
         //apply noise field force to the particle
-        
-        
         pos.set(cur.x,cur.y);
         cur.applyForce(getField(pos));
         cur.updateColor(particleBrightnessShift);
@@ -175,14 +169,14 @@ void visualSystem::update(){
             for(int i=0;i<cv.contourFinder.size();i++){
                 cv::Point2f center = cv.contourFinder.getCenter(i);
                 cv::Rect rect = cv.contourFinder.getBoundingRect(i);
-                particleSystem.addRepulsionForce(center.x, center.y, rect.width, 5);
+                particleSystem.addRepulsionForce(center.x, center.y, rect.width, repForce);
             }
         }
         
         cv.contourFinderOn = contourFinderOn;
 	
     //mouse interaction
-    particleSystem.addRepulsionForce(mouseX, mouseY, 50, 5);
+    particleSystem.addRepulsionForce(mouseX, mouseY, 50, repForce);
 	particleSystem.update();
     
     ofSetColor(pointOpacity, pointOpacity, pointOpacity, 255);

@@ -54,7 +54,7 @@ class visualSystem{
     float complexity;
     float pollenMass;
     float timeSpeed;
-    float phase, hForce, vForce;
+    float phase, hForce, vForce, repForce;
     
     computerVision cv;
     

@@ -139,6 +139,7 @@ void ofApp::update(){
     vs.cv.flipVertical = gui.flipVertical;
     vs.cv.flipH = gui.flipH;
     vs.cv.bgSubTime = gui.bgSubTime;
+    vs.repForce = gui.repForce;
     vs.contourFinderOn = gui.contourFinder;
     vs.depthCutoff = gui.depthMapCutoff;
     vs.depthForce = gui.depthMapForce;

@@ -52,8 +52,9 @@ void gui::setup(int x){
 
     //computer vision params
     cvParams.setName("Computer Vision");
+    cvParams.add(repForce.set("Rep Force", 5,0,10));
     cvParams.add(contourFinder.set("Contour Finder", false));
-    cvParams.add(contourFinderThresh.set("Contour Threshold",0,0,255));
+    cvParams.add(contourFinderThresh.set("Contour Thresh",0,0,255));
     cvParams.add(showKinect.set("SHOW KINECT", false));
     cvParams.add(kinectMix.set("Kinect Mix", 50, 0, 255));
     cvParams.add(bgSubTime.set("BG Sub Time", 1, 0, 100));
