@@ -23,7 +23,7 @@ class computerVision{
     void getBlobs();
     
     ofxKinect kinect;
-    int kinectAngle;
+    int kinectAngle, bgSubTime;
     ofxCvGrayscaleImage grayImage; // grayscale depth image
     
     ofxCv::ContourFinder contourFinder;

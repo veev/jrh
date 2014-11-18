@@ -36,7 +36,8 @@ void computerVision::setup(int width, int height){
     contourFinder.setMinAreaRadius(10);
 	contourFinder.setMaxAreaRadius(200);
     
-    background.setLearningTime(1);
+    bgSubTime = 1;
+    background.setLearningTime(bgSubTime);
     background.setThresholdValue(10);
 
 
@@ -45,6 +46,7 @@ void computerVision::setup(int width, int height){
 void computerVision::update(){
     
     kinect.update();
+    background.setLearningTime(bgSubTime);
 	// there is a new frame and we are connected
 	if(kinect.isFrameNew()) {
 		// load grayscale depth image from the kinect source

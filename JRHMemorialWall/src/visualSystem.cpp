@@ -23,8 +23,8 @@ void visualSystem::init(int w, int h){
     mouseX = -100;
     mouseY = -100;
     
-    bloom.allocate(width, height);
-    glow.allocate(width, height);
+ //   bloom.allocate(width, height);
+  //  glow.allocate(width, height);
     blur.allocate(width, height);
     
     cv.setup(width, height);

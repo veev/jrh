@@ -50,14 +50,13 @@ void gui::setup(int x){
     visualSystemParams.add(depthMapForce.set("Depth Force",2.2,0,10));
     visualSystemParams.add(textFadeTo.set("Text Fade Amt",200,0,255));
 
-
-
     //computer vision params
     cvParams.setName("Computer Vision");
     cvParams.add(contourFinder.set("Contour Finder", false));
     cvParams.add(contourFinderThresh.set("Contour Threshold",0,0,255));
     cvParams.add(showKinect.set("SHOW KINECT", false));
     cvParams.add(kinectMix.set("Kinect Mix", 50, 0, 255));
+    cvParams.add(bgSubTime.set("BG Sub Time", 1, 0, 100));
     cvParams.add(flipVertical.set("Flip V", false));
     cvParams.add(flipH.set("Flip H", false));
     
