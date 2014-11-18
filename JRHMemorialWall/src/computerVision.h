@@ -29,7 +29,7 @@ class computerVision{
     ofxCv::ContourFinder contourFinder;
     float contourFinderThreshold;
     
-    bool flipVertical, flipH, contourFinderOn;
+    bool flipVertical, flipH, contourFinderOn, firstFrame;
     
     ofxCv::RunningBackground background;
     ofImage thresholded;

@@ -39,7 +39,7 @@ void computerVision::setup(int width, int height){
     bgSubTime = 1;
     background.setLearningTime(bgSubTime);
     background.setThresholdValue(10);
-
+    firstFrame = true;
 
 }
 
@@ -49,6 +49,11 @@ void computerVision::update(){
     background.setLearningTime(bgSubTime);
 	// there is a new frame and we are connected
 	if(kinect.isFrameNew()) {
+        if(firstFrame){
+        firstFrame = false;
+        //reset bg upon first frame?
+        background.reset();
+        }
 		// load grayscale depth image from the kinect source
 		grayImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
         grayImage.mirror(flipVertical, flipH);
