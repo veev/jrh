@@ -226,13 +226,10 @@ void visualSystem::update(){
         
         //draw the kinect image (for debugging)
     if(showKinect){
-      //  ofEnableAlphaBlending();
         ofSetColor(255, 255, 255, kinectMix);
         cv.draw();
-        //ofDisableAlphaBlending();
     }
     
-     //   ofSetColor(255, 255, 255, 10);
     tm.draw();
         
        // ofDisableAlphaBlending();

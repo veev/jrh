@@ -86,6 +86,7 @@ void displaySystem::drawWaves(){
     
     //draw outline for the waves
     ofNoFill();
+    ofSetLineWidth(1);
     
     int y=0;
     
@@ -96,7 +97,7 @@ void displaySystem::drawWaves(){
         //cout<<"draw wave " << i << endl;
         
         if(mode == TEST_MODE){
-            //draw boxes for all the waves
+            //draw red boxes for all the panels waves
             ofSetColor(255, 0, 0, 255);
             ofRect(w->_x, w->_y+debugYOffset, w->_w, w->_h);
             ofDrawBitmapString(ofToString(w->_idNum), w->_x+2, w->_y+12+debugYOffset);
@@ -114,7 +115,7 @@ void displaySystem::drawWaves(){
         //cout<<"draw wave " << i << endl;
         
         if(mode == TEST_MODE){
-            //draw boxes for all the waves
+            //draw blue boxes for all the strips waves
             ofSetColor(0, 0, 255, 255);
             ofRect(w->_x, w->_y+debugYOffset, w->_w, w->_h);
             ofDrawBitmapString(ofToString(w->_idNum), w->_x+2, w->_y+12+debugYOffset);

@@ -6,6 +6,7 @@
 #include "visualSystem.h"
 #include "gui.h"
 #include "lumigeekSender.h"
+#include "WebSocket.h"
 
 class ofApp : public ofBaseApp{
 
@@ -25,6 +26,7 @@ class ofApp : public ofBaseApp{
     void gotMessage(ofMessage msg);
     void onModeToggle(bool & control);
     void onKinectToggle(bool & control);
+    void onMessage(string & m);
 
     void saveWaveSetup();
     
@@ -32,6 +34,8 @@ class ofApp : public ofBaseApp{
     
     displaySystem ds;
     visualSystem  vs;
+    WebSocket webSocket;
+    
     
     ofFbo * frame;
     

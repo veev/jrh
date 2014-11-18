@@ -14,31 +14,35 @@
 		<string>https://github.com/Flightphase/ofxFTGL.git</string>
 		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
 		<string>https://github.com/kylemcdonald/ofxCv.git</string>
-		<key>860259D4-05AD-4921-B72A-7407383C7EC9</key>
-		<string>https://github.com/toolbits/ofxWatchdog.git</string>
 		<key>B7CCA6A8C889ED4C803FBF307564FD139754E943</key>
 		<string>https://github.com/patriciogonzalezvivo/ofxFX.git</string>
 		<key>BB48781AAC70C89AED1A649A93F25300AFE948DD</key>
 		<string>https://github.com/toolbits/ofxWatchdog.git</string>
 		<key>C8C1FAB0C6661C780C818A261C848CF056D7D5CC</key>
 		<string>https://github.com/veev/jrh.git</string>
+		<key>F2A56CF7160E6C2DBD4B1C184D835E2B1BF1B32A</key>
+		<string>https://github.com/ofTheo/ofxKinect.git</string>
+		<key>FB950DA91696DB40601A43AFF1A56B2E39217374</key>
+		<string>https://github.com/labatrockwell/ofxLibwebsockets.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>JRHMemorialWall/JRHMemorialWall.xcodeproj/project.xcworkspace</string>
+	<string>JRHMemorialWall/JRHMemorialWall.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>2A0CFE1019F698B00C9572577BCC47738F98F3F2</key>
 		<string>../../../../addons/ofxFTGL</string>
 		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
 		<string>../../../../addons/ofxCv</string>
-		<key>860259D4-05AD-4921-B72A-7407383C7EC9</key>
-		<string>../../../../addons/ofxWatchdog</string>
 		<key>B7CCA6A8C889ED4C803FBF307564FD139754E943</key>
 		<string>../../../../addons/ofxFX</string>
 		<key>BB48781AAC70C89AED1A649A93F25300AFE948DD</key>
 		<string>../../../../addons/ofxWatchdog</string>
 		<key>C8C1FAB0C6661C780C818A261C848CF056D7D5CC</key>
 		<string>../../..</string>
+		<key>F2A56CF7160E6C2DBD4B1C184D835E2B1BF1B32A</key>
+		<string>../../../../addons/ofxKinect</string>
+		<key>FB950DA91696DB40601A43AFF1A56B2E39217374</key>
+		<string>../../../../addons/ofxLibwebsockets</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/veev/jrh.git</string>
@@ -84,9 +88,17 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>860259D4-05AD-4921-B72A-7407383C7EC9</string>
+			<string>F2A56CF7160E6C2DBD4B1C184D835E2B1BF1B32A</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ofxWatchdog</string>
+			<string>ofxKinect</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FB950DA91696DB40601A43AFF1A56B2E39217374</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxLibwebsockets</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

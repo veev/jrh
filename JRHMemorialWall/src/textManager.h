@@ -26,6 +26,7 @@ public:
     float fadeToValue;
     vector <ledWavePanels *> wavesPanels;
     ofPixels pixels;
+    bool loadNewQuote;
 
     
 private:

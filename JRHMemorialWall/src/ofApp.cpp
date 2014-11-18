@@ -64,7 +64,31 @@ void ofApp::setup(){
     //update the LEDwave pointer on the textManager to point to the wavesPanels controlled by Display System
     vs.tm.wavesPanels = ds.wavesPanels;
     
+    webSocket.setup();
+    ofAddListener(webSocket.onGotMessage,this, &ofApp::onMessage);
+    
     }
+
+void ofApp::onMessage(string & m){
+    cout<<"onMessageFromTouchscreen: "<<m<<endl;
+    if(m == "ON"){
+        gui.ledsOn.set(true);
+        //send ON message to touchscreen
+    }
+    else if( m == "OFF"){
+        gui.ledsOn.set(false);
+        //send OFF message to touchscreen
+    }
+    else if(m == "MUTE"){
+        //send MUTE message to touchscreen
+    }
+    else if(m == "UNMUTE"){
+        //send UNMUTE message to touchscreen
+    }
+    else{
+       vs.showQuote(ofToInt(m));
+    }
+}
 
 void ofApp::saveWaveSetup(){
     cout<<"ofApp::saveWaveSetup"<<endl;
@@ -95,7 +119,7 @@ void ofApp::update(){
     ds.ledStripsColor = gui.ledStripsColor;
     
     //Visual System
-    vs.isOn = !gui.disableSignal;
+    vs.isOn = gui.ledsOn;
     vs.timeSpeed = gui.flowSpeed;
     vs.timeStep = gui.timeSpeed;
     vs.hForce = gui.horizontalForce;
