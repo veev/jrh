@@ -27,6 +27,7 @@ class ofApp : public ofBaseApp{
     void onModeToggle(bool & control);
     void onKinectToggle(bool & control);
     void onLEDsToggle(bool & control);
+    void fullscreenToggle(bool & control);
     void onMessage(string & m);
 
     void saveWaveSetup();

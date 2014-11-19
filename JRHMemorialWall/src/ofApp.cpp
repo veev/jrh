@@ -24,6 +24,8 @@ void ofApp::setup(){
     gui.modeToggle.addListener(this, &ofApp::onModeToggle);
     gui.showKinect.addListener(this, &ofApp::onKinectToggle);
     gui.ledsOn.addListener(this, &ofApp::onLEDsToggle);
+    gui.fullscreen.addListener(this, &ofApp::fullscreenToggle);
+
     
     gui.setup(vsw+20);
     
@@ -117,6 +119,10 @@ void ofApp::onLEDsToggle(bool & control){
     }
 }
 
+void ofApp::fullscreenToggle(bool &control){
+    ofSetFullscreen(control);
+}
+
 //--------------------------------------------------------------
 void ofApp::update(){
     gui.update();
@@ -189,6 +195,9 @@ void ofApp::keyReleased(int key){
                 ds.enterLiveMode();
             else
                 ds.enterTestMode();
+            break;
+        case 'm':
+            ofShowCursor();
             break;
         case 'f':
             isFullScreen = ! isFullScreen;

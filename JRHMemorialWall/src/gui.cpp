@@ -61,14 +61,13 @@ void gui::setup(int x){
     cvParams.add(flipVertical.set("Flip V", false));
     cvParams.add(flipH.set("Flip H", false));
     
-
-    
     //create the gui
     guiPanel.setup("GUI","gui_settings.xml", x,10);
     guiPanel.setWidthElements(200);
     
     //guiPanel.setup(visualSystemParams);
     guiPanel.add(ledsOn.set("LEDs ON", false));
+    guiPanel.add(fullscreen.set("fullscreen", false));
     guiPanel.add(saveSetupButton.setup("SAVE SETUP"));
     guiPanel.add(modeToggle.setup("TOGGLE LIVE MODE", true));
     guiPanel.add(dsParams);
