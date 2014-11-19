@@ -201,7 +201,7 @@ void displaySystem::saveWaveSetup(){
 }
 
 void displaySystem::clear(){
-    //send clear signal to LEDs
+    //send clear signal to LED strips
     for (int i=0;i<wavesStrips.size();i++){
         wavesStrips.at(i)->clear();
     }

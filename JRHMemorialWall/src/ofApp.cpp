@@ -23,6 +23,7 @@ void ofApp::setup(){
     gui.saveSetupButton.addListener(this, &ofApp::saveWaveSetup);
     gui.modeToggle.addListener(this, &ofApp::onModeToggle);
     gui.showKinect.addListener(this, &ofApp::onKinectToggle);
+    gui.ledsOn.addListener(this, &ofApp::onLEDsToggle);
     
     gui.setup(vsw+20);
     
@@ -90,6 +91,8 @@ void ofApp::onMessage(string & m){
     }
 }
 
+
+//GUI events
 void ofApp::saveWaveSetup(){
     cout<<"ofApp::saveWaveSetup"<<endl;
     ds.saveWaveSetup();
@@ -106,6 +109,15 @@ void ofApp::onModeToggle(bool & control){
 
 void ofApp::onKinectToggle(bool & control){
         vs.showKinect = control;
+}
+
+void ofApp::onLEDsToggle(bool & control){
+    
+    //clear led strips
+    if(control == false){
+        cout<<"clear led strips"<<endl;
+        ds.clear();
+    }
 }
 
 //--------------------------------------------------------------
@@ -141,9 +153,8 @@ void ofApp::update(){
     vs.cv.bgSubTime = gui.bgSubTime;
     vs.repForce = gui.repForce;
     vs.contourFinderOn = gui.contourFinder;
-    vs.depthCutoff = gui.depthMapCutoff;
-    vs.depthForce = gui.depthMapForce;
-    
+    //vs.depthCutoff = gui.depthMapCutoff;
+   // vs.depthForce = gui.depthMapForce;
     
     frame = vs.getFrame();
     

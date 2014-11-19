@@ -26,6 +26,7 @@ class ofApp : public ofBaseApp{
     void gotMessage(ofMessage msg);
     void onModeToggle(bool & control);
     void onKinectToggle(bool & control);
+    void onLEDsToggle(bool & control);
     void onMessage(string & m);
 
     void saveWaveSetup();

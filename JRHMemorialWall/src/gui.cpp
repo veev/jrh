@@ -46,8 +46,8 @@ void gui::setup(int x){
     visualSystemParams.add(particleRepulsion.set("p repulsion",1,-1,1));
     visualSystemParams.add(blur.set("blur",1,0,10));
     visualSystemParams.add(particleBrightnessShift.set("Particle Brightness",10,0,100));
-    visualSystemParams.add(depthMapCutoff.set("Depth Cutoff",200,0,255));
-    visualSystemParams.add(depthMapForce.set("Depth Force",2.2,0,10));
+    //visualSystemParams.add(depthMapCutoff.set("Depth Cutoff",200,0,255));
+    //visualSystemParams.add(depthMapForce.set("Depth Force",2.2,0,10));
     visualSystemParams.add(textFadeTo.set("Text Fade Amt",200,0,255));
 
     //computer vision params
