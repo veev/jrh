@@ -14,6 +14,7 @@ class WebSocket{
 public:
     WebSocket();
     void setup();
+    void broadcastMessage(string m);
     
     ofxLibwebsockets::Server server;
     

@@ -73,22 +73,20 @@ void ofApp::setup(){
 void ofApp::onMessage(string & m){
     cout<<"onMessageFromTouchscreen: "<<m<<endl;
     if(m == "ON"){
+        //TURN INSTALLATION ON
         gui.ledsOn.set(true);
-        //send ON message to touchscreen
     }
     else if( m == "OFF"){
+        //TURN INSTALLATION OFF
         gui.ledsOn.set(false);
-        //send OFF message to touchscreen
-    }
-    else if(m == "MUTE"){
-        //send MUTE message to touchscreen
-    }
-    else if(m == "UNMUTE"){
-        //send UNMUTE message to touchscreen
     }
     else{
-       vs.showQuote(ofToInt(m));
+        //assume this is an integer 0-6, display relevant quote
+        vs.showQuote(ofToInt(m));
     }
+    
+    //broadcast message to touchscreen
+    webSocket.broadcastMessage(m);
 }
 
 
@@ -112,7 +110,6 @@ void ofApp::onKinectToggle(bool & control){
 }
 
 void ofApp::onLEDsToggle(bool & control){
-    
     //clear led strips
     if(control == false){
         cout<<"clear led strips"<<endl;

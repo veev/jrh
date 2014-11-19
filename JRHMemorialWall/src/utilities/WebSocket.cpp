@@ -109,6 +109,10 @@ void WebSocket::onBroadcast( ofxLibwebsockets::Event& args ){
     cout<<"got broadcast "<<args.message<<endl;
 }
 
+void WebSocket::broadcastMessage(string m){
+    server.broadcast(m);
+}
+
 //--------------------------------------------------------------
 /*void WebSocketReceiver::keyPressed(int key){
     // do some typing!
