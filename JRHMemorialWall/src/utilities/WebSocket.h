@@ -35,5 +35,6 @@ public:
     void onBroadcast( ofxLibwebsockets::Event& args );
     
     ofEvent<string> onGotMessage;
+    ofEvent<ofxLibwebsockets::Event> onNewConnection;
     
 };

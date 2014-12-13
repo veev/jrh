@@ -4,8 +4,14 @@ var messageDiv;
 var statusDiv;
 var button;
 var textField;
+var lightsCheckbox, soundCheckbox;
+var socketOpen = false;;
 
 $(document).ready( function() {
+
+	lightsCheckbox = document.getElementById("lightsCheckbox");
+	soundCheckbox = document.getElementById("soundCheckbox");
+
 	setupSocket();
 	
 	document.getElementById("brow").textContent = " " + BrowserDetect.browser + " "
@@ -14,21 +20,52 @@ $(document).ready( function() {
 	messageDiv = document.getElementById("messages");
 	statusDiv = document.getElementById("status");
 
-	//setup message sending button
-	message = document.getElementById("message");
-	button = document.getElementById("button");
+	
+	lightsCheckbox.onclick = function(e){
+		//pingSocket();
+		//check state
+		if(lightsCheckbox.checked){
+			//socket.send("ON");
+			pingSocket("ON");
+		}
+		else{
+			//socket.send("OFF");
+			pingSocket("OFF");
+		}
+	}
 
-	// send the form when you press enter 
-	// or when you press the button
-	button.onclick = function(e){
-		sendMessageForm();
-	};
-	$("#message").keyup(function(event){
-    	if(event.keyCode == 13){
-    		sendMessageForm()
-    	}
-    })
+	soundCheckbox.onclick = function(e){
+		//pingSocket();
+		//check state
+		if(soundCheckbox.checked){
+			//socket.send("UNMUTE");
+			pingSocket("UNMUTE");
+		}
+		else{
+			//socket.send("MUTE");
+			pingSocket("MUTE");
+		}
+	}
+
+	
 });
+
+function pingSocket(message){
+	//console.log("socket.state: "+socket.state);
+	//console.log("socket.open: "+socket.open);
+	//console.log("socket.status: "+socket.status);
+	//console.log("socket: "+socket);
+	//console.log("socketOpen: "+socketOpen);
+	if(!socketOpen){
+		//open socket, then send message
+		setupSocket(message);
+		//socket.open();
+	}
+	else{
+		//send message
+		socket.send(message);
+	}
+}
 
 // send value from text input
 function sendMessageForm(){
@@ -37,7 +74,7 @@ function sendMessageForm(){
 }
 
 // setup web socket
-function setupSocket(){
+function setupSocket(message){
 
 	// setup websocket
 	// get_appropriate_ws_url is a nifty function by the libwebsockets people
@@ -54,17 +91,36 @@ function setupSocket(){
 	try {
 		socket.onopen = function() {
 			statusDiv.style.backgroundColor = "#40ff40";
-			statusDiv.textContent = " websocket connection opened ";
+			statusDiv.textContent = "connection open";
+			socketOpen = true;
+			//send message if there is one
+			if(message){
+				socket.send(message);
+			}
 		} 
 
 		// received message
 		socket.onmessage =function got_packet(msg) {
-			messageDiv.innerHTML = msg.data + "<br />" + messageDiv.innerHTML;
+			//messageDiv.innerHTML = msg.data + "<br />" + messageDiv.innerHTML;
+			console.log(msg.data);
+			if(msg.data == "ON"){
+				lightsCheckbox.checked = true;
+			}
+			else if(msg.data == "OFF"){
+				lightsCheckbox.checked = false;
+			}
+			else if(msg.data == "MUTE"){
+				soundCheckbox.checked = false;
+			}
+			else if(msg.data == "UNMUTE"){
+				soundCheckbox.checked = true;
+			}
 		}
 
 		socket.onclose = function(){
 			statusDiv.style.backgroundColor = "#ff4040";
-			statusDiv.textContent = " websocket connection CLOSED ";
+			statusDiv.textContent = " connection closed ";
+			socketOpen = false;
 		}
 	} catch(exception) {
 		alert('<p>Error' + exception);  

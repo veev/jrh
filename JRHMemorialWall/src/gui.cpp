@@ -14,6 +14,8 @@ gui::gui(){
    // modeToggle.addListener(this, &gui::onModeToggle);
     isHidden = false;
     
+    xmlFile = "gui_settings.xml";
+    
 }
 
 void gui::setup(int x){
@@ -62,18 +64,19 @@ void gui::setup(int x){
     cvParams.add(flipH.set("Flip H", false));
     
     //create the gui
-    guiPanel.setup("GUI","gui_settings.xml", x,10);
+    guiPanel.setup("GUI",xmlFile, x,10);
     guiPanel.setWidthElements(200);
     
     //guiPanel.setup(visualSystemParams);
-    guiPanel.add(ledsOn.set("LEDs ON", false));
+    guiPanel.add(ledsOn.set("LIGHTS", false));
+    guiPanel.add(sound.set("SOUND", true));
     guiPanel.add(fullscreen.set("fullscreen", false));
     guiPanel.add(saveSetupButton.setup("SAVE SETUP"));
     guiPanel.add(modeToggle.setup("TOGGLE LIVE MODE", true));
     guiPanel.add(dsParams);
     guiPanel.add(visualSystemParams);
     guiPanel.add(cvParams);
-    guiPanel.loadFromFile("gui_settings.xml");
+    guiPanel.loadFromFile(xmlFile);
 }
 
 void gui::update(){
@@ -102,4 +105,8 @@ void gui::hide(bool control){
 
 void gui::onHideGuiButton(){
     isHidden = true;
+}
+
+void gui::saveSettings(){
+    guiPanel.saveToFile(xmlFile);
 }

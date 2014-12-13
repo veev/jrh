@@ -46,5 +46,7 @@
 		</Display_System>
 	<LEDs_ON>0</LEDs_ON>
 	<fullscreen>1</fullscreen>
+	<LIGHTS>0</LIGHTS>
+		<SOUND>0</SOUND>
 	</GUI>
 </guiSettings>

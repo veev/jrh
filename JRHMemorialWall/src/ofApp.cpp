@@ -24,6 +24,7 @@ void ofApp::setup(){
     gui.modeToggle.addListener(this, &ofApp::onModeToggle);
     gui.showKinect.addListener(this, &ofApp::onKinectToggle);
     gui.ledsOn.addListener(this, &ofApp::onLEDsToggle);
+    gui.ledsOn.addListener(this, &ofApp::onSoundToggle);
     gui.fullscreen.addListener(this, &ofApp::fullscreenToggle);
 
     
@@ -69,6 +70,7 @@ void ofApp::setup(){
     
     webSocket.setup();
     ofAddListener(webSocket.onGotMessage,this, &ofApp::onMessage);
+    ofAddListener(webSocket.onNewConnection,this, &ofApp::onNewConnection);
     
     }
 
@@ -82,13 +84,49 @@ void ofApp::onMessage(string & m){
         //TURN INSTALLATION OFF
         gui.ledsOn.set(false);
     }
+    else if( m == "MUTE"){
+        //TURN SOUND ON
+        gui.sound.set(false);
+    }
+    else if( m == "UNMUTE"){
+        //TURN SOUND ON
+        gui.sound.set(true);
+    }
+    
     else{
         //assume this is an integer 0-6, display relevant quote
         vs.showQuote(ofToInt(m));
     }
     
+    //save xml
+    gui.saveSettings();
+    
     //broadcast message to touchscreen
     webSocket.broadcastMessage(m);
+}
+
+void ofApp::onNewConnection(ofxLibwebsockets::Event& args){
+                //ask for current state
+        cout<<"gui.ledsOn: "<<gui.ledsOn<<endl;
+        cout<<"gui.sound: "<<gui.sound<<endl;
+        
+        if(gui.ledsOn){
+          //  webSocket.broadcastMessage("ON");
+            args.conn.send("ON");
+        }
+        else{
+           // webSocket.broadcastMessage("OFF");
+            args.conn.send("OFF");
+        }
+        
+        if(gui.sound){
+            //webSocket.broadcastMessage("UNMUTE");
+            args.conn.send("UNMUTE");
+        }
+        else{
+           // webSocket.broadcastMessage("MUTE");
+            args.conn.send("MUTE");
+        }
 }
 
 
@@ -114,9 +152,13 @@ void ofApp::onKinectToggle(bool & control){
 void ofApp::onLEDsToggle(bool & control){
     //clear led strips
     if(control == false){
-        cout<<"clear led strips"<<endl;
-        ds.clear();
+      //  cout<<"clear led strips"<<endl;
+    //    ds.clear();
     }
+}
+
+void ofApp::onSoundToggle(bool & control){
+    
 }
 
 void ofApp::fullscreenToggle(bool &control){
