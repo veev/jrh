@@ -81,11 +81,6 @@ void ledWaveStrips::updateFbo(ofFbo * fbo, bool mirror){
     //resize the image to the correct ledstrip size
     topStripImage.resize(_numLeds, 1);
     topStripImage.update();
- /*   for(int i=0;i<topStripImage.pixels.size();i++){
-        ofColor c = topStripPixels.getColor(i, 0);
-        c *= colorShift;
-        topStripPixels.setColor(i, c);
-    }*/
     
     if(mirror)
         topStripImage.mirror(false, true);
