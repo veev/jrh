@@ -77,11 +77,11 @@ function setupSocket(message){
 	// it decides what the websocket url is based on the broswer url
 	// e.g. https://mygreathost:9099 = wss://mygreathost:9099
 
-	if (BrowserDetect.browser == "Firefox") {
+	/*if (BrowserDetect.browser == "Firefox") {
 		socket = new MozWebSocket(get_appropriate_ws_url());
-	} else {
+	} else {*/
 		socket = new WebSocket(get_appropriate_ws_url());
-	}
+	//}
 	
 	// open
 	try {
