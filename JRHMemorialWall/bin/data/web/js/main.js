@@ -9,6 +9,7 @@ var socketOpen = false;;
 
 $(document).ready( function() {
 
+
 	lightsCheckbox = document.getElementById("lightsCheckbox");
 	soundCheckbox = document.getElementById("soundCheckbox");
 
@@ -51,11 +52,6 @@ $(document).ready( function() {
 });
 
 function pingSocket(message){
-	//console.log("socket.state: "+socket.state);
-	//console.log("socket.open: "+socket.open);
-	//console.log("socket.status: "+socket.status);
-	//console.log("socket: "+socket);
-	//console.log("socketOpen: "+socketOpen);
 	if(!socketOpen){
 		//open socket, then send message
 		setupSocket(message);

@@ -64,11 +64,14 @@ void WebSocket::setup(){
 //--------------------------------------------------------------
 void WebSocket::onConnect( ofxLibwebsockets::Event& args ){
     cout<<"on connected"<<endl;
+    
 }
 
 //--------------------------------------------------------------
 void WebSocket::onOpen( ofxLibwebsockets::Event& args ){
     cout<<"new connection open"<<endl;
+    cout<<"ClientIP: "<<args.conn.getClientIP()<<endl;
+    cout<<"ClientName: "<<args.conn.getClientName()<<endl;
     messages.push_back("New connection from " + args.conn.getClientIP() + ", " + args.conn.getClientName() );
     ofNotifyEvent(onNewConnection, args);
     

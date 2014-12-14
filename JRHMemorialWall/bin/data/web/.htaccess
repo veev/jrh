@@ -1,0 +1,8 @@
+AuthType Basic  
+AuthName "restricted area"  
+AuthUserFile "/Volumes/HDD/OpenFrameworks/of_v0.8.4_osx_release/apps/jrh/JRHMemorialWall/bin/data/web/.htpasswd"
+require valid-user
+
+AllowOverride All
+Allow from 127.0.0.1
+Satisfy Any
