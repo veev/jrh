@@ -118,6 +118,7 @@ function setupSocket(message){
 			statusDiv.textContent = " connection closed ";
 			socketOpen = false;
 		}
+		
 	} catch(exception) {
 		alert('<p>Error' + exception);  
 	}
