@@ -27,11 +27,11 @@ $(document).ready( function() {
 		//check state
 		if(lightsCheckbox.checked){
 			//socket.send("ON");
-			pingSocket("ON");
+			pingSocket("on");
 		}
 		else{
 			//socket.send("OFF");
-			pingSocket("OFF");
+			pingSocket("off");
 		}
 	}
 
@@ -40,11 +40,11 @@ $(document).ready( function() {
 		//check state
 		if(soundCheckbox.checked){
 			//socket.send("UNMUTE");
-			pingSocket("UNMUTE");
+			pingSocket("unmute");
 		}
 		else{
 			//socket.send("MUTE");
-			pingSocket("MUTE");
+			pingSocket("mute");
 		}
 	}
 
@@ -99,16 +99,16 @@ function setupSocket(message){
 		socket.onmessage =function got_packet(msg) {
 			//messageDiv.innerHTML = msg.data + "<br />" + messageDiv.innerHTML;
 			console.log(msg.data);
-			if(msg.data == "ON"){
+			if(msg.data == "on"){
 				lightsCheckbox.checked = true;
 			}
-			else if(msg.data == "OFF"){
+			else if(msg.data == "off"){
 				lightsCheckbox.checked = false;
 			}
-			else if(msg.data == "MUTE"){
+			else if(msg.data == "mute"){
 				soundCheckbox.checked = false;
 			}
-			else if(msg.data == "UNMUTE"){
+			else if(msg.data == "unmute"){
 				soundCheckbox.checked = true;
 			}
 		}

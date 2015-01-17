@@ -76,23 +76,22 @@ void ofApp::setup(){
 
 void ofApp::onMessage(string & m){
     cout<<"onMessageFromTouchscreen: "<<m<<endl;
-    if(m == "ON"){
+    if(m == "on"){
         //TURN INSTALLATION ON
         gui.ledsOn.set(true);
     }
-    else if( m == "OFF"){
+    else if( m == "off"){
         //TURN INSTALLATION OFF
         gui.ledsOn.set(false);
     }
-    else if( m == "MUTE"){
+    else if( m == "mute"){
         //TURN SOUND ON
         gui.sound.set(false);
     }
-    else if( m == "UNMUTE"){
+    else if( m == "unmute"){
         //TURN SOUND ON
         gui.sound.set(true);
     }
-    
     else{
         //assume this is an integer 0-6, display relevant quote
         vs.showQuote(ofToInt(m));
@@ -112,20 +111,20 @@ void ofApp::onNewConnection(ofxLibwebsockets::Event& args){
         
         if(gui.ledsOn){
           //  webSocket.broadcastMessage("ON");
-            args.conn.send("ON");
+            args.conn.send("on");
         }
         else{
            // webSocket.broadcastMessage("OFF");
-            args.conn.send("OFF");
+            args.conn.send("off");
         }
         
         if(gui.sound){
             //webSocket.broadcastMessage("UNMUTE");
-            args.conn.send("UNMUTE");
+            args.conn.send("unmute");
         }
         else{
            // webSocket.broadcastMessage("MUTE");
-            args.conn.send("MUTE");
+            args.conn.send("mute");
         }
 }
 
