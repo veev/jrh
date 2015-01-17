@@ -117,7 +117,8 @@ void WebSocket::onBroadcast( ofxLibwebsockets::Event& args ){
 }
 
 void WebSocket::broadcastMessage(string m){
-    server.broadcast(m);
+    server.send(m);
+   // server.broadcast(m);
 }
 
 //--------------------------------------------------------------

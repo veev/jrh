@@ -152,8 +152,10 @@ void ofApp::onKinectToggle(bool & control){
 void ofApp::onLEDsToggle(bool & control){
     //clear led strips
     if(control == false){
-      //  cout<<"clear led strips"<<endl;
-    //    ds.clear();
+        webSocket.broadcastMessage("OFF");
+    }
+    else{
+        webSocket.broadcastMessage("ON");
     }
 }
 
