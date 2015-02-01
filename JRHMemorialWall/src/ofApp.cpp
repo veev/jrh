@@ -151,15 +151,20 @@ void ofApp::onKinectToggle(bool & control){
 void ofApp::onLEDsToggle(bool & control){
     //clear led strips
     if(control == false){
-        webSocket.broadcastMessage("OFF");
+        webSocket.broadcastMessage("off");
     }
     else{
-        webSocket.broadcastMessage("ON");
+        webSocket.broadcastMessage("on");
     }
 }
 
 void ofApp::onSoundToggle(bool & control){
-    
+    if(control == false){
+        webSocket.broadcastMessage("mute");
+    }
+    else{
+        webSocket.broadcastMessage("unmute");
+    }
 }
 
 void ofApp::fullscreenToggle(bool &control){

@@ -139,7 +139,8 @@ void visualSystem::update(){
         //stop the particle if it is over an empty area with text
         if(displayPixels.getColor(cur.x, cur.y).getBrightness() < 230){
             if(tm.pixels.getColor(cur.x, cur.y).getBrightness() > 20){
-                cur.stop();
+                //cur.stop();
+                cur.bounce(.3);
             }
         }
         
