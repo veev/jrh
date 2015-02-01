@@ -134,4 +134,10 @@ public:
         yv = 0;
         resetForce();
     }
+    
+    void bounce(float damp){
+        xv *= -damp;
+        yv = 0;
+        resetForce();
+    }
 };
