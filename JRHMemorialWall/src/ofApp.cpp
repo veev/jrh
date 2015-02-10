@@ -190,6 +190,7 @@ void ofApp::update(){
     ds.mirrorStrips = gui.mirrorLEDStrips;
     ds.ledPanelsColor = gui.ledPanelsColor;
     ds.ledStripsColor = gui.ledStripsColor;
+    ds.ledStripsOn = gui.strips;
         
     vs.timeSpeed = gui.flowSpeed;
     vs.timeStep = gui.timeSpeed;
@@ -264,6 +265,9 @@ void ofApp::keyReleased(int key){
             break;
         case 'l':
             gui.ledsOn = !gui.ledsOn;
+            break;
+        case 's':
+            gui.strips = !gui.strips;
             break;
         case OF_KEY_UP:
             vs.angleKinectUp();

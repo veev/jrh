@@ -77,7 +77,7 @@ void displaySystem::draw(int offSetY){
         ofSetColor(255);
         _frame->draw(0,offSetY);
     }
-     drawWaves();
+    drawWaves();
 }
 
 void displaySystem::drawWaves(){
@@ -123,9 +123,17 @@ void displaySystem::drawWaves(){
             //draw strips below
             int yOffset = 200;
             ofSetColor(255);
-            ofDrawBitmapString(ofToString(w->_idNum), 10, yOffset+(i*20)+7);
-            w->draw(30, yOffset+(i*20));
-            w->drawToStrips();
+            
+            
+            if(ledStripsOn){
+                ofDrawBitmapString(ofToString(w->_idNum), 10, yOffset+(i*20)+7);
+                w->draw(30, yOffset+(i*20));
+                //send to strips via OSC
+                w->drawToStrips();
+            }
+            else{
+                ofDrawBitmapString(ofToString(w->_idNum)+" STRIP IS OFF", 10, yOffset+(i*20)+7);
+            }
         }
     }
     
@@ -134,15 +142,15 @@ void displaySystem::drawWaves(){
 //Find the wave that is clicked on and make that the draggable one
 void displaySystem::mousePressed(int x, int y, int button){
     
-     for (int i=0;i<wavesPanels.size();i++){
-         ledWavePanels * w = wavesPanels.at(i);
-         if(w->hitTest(x,y)){
-             draggableWave = w;
-             mousePressedX = x-w->_x;
-             mousePressedY = y-w->_y;
-             return;
-         }
-     }
+    for (int i=0;i<wavesPanels.size();i++){
+        ledWavePanels * w = wavesPanels.at(i);
+        if(w->hitTest(x,y)){
+            draggableWave = w;
+            mousePressedX = x-w->_x;
+            mousePressedY = y-w->_y;
+            return;
+        }
+    }
     for (int i=0;i<wavesStrips.size();i++){
         ledWaveStrips * w = wavesStrips.at(i);
         if(w->hitTest(x,y)){

@@ -33,7 +33,7 @@ class displaySystem{
     
     vector <ledWavePanels *> wavesPanels;
     vector <ledWaveStrips *> wavesStrips;
-    bool mirrorStrips;
+    bool mirrorStrips, ledStripsOn;
     ofColor ledPanelsColor, ledStripsColor;
     int width, height;
     

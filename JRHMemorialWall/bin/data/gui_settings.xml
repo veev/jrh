@@ -48,5 +48,6 @@
 	<fullscreen>1</fullscreen>
 	<LIGHTS>1</LIGHTS>
 		<SOUND>0</SOUND>
+	<LED_Strips>1</LED_Strips>
 	</GUI>
 </guiSettings>

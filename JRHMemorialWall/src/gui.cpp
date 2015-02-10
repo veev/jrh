@@ -70,8 +70,9 @@ void gui::setup(int x){
     //guiPanel.setup(visualSystemParams);
     guiPanel.add(ledsOn.set("LIGHTS", false));
     guiPanel.add(sound.set("SOUND", true));
+    guiPanel.add(strips.set("LED Strips", true));
     guiPanel.add(fullscreen.set("fullscreen", false));
-    guiPanel.add(saveSetupButton.setup("SAVE SETUP"));
+    guiPanel.add(saveSetupButton.setup("SAVES WAVES"));
     guiPanel.add(modeToggle.setup("TOGGLE LIVE MODE", true));
     guiPanel.add(dsParams);
     guiPanel.add(visualSystemParams);
