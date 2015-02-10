@@ -12,19 +12,16 @@
 
 
 
-void visualSystem::init(int w, int h){
+void visualSystem::init(int w, int h, int kParticles){
     width=w;
     height=h;
     particleBrightnessShift = 10;
     
     displayPixels.allocate(w, h, OF_IMAGE_COLOR);
-   // textPixels.allocate(w, h, OF_IMAGE_COLOR);
     
     mouseX = -100;
     mouseY = -100;
     
- //   bloom.allocate(width, height);
-  //  glow.allocate(width, height);
     blur.allocate(width, height);
     
     cv.setup(width, height);
@@ -45,7 +42,7 @@ void visualSystem::init(int w, int h){
     
 	particleSystem.setup(width, height, binPower);
     
-	kParticles = 15;
+	//kParticles = 15;
 	float padding = 0;
 	float maxVelocity = 5;
 	for(int i = 0; i < kParticles * 1024; i++) {

@@ -12,9 +12,12 @@ void ofApp::setup(){
     
     ofSetFrameRate(30);
     
+    //get data from settings xml file
     int vsw = DataManager::settings.getAttribute("visualSystem", "width", 600);
     int vsh = DataManager::settings.getAttribute("visualSystem", "height", 400);
-    vs.init(vsw, vsh);
+    int kParticles = DataManager::settings.getAttribute("visualSystem", "kparticles", 15);
+
+    vs.init(vsw, vsh, kParticles);
     //load the test movie
     vs.loadTestMovie(DataManager::getTestVideoPath());
     
