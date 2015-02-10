@@ -79,6 +79,21 @@ void visualSystem::init(int w, int h, int kParticles){
     vForce = .2;
 }
 
+void visualSystem::reset(){
+    display->begin();
+    ofFill();
+    //fade out BG by drawing a rectangle
+    ofSetColor(0);
+    ofRect(0,0,width,height);
+    display->end();
+    
+    for(int i = 0; i < particleSystem.size(); i++) {
+        Particle& cur = particleSystem[i];
+        cur.stop();
+        cur.x = width;
+    }
+}
+
 void visualSystem::loadTestMovie(string path){
     testMovie.loadMovie(path);
     testMovie.setVolume(0);
@@ -180,9 +195,6 @@ void visualSystem::update(){
     ofSetColor(pointOpacity, pointOpacity, pointOpacity, 255);
     particleSystem.draw();
     
-    
-   // ofDisableAlphaBlending();
-        
     }
     display->end();
 
@@ -227,7 +239,7 @@ void visualSystem::update(){
        // ofDisableAlphaBlending();
         glDisable(GL_BLEND);
         glPopAttrib();
-    display->end();
+        display->end();
     }
 }
 

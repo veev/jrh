@@ -158,6 +158,7 @@ void ofApp::onLEDsToggle(bool & control){
     }
     else{
         webSocket.broadcastMessage("on");
+        vs.reset();
     }
 }
 
@@ -179,13 +180,17 @@ void ofApp::update(){
     gui.update();
     
     //UPDATE GUI Vars
+   
+    
+    //Visual System
+    vs.isOn = gui.ledsOn;
+    if(gui.ledsOn){
+    
     //Display System
     ds.mirrorStrips = gui.mirrorLEDStrips;
     ds.ledPanelsColor = gui.ledPanelsColor;
     ds.ledStripsColor = gui.ledStripsColor;
-    
-    //Visual System
-    vs.isOn = gui.ledsOn;
+        
     vs.timeSpeed = gui.flowSpeed;
     vs.timeStep = gui.timeSpeed;
     vs.hForce = gui.horizontalForce;
@@ -214,6 +219,7 @@ void ofApp::update(){
     
    // ds.updateDisplayAsImage(vs.getFrameAsImage());
     ds.updateDisplay(frame);
+    }
 }
 
 //--------------------------------------------------------------
@@ -223,9 +229,11 @@ void ofApp::draw(){
    // ds.updateDisplay(frame);
 
     ofBackground(0);
-    ofSetColor(255,255,255,255);
-    ds.draw(displaySystemYOffset);
-        
+    if(gui.ledsOn) {
+        ofSetColor(255,255,255,255);
+        ds.draw(displaySystemYOffset);
+    }
+    
     if(!gui.isHidden)
         gui.draw();
     else
@@ -253,6 +261,9 @@ void ofApp::keyReleased(int key){
         case 'f':
             isFullScreen = ! isFullScreen;
             ofSetFullscreen(isFullScreen);
+            break;
+        case 'l':
+            gui.ledsOn = !gui.ledsOn;
             break;
         case OF_KEY_UP:
             vs.angleKinectUp();
