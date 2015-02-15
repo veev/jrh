@@ -77,10 +77,15 @@ void visualSystem::init(int w, int h, int kParticles){
     phase = TWO_PI; // separate u-noise from v-noise
     hForce = .2;
     vForce = .2;
+    
+    resetB = false;
 }
 
 void visualSystem::reset(){
-    display->begin();
+    
+    resetB = true;
+    
+   /* display->begin();
     ofFill();
     //fade out BG by drawing a rectangle
     ofSetColor(0);
@@ -91,7 +96,7 @@ void visualSystem::reset(){
         Particle& cur = particleSystem[i];
         cur.stop();
         cur.x = width;
-    }
+    }*/
 }
 
 void visualSystem::loadTestMovie(string path){
@@ -118,7 +123,10 @@ void visualSystem::update(){
    
     ofFill();
     //fade out BG by drawing a rectangle
-    ofSetColor(0, 0, 0, fadeAmt);
+    if(resetB)
+        ofSetColor(0);
+    else
+        ofSetColor(0, 0, 0, fadeAmt);
     ofRect(0,0,width,height);
 
     //PARTICLE SYSTEM DRAWING STARTS HERE
@@ -136,6 +144,12 @@ void visualSystem::update(){
         
 	for(int i = 0; i < particleSystem.size(); i++) {
 		Particle& cur = particleSystem[i];
+        
+        if(resetB){
+            cur.stop();
+            cur.x = width;
+        }
+        
 		// global force on other particles
 		particleSystem.addRepulsionForce(cur, particleNeighborhood, particleRepulsion);
 		// forces on this particle
@@ -241,6 +255,8 @@ void visualSystem::update(){
         glPopAttrib();
         display->end();
     }
+    
+    resetB = false;
 }
 
 ofFbo * visualSystem::getFrame(){

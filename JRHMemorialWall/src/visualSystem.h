@@ -52,9 +52,7 @@ class visualSystem{
 	ParticleSystem particleSystem;
 	bool isMousePressed, slowMotion, isMouseMoved;
     
-    float complexity;
-    float pollenMass;
-    float timeSpeed;
+    float complexity, pollenMass, timeSpeed;
     float phase, hForce, vForce, repForce;
     
     computerVision cv;
@@ -67,7 +65,7 @@ class visualSystem{
     
     float blurAmount, depthCutoff, depthForce;
     int kinectMix;
-    bool showKinect, isOn, contourFinderOn;
+    bool showKinect, isOn, contourFinderOn, resetB;
     
     textManager tm;
     
