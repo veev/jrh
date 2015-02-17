@@ -95,7 +95,7 @@ void ofApp::onMessage(string & m){
         //TURN SOUND ON
         gui.sound.set(true);
     }
-    else{
+    else if(m != "ping"){
         //assume this is an integer 0-6, display relevant quote
         vs.showQuote(ofToInt(m));
     }
@@ -104,7 +104,7 @@ void ofApp::onMessage(string & m){
     gui.saveSettings();
     
     //broadcast message to touchscreen
-    webSocket.broadcastMessage(m);
+    //webSocket.broadcastMessage(m);
 }
 
 void ofApp::onNewConnection(ofxLibwebsockets::Event& args){
@@ -152,7 +152,6 @@ void ofApp::onKinectToggle(bool & control){
 }
 
 void ofApp::onLEDsToggle(bool & control){
-    //clear led strips
     if(control == false){
         webSocket.broadcastMessage("off");
     }
@@ -163,6 +162,7 @@ void ofApp::onLEDsToggle(bool & control){
 }
 
 void ofApp::onSoundToggle(bool & control){
+    cout<<"onSoundToggle"<<endl;
     if(control == false){
         webSocket.broadcastMessage("mute");
     }
