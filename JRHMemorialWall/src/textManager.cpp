@@ -18,54 +18,61 @@ textManager::textManager(){
     targetAlpha = 0;
     fadeSpeed = 1;
     fadeToValue = 255;
-        
-    }
+    
+}
 
 void textManager::setup(int width, int height){
     textFbo.allocate(width, height, GL_RGBA);
     pixels.allocate(width, height, OF_IMAGE_COLOR_ALPHA);
     quote.allocate(480, 144, OF_IMAGE_COLOR_ALPHA);
-
+    
 }
 
 void textManager::update(){
     
     if(loadNewQuote){
-    //load the image for that quote
-    quote.loadImage("quotes/"+ofToString(activeQuoteID)+".png");
-    fadeTo(fadeToValue, 100);
+        //load the image for that quote
+        quote.loadImage("quotes/"+ofToString(activeQuoteID)+".png");
+        fadeTo(fadeToValue, 100);
         loadNewQuote = false;
     }
     
-       // ofSetColor(255);
     
+    
+    //find the wave by id
+    textFbo.begin();
     //set alpha
     alpha += (targetAlpha - alpha)/fadeSpeed;
-    alpha = round(alpha);
+   // alpha = round(alpha);
     
-        //find the wave by id
-        textFbo.begin();
+    cout<<"targetAlpha: "<<targetAlpha<<endl;
+    cout<<"alpha: "<<alpha<<endl;
+
+    
     ofSetColor(255, 255, 255, alpha);
-        //ofClearAlpha();
+    
+    //ofClearAlpha();
     ofClear(0,0,0,0);
-   // if(activeQuoteID != 0){
-        ledWavePanels * w;
-        int cropY = 0;
-        for(int wcnt = 0; wcnt<wavesPanels.size(); wcnt++){
-            w = wavesPanels.at(wcnt);
-            //draw the text to the correct location in the text fbo layer
-            
-            
-            quote.drawSubsection(w->_x, w->_y, w->_w, w->_h, 0, cropY);
-            cropY+=w->_h;
-            
-                    }
-        
-   // }
-        textFbo.end();
+    
+    //need to enable these special blame functions in order to properly blend apha PNGs
+    //glPushAttrib(GL_ALL_ATTRIB_BITS);
+    //glEnable(GL_BLEND);
+    //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,GL_ONE,GL_ONE_MINUS_SRC_ALPHA);
+
+    ledWavePanels * w;
+    int cropY = 0;
+    for(int wcnt = 0; wcnt<wavesPanels.size(); wcnt++){
+        w = wavesPanels.at(wcnt);
+
+        //draw the text to the correct location in the text fbo layer
+        quote.drawSubsection(w->_x, w->_y, w->_w, w->_h, 0, cropY);
+        cropY+=w->_h;
+    }
+    
+    textFbo.end();
     
     textFbo.readToPixels(pixels);
-  
+    
 }
 
 void textManager::draw(){
@@ -77,7 +84,6 @@ void textManager::setActiveQuote(int quoteId){
     activeQuoteID = quoteId;
     
     if(quoteId == 0){
-      //  quote.clear();
         fadeTo(0, 50);
     }
     else{

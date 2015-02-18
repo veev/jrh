@@ -14,7 +14,7 @@
 		<Particle_Brightness>95</Particle_Brightness>
 		<Depth_Cutoff>255</Depth_Cutoff>
 			<Depth_Force>0</Depth_Force>
-		<Text_Fade_Amt>255</Text_Fade_Amt>
+		<Text_Fade_Amt>170</Text_Fade_Amt>
 		</Visual_System>
 	<group>
 			<Contour_Threshol>191.25</Contour_Threshol>

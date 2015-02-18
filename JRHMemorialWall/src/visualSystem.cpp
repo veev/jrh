@@ -225,19 +225,11 @@ void visualSystem::update(){
         
         //need to enable these special blame functions in order to properly blend apha PNGs
         glPushAttrib(GL_ALL_ATTRIB_BITS);
-        
         glEnable(GL_BLEND);
         glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,GL_ONE,GL_ONE_MINUS_SRC_ALPHA);
         
-        //Draw stuff here
-        // ...
-        
-        
         ofClearAlpha();
-       // ofEnableAlphaBlending();
         ofSetColor(255,255,255,255);
-        //draw text layer
-       // tm.draw();
         
     //draw the blurred particle system
     blur.draw(0,0);
