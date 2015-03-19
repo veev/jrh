@@ -12,9 +12,12 @@ void ofApp::setup(){
     
     ofSetFrameRate(30);
     
+    //get data from settings xml file
     int vsw = DataManager::settings.getAttribute("visualSystem", "width", 600);
     int vsh = DataManager::settings.getAttribute("visualSystem", "height", 400);
-    vs.init(vsw, vsh);
+    int kParticles = DataManager::settings.getAttribute("visualSystem", "kparticles", 15);
+
+    vs.init(vsw, vsh, kParticles);
     //load the test movie
     vs.loadTestMovie(DataManager::getTestVideoPath());
     
@@ -76,24 +79,23 @@ void ofApp::setup(){
 
 void ofApp::onMessage(string & m){
     cout<<"onMessageFromTouchscreen: "<<m<<endl;
-    if(m == "ON"){
+    if(m == "on"){
         //TURN INSTALLATION ON
         gui.ledsOn.set(true);
     }
-    else if( m == "OFF"){
+    else if( m == "off"){
         //TURN INSTALLATION OFF
         gui.ledsOn.set(false);
     }
-    else if( m == "MUTE"){
+    else if( m == "mute"){
         //TURN SOUND ON
         gui.sound.set(false);
     }
-    else if( m == "UNMUTE"){
+    else if( m == "unmute"){
         //TURN SOUND ON
         gui.sound.set(true);
     }
-    
-    else{
+    else if(m != "ping"){
         //assume this is an integer 0-6, display relevant quote
         vs.showQuote(ofToInt(m));
     }
@@ -102,7 +104,7 @@ void ofApp::onMessage(string & m){
     gui.saveSettings();
     
     //broadcast message to touchscreen
-    webSocket.broadcastMessage(m);
+    //webSocket.broadcastMessage(m);
 }
 
 void ofApp::onNewConnection(ofxLibwebsockets::Event& args){
@@ -112,20 +114,20 @@ void ofApp::onNewConnection(ofxLibwebsockets::Event& args){
         
         if(gui.ledsOn){
           //  webSocket.broadcastMessage("ON");
-            args.conn.send("ON");
+            args.conn.send("on");
         }
         else{
            // webSocket.broadcastMessage("OFF");
-            args.conn.send("OFF");
+            args.conn.send("off");
         }
         
         if(gui.sound){
             //webSocket.broadcastMessage("UNMUTE");
-            args.conn.send("UNMUTE");
+            args.conn.send("unmute");
         }
         else{
            // webSocket.broadcastMessage("MUTE");
-            args.conn.send("MUTE");
+            args.conn.send("mute");
         }
 }
 
@@ -150,17 +152,23 @@ void ofApp::onKinectToggle(bool & control){
 }
 
 void ofApp::onLEDsToggle(bool & control){
-    //clear led strips
     if(control == false){
-        webSocket.broadcastMessage("OFF");
+        webSocket.broadcastMessage("off");
     }
     else{
-        webSocket.broadcastMessage("ON");
+        webSocket.broadcastMessage("on");
+        vs.reset();
     }
 }
 
 void ofApp::onSoundToggle(bool & control){
-    
+    cout<<"onSoundToggle"<<endl;
+    if(control == false){
+        webSocket.broadcastMessage("mute");
+    }
+    else{
+        webSocket.broadcastMessage("unmute");
+    }
 }
 
 void ofApp::fullscreenToggle(bool &control){
@@ -172,13 +180,18 @@ void ofApp::update(){
     gui.update();
     
     //UPDATE GUI Vars
+   
+    
+    //Visual System
+    vs.isOn = gui.ledsOn;
+    if(gui.ledsOn){
+    
     //Display System
     ds.mirrorStrips = gui.mirrorLEDStrips;
     ds.ledPanelsColor = gui.ledPanelsColor;
     ds.ledStripsColor = gui.ledStripsColor;
-    
-    //Visual System
-    vs.isOn = gui.ledsOn;
+    ds.ledStripsOn = gui.strips;
+        
     vs.timeSpeed = gui.flowSpeed;
     vs.timeStep = gui.timeSpeed;
     vs.hForce = gui.horizontalForce;
@@ -207,6 +220,7 @@ void ofApp::update(){
     
    // ds.updateDisplayAsImage(vs.getFrameAsImage());
     ds.updateDisplay(frame);
+    }
 }
 
 //--------------------------------------------------------------
@@ -216,9 +230,11 @@ void ofApp::draw(){
    // ds.updateDisplay(frame);
 
     ofBackground(0);
-    ofSetColor(255,255,255,255);
-    ds.draw(displaySystemYOffset);
-        
+    if(gui.ledsOn) {
+        ofSetColor(255,255,255,255);
+        ds.draw(displaySystemYOffset);
+    }
+    
     if(!gui.isHidden)
         gui.draw();
     else
@@ -246,6 +262,12 @@ void ofApp::keyReleased(int key){
         case 'f':
             isFullScreen = ! isFullScreen;
             ofSetFullscreen(isFullScreen);
+            break;
+        case 'l':
+            gui.ledsOn = !gui.ledsOn;
+            break;
+        case 's':
+            gui.strips = !gui.strips;
             break;
         case OF_KEY_UP:
             vs.angleKinectUp();

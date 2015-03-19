@@ -12,19 +12,16 @@
 
 
 
-void visualSystem::init(int w, int h){
+void visualSystem::init(int w, int h, int kParticles){
     width=w;
     height=h;
     particleBrightnessShift = 10;
     
     displayPixels.allocate(w, h, OF_IMAGE_COLOR);
-   // textPixels.allocate(w, h, OF_IMAGE_COLOR);
     
     mouseX = -100;
     mouseY = -100;
     
- //   bloom.allocate(width, height);
-  //  glow.allocate(width, height);
     blur.allocate(width, height);
     
     cv.setup(width, height);
@@ -45,7 +42,7 @@ void visualSystem::init(int w, int h){
     
 	particleSystem.setup(width, height, binPower);
     
-	kParticles = 15;
+	//kParticles = 15;
 	float padding = 0;
 	float maxVelocity = 5;
 	for(int i = 0; i < kParticles * 1024; i++) {
@@ -80,6 +77,26 @@ void visualSystem::init(int w, int h){
     phase = TWO_PI; // separate u-noise from v-noise
     hForce = .2;
     vForce = .2;
+    
+    resetB = false;
+}
+
+void visualSystem::reset(){
+    
+    resetB = true;
+    
+   /* display->begin();
+    ofFill();
+    //fade out BG by drawing a rectangle
+    ofSetColor(0);
+    ofRect(0,0,width,height);
+    display->end();
+    
+    for(int i = 0; i < particleSystem.size(); i++) {
+        Particle& cur = particleSystem[i];
+        cur.stop();
+        cur.x = width;
+    }*/
 }
 
 void visualSystem::loadTestMovie(string path){
@@ -106,7 +123,10 @@ void visualSystem::update(){
    
     ofFill();
     //fade out BG by drawing a rectangle
-    ofSetColor(0, 0, 0, fadeAmt);
+    if(resetB)
+        ofSetColor(0);
+    else
+        ofSetColor(0, 0, 0, fadeAmt);
     ofRect(0,0,width,height);
 
     //PARTICLE SYSTEM DRAWING STARTS HERE
@@ -124,6 +144,12 @@ void visualSystem::update(){
         
 	for(int i = 0; i < particleSystem.size(); i++) {
 		Particle& cur = particleSystem[i];
+        
+        if(resetB){
+            cur.stop();
+            cur.x = width;
+        }
+        
 		// global force on other particles
 		particleSystem.addRepulsionForce(cur, particleNeighborhood, particleRepulsion);
 		// forces on this particle
@@ -139,7 +165,8 @@ void visualSystem::update(){
         //stop the particle if it is over an empty area with text
         if(displayPixels.getColor(cur.x, cur.y).getBrightness() < 230){
             if(tm.pixels.getColor(cur.x, cur.y).getBrightness() > 20){
-                cur.stop();
+                //cur.stop();
+                cur.bounce(.3);
             }
         }
         
@@ -182,9 +209,6 @@ void visualSystem::update(){
     ofSetColor(pointOpacity, pointOpacity, pointOpacity, 255);
     particleSystem.draw();
     
-    
-   // ofDisableAlphaBlending();
-        
     }
     display->end();
 
@@ -201,19 +225,11 @@ void visualSystem::update(){
         
         //need to enable these special blame functions in order to properly blend apha PNGs
         glPushAttrib(GL_ALL_ATTRIB_BITS);
-        
         glEnable(GL_BLEND);
         glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA,GL_ONE,GL_ONE_MINUS_SRC_ALPHA);
         
-        //Draw stuff here
-        // ...
-        
-        
         ofClearAlpha();
-       // ofEnableAlphaBlending();
         ofSetColor(255,255,255,255);
-        //draw text layer
-       // tm.draw();
         
     //draw the blurred particle system
     blur.draw(0,0);
@@ -229,8 +245,10 @@ void visualSystem::update(){
        // ofDisableAlphaBlending();
         glDisable(GL_BLEND);
         glPopAttrib();
-    display->end();
+        display->end();
     }
+    
+    resetB = false;
 }
 
 ofFbo * visualSystem::getFrame(){

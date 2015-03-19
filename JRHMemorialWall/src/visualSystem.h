@@ -18,7 +18,8 @@
 class visualSystem{
     
     public:
-    void init(int w=600, int h=400);
+    void init(int w=600, int h=400, int kparticles=15);
+    void reset();
     ofFbo * getFrame();
     void loadTestMovie(string path);
     void update();
@@ -51,9 +52,7 @@ class visualSystem{
 	ParticleSystem particleSystem;
 	bool isMousePressed, slowMotion, isMouseMoved;
     
-    float complexity;
-    float pollenMass;
-    float timeSpeed;
+    float complexity, pollenMass, timeSpeed;
     float phase, hForce, vForce, repForce;
     
     computerVision cv;
@@ -66,7 +65,7 @@ class visualSystem{
     
     float blurAmount, depthCutoff, depthForce;
     int kinectMix;
-    bool showKinect, isOn, contourFinderOn;
+    bool showKinect, isOn, contourFinderOn, resetB;
     
     textManager tm;
     

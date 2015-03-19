@@ -23,28 +23,22 @@ $(document).ready( function() {
 
 	
 	lightsCheckbox.onclick = function(e){
-		//pingSocket();
 		//check state
 		if(lightsCheckbox.checked){
-			//socket.send("ON");
-			pingSocket("ON");
+			pingSocket("on");
 		}
 		else{
-			//socket.send("OFF");
-			pingSocket("OFF");
+			pingSocket("off");
 		}
 	}
 
 	soundCheckbox.onclick = function(e){
-		//pingSocket();
 		//check state
 		if(soundCheckbox.checked){
-			//socket.send("UNMUTE");
-			pingSocket("UNMUTE");
+			pingSocket("unmute");
 		}
 		else{
-			//socket.send("MUTE");
-			pingSocket("MUTE");
+			pingSocket("mute");
 		}
 	}
 
@@ -55,7 +49,6 @@ function pingSocket(message){
 	if(!socketOpen){
 		//open socket, then send message
 		setupSocket(message);
-		//socket.open();
 	}
 	else{
 		//send message
@@ -77,11 +70,7 @@ function setupSocket(message){
 	// it decides what the websocket url is based on the broswer url
 	// e.g. https://mygreathost:9099 = wss://mygreathost:9099
 
-	/*if (BrowserDetect.browser == "Firefox") {
-		socket = new MozWebSocket(get_appropriate_ws_url());
-	} else {*/
-		socket = new WebSocket(get_appropriate_ws_url());
-	//}
+	socket = new WebSocket(get_appropriate_ws_url());
 	
 	// open
 	try {
@@ -97,18 +86,17 @@ function setupSocket(message){
 
 		// received message
 		socket.onmessage =function got_packet(msg) {
-			//messageDiv.innerHTML = msg.data + "<br />" + messageDiv.innerHTML;
 			console.log(msg.data);
-			if(msg.data == "ON"){
+			if(msg.data == "on"){
 				lightsCheckbox.checked = true;
 			}
-			else if(msg.data == "OFF"){
+			else if(msg.data == "off"){
 				lightsCheckbox.checked = false;
 			}
-			else if(msg.data == "MUTE"){
+			else if(msg.data == "mute"){
 				soundCheckbox.checked = false;
 			}
-			else if(msg.data == "UNMUTE"){
+			else if(msg.data == "unmute"){
 				soundCheckbox.checked = true;
 			}
 		}

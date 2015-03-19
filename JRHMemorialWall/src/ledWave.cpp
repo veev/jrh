@@ -117,6 +117,7 @@ void ledWaveStrips::drawToStrips(bool mirror){
     
     lgs->send(topStripPixels.getPixels(), _topStripAddress);
     lgs->send(bottomStripPixels.getPixels(), _bottomStripAddress);
+    
 }
 
 //STRIPS

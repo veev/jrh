@@ -12,6 +12,7 @@ int main( ){
     //  verbose : print more log information (optional)
     ofxWatchdog::watch(5000, true, true, true);
     
+    
 	ofSetupOpenGL(1024,768,OF_FULLSCREEN);			// <-------- setup the GL context
 
 	// this kicks off the running of my app
