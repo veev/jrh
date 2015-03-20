@@ -7,8 +7,8 @@
 			<density>11.8367</density>
 			<H_force>0.0714285</H_force>
 			<V_force>0.0714286</V_force>
-			<fade_amount>27</fade_amount>
-			<p_neighborhood>0.408163</p_neighborhood>
+			<fade_amount>16</fade_amount>
+			<p_neighborhood>0.459184</p_neighborhood>
 			<p_repulsion>0.0714285</p_repulsion>
 		<blur>4</blur>
 		<Particle_Brightness>95</Particle_Brightness>
@@ -47,7 +47,7 @@
 	<LEDs_ON>0</LEDs_ON>
 	<fullscreen>1</fullscreen>
 	<LIGHTS>1</LIGHTS>
-		<SOUND>0</SOUND>
+		<SOUND>1</SOUND>
 	<LED_Strips>1</LED_Strips>
 	</GUI>
 </guiSettings>
