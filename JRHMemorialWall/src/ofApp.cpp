@@ -154,6 +154,7 @@ void ofApp::onKinectToggle(bool & control){
 void ofApp::onLEDsToggle(bool & control){
     if(control == false){
         webSocket.broadcastMessage("off");
+        ds.clear();
     }
     else{
         webSocket.broadcastMessage("on");

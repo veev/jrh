@@ -156,6 +156,8 @@ void visualSystem::update(){
         cur.loopAround(0,0,width,height);
 		cur.addDampingForce(); //slows the particle down
         
+        float textBrightness = tm.pixels.getColor(cur.x, cur.y).getBrightness();
+        
         //apply noise field force to the particle
         pos.set(cur.x,cur.y);
         cur.applyForce(getField(pos));
@@ -164,7 +166,7 @@ void visualSystem::update(){
         //SHOW TEXT
         //stop the particle if it is over an empty area with text
         if(displayPixels.getColor(cur.x, cur.y).getBrightness() < 230){
-            if(tm.pixels.getColor(cur.x, cur.y).getBrightness() > 20){
+            if(textBrightness > 20){
                 //cur.stop();
                 cur.bounce(.3);
             }
