@@ -20,7 +20,6 @@ void ofApp::setup(){
     vs.init(vsw, vsh, kParticles);
     //load the test movie
     vs.loadTestMovie(DataManager::getTestVideoPath());
-    
 
     //setup event listeners
     gui.saveSetupButton.addListener(this, &ofApp::saveWaveSetup);
@@ -221,6 +220,9 @@ void ofApp::update(){
     
    // ds.updateDisplayAsImage(vs.getFrameAsImage());
     ds.updateDisplay(frame);
+    }
+    else{
+        ds.clear();
     }
 }
 
