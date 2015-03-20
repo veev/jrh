@@ -14,7 +14,7 @@
 		<Particle_Brightness>95</Particle_Brightness>
 		<Depth_Cutoff>255</Depth_Cutoff>
 			<Depth_Force>0</Depth_Force>
-		<Text_Fade_Amt>243</Text_Fade_Amt>
+		<Text_Fade_Amt>182</Text_Fade_Amt>
 		</Visual_System>
 	<group>
 			<Contour_Threshol>191.25</Contour_Threshol>
@@ -30,7 +30,7 @@
 		<Flip_H>0</Flip_H>
 		<Contour_Finder>1</Contour_Finder>
 		<BG_Sub_Time>6</BG_Sub_Time>
-		<Rep_Force>0.408163</Rep_Force>
+		<Rep_Force>0.102041</Rep_Force>
 			<Contour_Thresh>0</Contour_Thresh>
 		</Computer_Vision>
 	<Display_System>
@@ -48,5 +48,6 @@
 	<fullscreen>1</fullscreen>
 	<LIGHTS>1</LIGHTS>
 		<SOUND>0</SOUND>
+	<LED_Strips>1</LED_Strips>
 	</GUI>
 </guiSettings>
