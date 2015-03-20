@@ -89,10 +89,12 @@ void ofApp::onMessage(string & m){
     else if( m == "mute"){
         //TURN SOUND ON
         gui.sound.set(false);
+        webSocket.broadcastMessage(m);
     }
     else if( m == "unmute"){
         //TURN SOUND ON
         gui.sound.set(true);
+        webSocket.broadcastMessage(m);
     }
     else if(m != "ping"){
         //assume this is an integer 0-6, display relevant quote
