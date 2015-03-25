@@ -195,10 +195,11 @@ void visualSystem::update(){
     
     //add forces for blobs from kinect
         if(contourFinderOn){
-            for(int i=0;i<cv.contourFinder.size();i++){
+            int numBlobs = cv.contourFinder.size();
+            for(int i=0;i<numBlobs;i++){
                 cv::Point2f center = cv.contourFinder.getCenter(i);
                 cv::Rect rect = cv.contourFinder.getBoundingRect(i);
-                particleSystem.addRepulsionForce(center.x, center.y, rect.width, repForce);
+                particleSystem.addRepulsionForce(center.x, center.y, rect.width/numBlobs, repForce/numBlobs);
             }
         }
         
