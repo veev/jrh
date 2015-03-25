@@ -1,4 +1,4 @@
-<visualSystem width="560" height="341" kparticles="10"/>
+<visualSystem width="560" height="341" kparticles="10" />
 <panel width="32" height="16" />
 <testVideoPath>../../../media/test2.mp4</testVideoPath>
 <ledStrips>

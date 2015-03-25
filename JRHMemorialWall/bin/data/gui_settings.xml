@@ -1,6 +1,6 @@
 <guiSettings>
 	<GUI>
-		<TOGGLE_LIVE_MODE>0</TOGGLE_LIVE_MODE>
+		<TOGGLE_LIVE_MODE>1</TOGGLE_LIVE_MODE>
 		<Visual_System>
 			<turbulence>0.0403061</turbulence>
 			<particle_speed>0.561224</particle_speed>
@@ -28,9 +28,9 @@
 			<Kinect_Mix>67</Kinect_Mix>
 			<Flip_V>1</Flip_V>
 		<Flip_H>0</Flip_H>
-		<Contour_Finder>1</Contour_Finder>
+		<Contour_Finder>0</Contour_Finder>
 		<BG_Sub_Time>6</BG_Sub_Time>
-		<Rep_Force>0.102041</Rep_Force>
+		<Rep_Force>0.357143</Rep_Force>
 			<Contour_Thresh>0</Contour_Thresh>
 		</Computer_Vision>
 	<Display_System>
@@ -46,7 +46,7 @@
 		</Display_System>
 	<LEDs_ON>0</LEDs_ON>
 	<fullscreen>1</fullscreen>
-	<LIGHTS>1</LIGHTS>
+	<LIGHTS>0</LIGHTS>
 		<SOUND>1</SOUND>
 	<LED_Strips>1</LED_Strips>
 	</GUI>
