@@ -50,15 +50,18 @@ void computerVision::update(){
 	// there is a new frame and we are connected
 	if(kinect.isFrameNew()) {
         if(firstFrame){
-        firstFrame = false;
-        //reset bg upon first frame?
-        background.reset();
+            firstFrame = false;
+            //reset bg upon first frame?
+            background.reset();
         }
+        
 		// load grayscale depth image from the kinect source
 		grayImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
-        grayImage.mirror(flipVertical, flipH);
+        //grayImage.mirror(flipVertical, flipH);
         
+        //gray image not working? use kinect image for now...
         background.update(kinect, thresholded);
+        thresholded.mirror(flipVertical, flipH);
         thresholded.update();
         
         if(contourFinderOn){
@@ -71,6 +74,7 @@ void computerVision::update(){
 }
 
 void computerVision::draw(){
+   // grayImage.draw(0,0);
     thresholded.draw(0, 0);
     ofSetLineWidth(2);
     if(contourFinderOn)
