@@ -24,14 +24,14 @@
 		</group>
 	<Computer_Vision>
 			<Contour_Threshold>18.2143</Contour_Threshold>
-			<SHOW_KINECT>1</SHOW_KINECT>
-			<Kinect_Mix>67</Kinect_Mix>
+			<SHOW_KINECT>0</SHOW_KINECT>
+			<Kinect_Mix>9</Kinect_Mix>
 			<Flip_V>1</Flip_V>
 		<Flip_H>0</Flip_H>
 		<Contour_Finder>1</Contour_Finder>
-		<BG_Sub_Time>6</BG_Sub_Time>
-		<Rep_Force>0.867347</Rep_Force>
-			<Contour_Thresh>27.3214</Contour_Thresh>
+		<BG_Sub_Time>0</BG_Sub_Time>
+		<Rep_Force>0.714286</Rep_Force>
+			<Contour_Thresh>0</Contour_Thresh>
 		</Computer_Vision>
 	<Display_System>
 			<mirror_strips>0</mirror_strips>

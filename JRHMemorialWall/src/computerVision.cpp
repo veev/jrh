@@ -56,8 +56,12 @@ void computerVision::update(){
         }
         
 		// load grayscale depth image from the kinect source
-		grayImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
+		//grayImage.setFromPixels(kinect.getDepthPixels(), kinect.width, kinect.height);
         //grayImage.mirror(flipVertical, flipH);
+        
+        //chagne cv image to ofimage
+       // ofImage depthMap;
+       // depthMap.setFromPixels(grayImage.getPixels());
         
         //gray image not working? use kinect image for now...
         background.update(kinect, thresholded);

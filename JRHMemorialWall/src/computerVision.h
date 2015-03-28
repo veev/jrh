@@ -32,7 +32,7 @@ class computerVision{
     bool flipVertical, flipH, contourFinderOn, firstFrame;
     
     ofxCv::RunningBackground background;
-    ofImage thresholded;
+    ofImage thresholded, depthMap;
 
 
 
