@@ -129,12 +129,21 @@ void displaySystem::drawWaves(){
                 ofDrawBitmapString(ofToString(w->_idNum), 10, yOffset+(i*20)+7);
                 w->draw(30, yOffset+(i*20));
                 //send to strips via OSC
-                w->drawToStrips();
+               // w->drawToStrips();
             }
             else{
                 ofDrawBitmapString(ofToString(w->_idNum)+" STRIP IS OFF", 10, yOffset+(i*20)+7);
             }
         }
+        else{
+            if(ledStripsOn){
+               // ofDrawBitmapString(ofToString(w->_idNum), 10, yOffset+(i*20)+7);
+               // w->draw(30, yOffset+(i*20));
+                //send to strips via OSC
+                w->drawToStrips();
+            }
+        }
+        
     }
     
 }
