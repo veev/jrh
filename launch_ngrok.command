@@ -1,2 +1,2 @@
 cd /Applications
-./ngrok -httpauth="admin:p27jrh" -subdomain jrhapp 9092 
+./ngrok http -auth="admin:p27jrh" -subdomain=jrhapp 9092 
