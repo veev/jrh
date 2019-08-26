@@ -1,53 +1,42 @@
-<guiSettings>
-	<GUI>
-		<TOGGLE_LIVE_MODE>1</TOGGLE_LIVE_MODE>
-		<Visual_System>
-			<turbulence>0.0403061</turbulence>
-			<particle_speed>0.561224</particle_speed>
-			<density>11.8367</density>
-			<H_force>0.0714285</H_force>
-			<V_force>0.0714286</V_force>
-			<fade_amount>16</fade_amount>
-			<p_neighborhood>0.459184</p_neighborhood>
-			<p_repulsion>0.0714285</p_repulsion>
+<GUI>
+	<LIGHTS>1</LIGHTS>
+	<SOUND>1</SOUND>
+	<LED_Strips>1</LED_Strips>
+	<fullscreen>1</fullscreen>
+	<TOGGLE_LIVE_MODE>1</TOGGLE_LIVE_MODE>
+	<Display_System>
+		<mirror_strips>0</mirror_strips>
+		<Panel_Color>255, 255, 255, 255</Panel_Color>
+		<Panel_Hue>130</Panel_Hue>
+		<Panel_Brightness>255</Panel_Brightness>
+		<Panel_Saturation>0</Panel_Saturation>
+		<Strip_Color>171, 255, 238, 255</Strip_Color>
+		<Strip_Hue>119</Strip_Hue>
+		<Strip_Brightness>255</Strip_Brightness>
+		<Strip_Saturation>84</Strip_Saturation>
+	</Display_System>
+	<Visual_System>
+		<turbulence>0.0403061</turbulence>
+		<particle_speed>0.561224</particle_speed>
+		<density>11.8367</density>
+		<H_force>0.0714285</H_force>
+		<V_force>0.0714286</V_force>
+		<fade_amount>16</fade_amount>
+		<p_neighborhood>0.459184</p_neighborhood>
+		<p_repulsion>0.0714285</p_repulsion>
 		<blur>4</blur>
 		<Particle_Brightness>95</Particle_Brightness>
-		<Depth_Cutoff>255</Depth_Cutoff>
-			<Depth_Force>0</Depth_Force>
 		<Text_Fade_Amt>182</Text_Fade_Amt>
-		</Visual_System>
-	<group>
-			<Contour_Threshol>191.25</Contour_Threshol>
-			<SHOW_KINECT>0</SHOW_KINECT>
-		<Contour_Threshold>117.092</Contour_Threshold>
-			<Kinect_Mix>113</Kinect_Mix>
-		</group>
+	</Visual_System>
 	<Computer_Vision>
-			<Contour_Threshold>18.2143</Contour_Threshold>
-			<SHOW_KINECT>0</SHOW_KINECT>
-			<Kinect_Mix>23</Kinect_Mix>
-			<Flip_V>1</Flip_V>
-		<Flip_H>0</Flip_H>
-		<Contour_Finder>1</Contour_Finder>
-		<BG_Sub_Time>1</BG_Sub_Time>
 		<Rep_Force>0.714286</Rep_Force>
-			<Contour_Thresh>0</Contour_Thresh>
-		</Computer_Vision>
-	<Display_System>
-			<mirror_strips>0</mirror_strips>
-		<Panel_Color>255, 255, 255, 255</Panel_Color>
-			<Strip_Color>183, 255, 163, 255</Strip_Color>
-		<Panel_Hue>130</Panel_Hue>
-			<Panel_Brightness>255</Panel_Brightness>
-			<Panel_Saturation>0</Panel_Saturation>
-			<Strip_Hue>75</Strip_Hue>
-			<Strip_Brightness>255</Strip_Brightness>
-			<Strip_Saturation>91</Strip_Saturation>
-		</Display_System>
-	<LEDs_ON>0</LEDs_ON>
-	<fullscreen>1</fullscreen>
-	<LIGHTS>1</LIGHTS>
-		<SOUND>1</SOUND>
-	<LED_Strips>1</LED_Strips>
-	</GUI>
-</guiSettings>
+		<Contour_Finder>1</Contour_Finder>
+		<Contour_Thresh>0</Contour_Thresh>
+		<SHOW_KINECT>0</SHOW_KINECT>
+		<Kinect_Mix>23</Kinect_Mix>
+		<BG_Sub_Time>1</BG_Sub_Time>
+		<Flip_V>1</Flip_V>
+		<Flip_H>0</Flip_H>
+	</Computer_Vision>
+<GUI/>
+</GUI>
